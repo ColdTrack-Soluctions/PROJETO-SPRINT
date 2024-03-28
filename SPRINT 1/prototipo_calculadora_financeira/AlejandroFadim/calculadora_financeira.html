@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>calculadora financeira</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container">
+
+
+    <h1>calculadora financeira</h1>
+    <br>
+    Insira o nome do seu refrigerador: <input id="inputRefrigerador" type="text">
+    <br>
+    Insira o valor do produto: <input id="inputProduto" type="text">
+    <br>
+    Insira a quantidade vendida mensalmente <input type="text" id="inputValorMensal">
+    <br>
+    <button onclick="calc()" class="btnCalc">calcular lucro</button>
+    <br>
+  </div>
+  <div id="msg"></div>
+</body>
+
+</html>
+
+
+<script>
+  function calc() {
+    var nomeRefrigerador = inputRefrigerador.value;
+    var valorProduto = Number(inputProduto.value);
+    var valorAgregado = valorProduto + (valorProduto * 0.15)
+    // var qtdMensal = Number(inputLote.value);
+    var qtdMensal = Number(inputValorMensal.value)
+    var somaTotalAgregado = valorAgregado * qtdMensal;
+    var somaTotal = valorProduto * qtdMensal;
+
+    msg.innerHTML = `O valor atual do seu refrigerador ${nomeRefrigerador} é de: ${valorProduto}$ com a nossa valorização agregada ira valer ${valorAgregado}$ seu lucro bruto mensal com esse produto era  de: ${somaTotal}$ com solução a nossa soluçãocoldTrack será de: ${somaTotalAgregado}$ tendo um amento de ${somaTotalAgregado - somaTotal}$ por mês`
+  }'  '
+</script>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="perguntas">
+        <h1>Simulador Financeiro- ColdTrack Solutions</h1>
+
+        Modelo:
+        <input type="text" id="input_modelo"> <br>
+        <p class="p2">Preço do refrigerador sem iot: </p>
+        <input type="text" id="input_precosemiot"> <br>
+        Quantidade de refrigeradores: <input type="text" id="input_qtdrefrigerador"> <br>
+        <br>
+        Quantidade de portas do refrigerador: <input type="text" id="input_portas"> <br>
+        <br>
+        Seu lucro de vendas: <input type="text" id="input_lucro"> <br>
+        <br>
+        <button onclick="Analisar()" class="botao">Consulte seus valores</button>
+    </div>
+
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+<script>
+    function Analisar() {
+        var modelo = (input_modelo.value)
+        var precosemiot = Number(input_precosemiot.value)
+        var qtdrefrigerador = Number(input_qtdrefrigerador.value)
+        var portas = Number(input_portas.value)
+        var lucro = Number(input_lucro.value)
+
+        var lucroiot = lucro + (lucro * 0.15)
+        var precocomiot = precosemiot + (precosemiot * 0.15)
+        var qtdsensortemp = portas / 2;
+        var qtdsensorprox = 1 * portas;
+        var qtdsensor = qtdsensorprox + qtdsensortemp;
+
+
+
+
+        div_mensagem.innerHTML = `<div class = "mensagem">
+        OBA! Que ótimo que está consultando nossos valores, a seguir veja o avanço de seus lucros com a implementação do nosso serviço! <br><br>
+        <br><br> Em seus ${qtdrefrigerador} refrigeradores com esse modelo ${modelo} instalaremos ${qtdsensor.toFixed(0, 1)} sensores para que nosso trabalho seja efetivo! <br><br>
+        Então, haverá uma valorização no seu lucro por produto, porque ele valendo ${precosemiot}, com o nosso sistema ela custará ${precocomiot}, assim aumentando o seu lucro que era de ${lucro}, para ${lucroiot}.
+        </div>`
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+</script>

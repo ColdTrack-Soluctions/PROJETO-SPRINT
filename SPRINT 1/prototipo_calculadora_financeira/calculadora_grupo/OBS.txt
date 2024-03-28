@@ -1,0 +1,7 @@
+Durante a apresentação de nossa calculadora financeira foi menciado pela professora o cenario em que nosso cliente deseja instalar nossos sitemas em mais de um modelo de refrigerador... Sendo assim não foi apresentado como isso deve ser feito.. por exemplo:
+
+- Modelo Refrigerador - T20,T30,T40
+
+Nada disso foi comentado durante a apresentação...
+
+Algo que foi dito pelos colaboradores ColdTrack foi que nesse cenário uma possivel solução seria abrir outra pagina de calculadora e informar um a um tipo d erefrigerador e seu devido preço.

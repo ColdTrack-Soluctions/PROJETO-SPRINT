@@ -1,0 +1,57 @@
+.class {
+    background-color: rgba(54, 77, 170, 1);
+}
+
+.titulo {
+    color: white;
+    width: fit-content;
+    margin: auto;
+    height: fit-content;
+    text-align: center;
+    padding-left: 20px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: large;
+
+}
+
+.corLetra {
+    color: white;
+    width: fit-content;
+    margin: auto;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.caixa1 {
+    width: 450px;
+    height: 400px;
+    margin: auto;
+    background-color: rgba(79, 10, 133, 1);
+    border-radius: 45px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: start;
+
+}
+
+.botão {
+    border-radius: 20px;
+    background-color: black;
+    justify-content: space-between;
+    align-self: center;
+    margin-bottom: 30px;
+    width: 150px;
+    height: 30px;
+    color: white;
+
+}
+
+.inputs {
+    border-radius: 20px;
+    height: 20px;
+}
+
+.mensagem {
+    color: rgba(244, 2, 177, 1);
+}

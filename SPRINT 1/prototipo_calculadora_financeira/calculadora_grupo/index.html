@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Calculadora Cold Track </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div>
+        <h1 class="titulo"> <b> Cold Track Solutions </b></h1>
+        <div class="linha"></div> <br> <br>
+    </div>
+    <div class="alinhamento">
+        <div class="inputs">
+            Nome da Empresa: <input class="textoInput" 
+            type="text" id="ipt_empresa">
+
+            <br><br>
+            Modelo do Refrigerador: <input class="textoInput" 
+            type="text" id="ipt_tipoRefrigerador"> <br><br>
+
+            Quantidade de Portas: <input class="textoInput" 
+            type="text" id="ipt_qtdPortas">
+
+            <br><br>
+            Valor do Refrigerador(R$): <input class="textoInput" type="text" id="ipt_valorRefrigerador" rador"> <br><br>
+            
+            Quantidade de refrigeradores vendidos no mês: <input class="textoInput" type="text"
+                id="ipt_MensalRefrigerador"> <br><br>
+        </div>
+        <div id="div_mensagem"></div>
+    </div>
+    <button onclick="calcular()" class="botao">Calcular</button>
+
+</body>
+
+</html>
+
+<script>
+    function calcular() {
+        var nomeEmpresa = ipt_empresa.value
+        var valorRefrigerador = Number(ipt_valorRefrigerador.value)
+        var vendasMensal = Number(ipt_MensalRefrigerador.value)
+        var qtdPortas = Number(ipt_qtdPortas.value)
+        var TipoRefrigerador = ipt_tipoRefrigerador.value
+
+
+        var aumentoProduto = valorRefrigerador * 0.15
+
+        var aumentoRefrigerador = valorRefrigerador + (valorRefrigerador * 0.15)
+
+        var originalMensal = valorRefrigerador * vendasMensal
+        var vendasTotalMensal = aumentoRefrigerador * vendasMensal
+
+        var proximidade = 1 * qtdPortas
+        var temperatura = qtdPortas / 2
+
+        var proximidadeTotal = 1 * vendasMensal
+        var temperaturaTotal = vendasMensal / 2
+
+        var vendasOriginalAnual = originalMensal * 12
+        var vendasAnual = vendasTotalMensal * 12
+
+
+
+
+
+
+        div_mensagem.innerHTML = `<div class = "divMensagem">
+        <span class ="mensagem"> <b>Beneficios da Cold Track Solutions: <br> <br>
+
+
+            Empresa: ${nomeEmpresa} <br> <br>
+            Modelo do Refrigerador: ${TipoRefrigerador}<br><br>
+
+            Valor original do Refrigerador:  <span style="color: green"> R$${valorRefrigerador}</span><br>
+
+            Aumento no Lucro de vendas: 15% no valor de cada produto:  <span style="color: green">R$${aumentoProduto}</span> <br> <br>
+
+
+            Preço Do Refrigerador com o uso dos Sensores: <span style="color: green"> R$${aumentoRefrigerador}</span> <br><br>
+
+
+            Quantidade de sensores utilizados por Refrigerador:<br>
+
+            <span style="color: blue">Temperatura:${temperatura.toFixed(0, 1)}</span> |  <span style="color: red">Proximidade:${proximidade}</span><br><br>
+
+            Total de Sensores utilizados:<br><br>
+
+            <span style="color: blue">Temperatura:${temperaturaTotal.toFixed(0, 1)}</span> |  <span style="color: red">Proximidade:${proximidadeTotal}</span><br><br>
+
+            Lucro mensal SEM o uso dos sensores: <span style="color: red"> R$${originalMensal} </span><br>
+            Lucro mensal COM o uso dos sensores:  <span style="color: green"> R$${vendasTotalMensal} </span> <br><br>
+            
+                <hr>
+
+            Estimativa de Lucro Anual sem o uso dos Sensores:  <span style="color: red">R$${vendasOriginalAnual}</span> <br> <br>
+            Estimativa de Lucro Anual com o uso dos Sensores:  <span style="color: green;">R$${vendasAnual}</span> <br></b> <br>
+            
+            </div>`
+    }
+
+</script>

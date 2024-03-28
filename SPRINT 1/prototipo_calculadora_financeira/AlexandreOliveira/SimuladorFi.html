@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="simu.css">
+    <title>Simulador Financeiro</title>
+</head>
+
+<body>
+    <div class="principal">
+
+        <div class="container">
+            <div class="box">
+                <div class="header">
+                    <h1>Simulador Financeiro</h1>
+
+                </div>
+                <div id="divInput">
+
+                    <b>Quantidade de refrigeradores:</b><br><input type="number" id="inpQtd"
+                        placeholder="N° de unidades"><br><br>
+                    <b>Valor investido no sistema:</b> <br><input type="number" id="inpGasto" placeholder="R$/Unidade"
+                        min="70000"><br><br>
+                    <b>Valor de venda:</b><br> <input type="number" id="inpVenda" placeholder="R$/Unidade"><br><br>
+                    <b>Valor de produção:</b><br> <input type="number" id="inpProd"
+                        placeholder="R$ por Refrigerador"><br><br>
+                    <button id="btRes" onclick="resultados()">Exibir resultados!</button>
+                </div><br>
+            </div>
+            <div class="box2">
+
+
+                <div class="header2">
+                    <h1>Sobre nós:</h1>
+
+                </div>
+                <div class="texto1">Nosso objetivo é tornar os refrigeradores produzidos por empresas fabricantes mais
+                    atraentes através da adição de nossos sensores de proximidade e temperatura, garantindo assim uma
+                    maior vantagem competitiva e uma maior atração aos consumidores, que por fim terão também incluso
+                    nosso sistema de monitoramento de dados sensíveis através de um dashboard intuitivo o que contribui
+                    para uma melhor gestão</div>
+                <br>
+            </div>
+
+
+
+        </div>
+
+        <div id="divMensagem"></div>
+
+    </div>
+
+    <div id="direitos">Todos os direitos reservados a Alexandre Soares e ColdTrack Slts.</div>
+
+</body>
+
+</html>
+
+
+<script>
+
+
+    function
+
+
+        resultados() {
+        var numSis = Number(inpQtd.value);
+        var investimento = Number(inpGasto.value) * numSis;
+        var venda = Number(inpVenda.value);
+        var producao = Number(inpProd.value)*numSis;
+
+
+        var receita = venda * numSis;
+        var gastoFinal = (investimento) + producao;
+        var lucro = receita - gastoFinal;
+        var lucroCen = (lucro / receita) * 100;
+
+        console.log(numSis);
+        console.log(investimento);
+        console.log(venda);
+        console.log(producao);
+        console.log(gastoFinal);
+        console.log(lucro);
+        console.log(receita);
+        console.log(lucroCen);
+
+        divMensagem.innerHTML = `Fazendo a contratação de nossos serviços com ${numSis} sistemas,<br> você investirá R$${investimento}.<br> Efetuando a venda dos seus refrigeradores para seus clientes por R$${venda} cada refrigerador, totalizando R$${receita},<br> gastando R$${gastoFinal}(R$${producao} com produção e R$${investimento} com nosso sistema), obterá R$${lucro} de lucro.<br> Ao final, sua margem de lucro seria de aproximadamente ${lucroCen}%!`
+    }
+
+
+
+</script>

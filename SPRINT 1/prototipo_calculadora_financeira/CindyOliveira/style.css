@@ -1,0 +1,49 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:rgb(164, 162, 252);
+    
+}
+
+.perguntas{
+    background-color: rgb(200, 44, 206);
+    width: 70%;
+    height: 600px;
+    border-radius: 20px;
+    border-style:groove;
+    border-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 5px;
+}
+
+.p2 {
+    margin-top: 0px;
+}
+
+.botao{
+    background-color: rgb(237, 237, 240);
+    width: 150px;
+    height: 50px;
+    border-radius: 50px;
+}
+
+.mensagem {
+    background-color: rgb(200, 44, 206);
+    width: 90%;
+    height: 200px;
+    border-radius: 20px;
+    border-style:groove;
+    border-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color:blanchedalmond;
+    text-align: center;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    
+}

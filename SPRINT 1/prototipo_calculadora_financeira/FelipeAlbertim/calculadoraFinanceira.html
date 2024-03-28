@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Calculadora Financeira - ColdTrack</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <div id="div_cabeca">
+        <img src="Logo Quadrada.png" alt="Logo" class="logo">
+        <div class="texto">
+            <h1><i>Calculadora Financeira - ColdTrack Solutions</i></h1>
+            <h3>Seja Bem-Vindo à nossa Calculadora Financeira!</h3>
+            <h4>Aqui iremos te mostrar os incríveis benefícios ao adquirir nosso sistema:</h4>
+        </div>
+    </div>
+
+    <div id="container_img">
+
+        <div class="corpo">
+            <b>Por favor, preencha os seguintes campos:</b><br><br>
+
+            <span id="nome_inputs">Valor de venda da refrigerador comercial comum:</span>    
+            <input type="number" id="input_valorUnidade" placeholder="Valor em R$">
+
+            <span id="nome_inputs">Número médio de vendas mensais:</span>
+            <input type="number" id="input_numero_vendas" placeholder="Quantidade">
+
+            <span id="nome_inputs">Preço médio de venda após implementação do sistema:</span>
+            <input type="number" id="input_preco_medio" placeholder="Valor em R$"><br>
+
+            <span class="recomendado">(Recomendamos um incremento de 15% para cada refrigerador inteligente)</span>
+                
+
+                <div class="botoes">
+                    <button type="button" onclick="calcularIncremento()">Calcular Incremento</button>
+                    <button type="button" onclick="calcularGanhos()">Calcular Ganhos</button>
+                </div>
+        </div>
+
+        <div id="div_mensagem"></div>
+
+    </div>
+
+    <!--        TERMINO DA PÁGINA        -->
+
+    <script>
+        function calcularIncremento() {
+            var valorUnidade = Number(input_valorUnidade.value);
+            var incremento = valorUnidade * 0.15;
+            input_preco_medio.value = incremento + valorUnidade
+        }
+
+        function calcularGanhos() {
+            var valorUnidade = Number(input_valorUnidade.value);
+            var numeroVendas = Number(input_numero_vendas.value);
+            var precoMedio = Number(input_preco_medio.value);
+
+            var vendaSimples = valorUnidade * numeroVendas;
+            var aumentoVendas = valorUnidade * 0.15;
+            var vendaComSistema = precoMedio * numeroVendas;
+            var lucroAdicional = vendaComSistema - vendaSimples;
+
+            div_mensagem.innerHTML = `
+                <p>Parabéns pela escolha de investir em nosso sistema inteligente para refrigeradores!</p>
+                <p>Você está prestes a experimentar um aumento significativo em seus lucros.</p>
+                <p>Com a implementação do nosso sistema, você terá:</p>
+                <ul>
+                    <li>Um aumento médio de <b>15% nas vendas</b>.</li>
+                    <li>Um lucro adicional de <b>R$ ${lucroAdicional}</b> por mês. <b>(NO CENÁRIO INFORMADO ACIMA !)</b></li>
+                    <li>Melhor organização e layout dos seus produtos, resultando em vendas mais estratégicas.</li>
+                </ul>
+            `;
+        }
+    </script>
+</body>
+
+
+</html>

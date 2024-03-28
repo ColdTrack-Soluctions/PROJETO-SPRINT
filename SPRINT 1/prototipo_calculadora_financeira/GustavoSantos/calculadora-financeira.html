@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Calculadora Cold Track </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div>
+    <h1 class="titulo"> Cold track </h1> 
+    <div class="linha"></div> <br> <br>
+</div>
+    <div class="alinhamento">
+        <div class="inputs">
+            Nome da Empresa: <input class="textoInput" type="text" id="ipt_empresa" placeholder="Nome da sua Empresa"> <br><br>
+            Valor do Refrigerador(R$): <input class="textoInput" type="text" id="ipt_valorRefrigerador" placeholder="Valor de cada Refrigerador"> <br><br>
+            Vendas Diarias de refrigeradores <input class="textoInput" type="text" id="ipt_refrigerador" placeholder="Número inteiro De vendas Diarias"> <br><br>
+            Numero de Devoluções Mensais: <input class="textoInput" type="text" id="ipt_numeroDeDevolucoes" placeholder="Devoluções Mensais"> <br><br>
+            Produtos por Lote <input class="textoInput" type="text" id="ipt_produtosLote" placeholder="Digite o total de produtos por lote"> <br><br>
+            Preço do lote <input class="textoInput" type="text" id="ipt_precoLote" placeholder="Preço de cada lote"> <br><br>
+        </div>
+            <div id="div_mensagem"></div>
+    </div>
+    <button onclick="calcular()" class="botao">Calcular</button>
+
+</body>
+
+</html>
+
+<script>
+    function calcular() {
+        var nomeEmpresa = ipt_empresa.value
+        var valorRefrigerador = Number(ipt_valorRefrigerador.value)
+        var vendasRefrigerador = Number(ipt_refrigerador.value)
+        var devolucoes = Number(ipt_numeroDeDevolucoes.value)
+        var lote = Number(ipt_produtosLote.value)
+        var precoLote = Number(ipt_precoLote.value)
+
+
+        var aumentoRefrigerador = valorRefrigerador + 500 // aumento de vendas mensais
+
+        var vendasDiarias =  valorRefrigerador * vendasRefrigerador// aumento de preço de vendas
+
+        var vendasTotalMensal = vendasDiarias * 30 //Aumento em vendas mensais
+
+        var vendasAnual = vendasTotalMensal * 12
+
+        var aumentoAnual = vendasAnual + (vendasAnual * 0.15)
+
+        var aumento = vendasTotalMensal + (vendasTotalMensal * 0.15)
+
+        var totalDevolucoes = devolucoes / 2 // Diminuição de vendas em 50%
+
+
+
+
+
+        div_mensagem.innerHTML = `<div class = "divMensagem">
+        <span class ="mensagem"> Beneficios da Cold Track: <br> <br>
+            Empresa: ${nomeEmpresa} <br> <br>
+            Aumento no lucro de vendas : R$500,00 em cada produto <br> <br>
+            Preço Do refrigerador com o uso dos sensores R$${aumentoRefrigerador} <br><br>
+            Vendas diarias: ${vendasRefrigerador} / lucro Diario: R$${vendasDiarias}<br><br>
+            Lucro mensal: R$${vendasTotalMensal} <br> 
+            Lucro mensal com o uso dos Sensores Cold track: R$${aumento} <br><br>
+            lucro Anual: R$${vendasAnual}<br>
+            lucro Anual com o uso dos Sensores: R$${aumentoAnual}<br><br>
+            Aumento de Vendas Diarias: R$${vendasDiarias} <br> <br> 
+            Dimuição de Devoluções em 50% por conta de problemas de temperatura: ${totalDevolucoes}</span>
+            </div>`
+    }
+
+</script>

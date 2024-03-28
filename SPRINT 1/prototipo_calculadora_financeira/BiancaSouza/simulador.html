@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador Financeiro</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="class">
+
+    <div>
+        <div class="caixa1">
+            <h1><i class="titulo">Simulador Financeiro - ColdTrack Solutions</i></h1>
+            <p class="corLetra">
+                Nome da empresa: <input type="text" id="input_nome" class="inputs">
+                <br><br>
+                Qtd de refrigeradores: <input type="text" id="input_rec" class="inputs">
+                <br><br>
+                Modelo refrigerador: <input type="text" id="input_tipo" class="inputs">
+                <br><br>
+                Quantidade de portas: <input type="text" id="input_portas" class="inputs">
+                <br><br>
+                Preço do refrigerador: <input type="text" id="input_preco" class="inputs">
+                <br><br>
+            </p>
+            <button onclick="calc()" class="botão">Calcular Orçamento</button>
+
+        </div>
+    </div>
+    <div id="div_mensagem" class="mensagem"></div>
+</body>
+
+</html>
+
+<script>
+    function calc() {
+        var nome = input_nome.value
+        var qtd = Number(input_rec.value)
+        var tipo = input_tipo.value
+        var preco = Number(input_preco.value)
+        var portas = Number(input_portas.value)
+
+        var preco_semIOT = qtd * preco
+        var preco_comIOT = preco * 0.15
+        var sensorProx = 0
+        var sensorTemp = 1
+        var valor_comIot = preco_comIOT + preco
+        var totalIot = valor_comIot * qtd
+
+
+        var sensorProx = 1 * portas
+        var qtd_sensoresP = sensorProx * qtd
+        var qtd_sensoresT = sensorTemp * qtd
+        var total_sensores = qtd_sensoresP + qtd_sensoresT
+
+
+        div_mensagem.innerHTML += `<br>  A empresa ${nome}, com a frota de ${qtd} refrigeradores do modelo ${tipo}, vende estes por R$ ${preco} cada, totalizando R$ ${preco_semIOT}.
+        <br>Com a solução da ColdTrack Solutions, podemos aumentar o lucro em até 15%, desse modo, seu produto deixaria de valer R$ ${preco}, e passaria a ter o valor de R$ ${valor_comIot}, totalizando R$ ${totalIot}.
+        <br>Para a instalação do nosso sistema precisariamos de ${qtd_sensoresP} sensores de proximidade para cada porta, e ${qtd_sensoresT} sensores de temperatura por refrigerador, assim, totalizando ${total_sensores} sensores.`
+
+
+
+    }
+</script>

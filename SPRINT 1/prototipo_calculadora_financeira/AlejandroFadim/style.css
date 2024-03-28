@@ -1,0 +1,48 @@
+body{
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: #77bbf1;
+}
+
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 620px;
+  color: #fff;
+  margin-top: 10px;
+  background-color: #5198d3;
+}
+
+.container h1{
+  margin: 0;
+  border-bottom: 2px solid #ffffff;
+  width: 100%;
+  padding: 20px 0;
+  text-align: center;
+  background-color: #ae6ec3;
+  color: #fff;
+}
+#inputRefrigerador, #inputProduto, #inputValorMensal{
+  width: 70%;
+  border-radius: 5px;
+}
+
+.btnCalc{
+  border-radius: 5px;
+  width: 20%;
+  background-color: #ae6ec3;
+  color: #fff;
+}
+
+#msg{
+  width: 600px;
+  border-top: 2px solid #fff;
+  color: #fff;
+  padding: 10px;
+  background-color: #5198d3;
+}
