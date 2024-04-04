@@ -1,31 +1,32 @@
-body{
+body {
 
-    background: #1c92d2;
-    background: -webkit-linear-gradient(to right, #339fd9,    #040189);
-    background: linear-gradient(to left, #339fd9,    #040189);
+    background: rgb(51, 159, 217);
+    background: linear-gradient(267deg, rgba(51, 159, 217, 1) 0%, rgba(4, 1, 137, 1) 50%, rgba(2, 1, 59, 1) 84%);
 }
 
-.header{
+.header {
     width: 100%;
     background-color: #364DAA;
     color: white;
     height: 80px;
     display: flex;
-    justify-content: space-around ;
+    justify-content: space-around;
     border-bottom: 3px solid #040189;
     font-size: 20px;
 }
-.imagem1{
+
+.imagem1 {
     display: flex;
     align-items: center;
     margin-top: 17px;
 }
-.imagemfixa{
+
+.imagemfixa {
     height: 230px;
     width: 230px;
 }
 
-.opcPrincipais{
+.opcPrincipais {
     display: flex;
     align-items: center;
     gap: 26px;
@@ -34,37 +35,41 @@ body{
     font-weight: bold;
 }
 
-.cadastro{
+.cadastro {
     display: flex;
     align-items: center;
     gap: 13px;
     font-weight: bold;
 }
 
-.centro{
+.centro {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
 }
 
-.logoCentral{
+.logoCentral {
     margin-top: 5%;
 }
 
-.imagemLogoCentral{
+.imagemLogoCentral {
     height: 350px;
     width: 350px;
 }
 
-.centro .botao{
+.centro .botao {
     height: 50px;
     width: 300px;
-    border: #040189 2px solid;
+    border: rgb(158, 158, 158) 2px solid;
     border-radius: 30px;
     background-color: #364DAA;
     color: white;
     font-weight: bolder;
     cursor: pointer;
     font-size: 20px;
+}
+
+.centro .botao:hover{
+    background-color: #203589;
 }
