@@ -1,65 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Página de Login</title>
-    <link rel="stylesheet" href="paginalogin.css"/>
-  </head>
-  <body>
+    <link rel="stylesheet" href="paginalogin.css" />
+</head>
+
+<body>
     <div class="container">
-                <div class="painel_cadastro">
-                    <div class="div_img">
-                    <img src="logo.svg" alt="logo" class="img">
-                </div>
-                <div class="div_texto_cadastro">
-                    <h1>NÃO TEM CONTA?</h1>
-                    <p style="text-align: center;">Realize o cadastro para ter o <br>
+        <div class="painel_cadastro">
+            <div class="div_img">
+                <img src="logo.svg" alt="logo" class="img">
+            </div>
+            <div class="div_texto_cadastro">
+                <h1>NÃO TEM CONTA?</h1>
+                <p style="text-align: center;">Realize o cadastro para ter o <br>
                     acesso ao nosso painel de <br>
                     monitoramento</p>
-                </div>
-                <div class="div_botao_cadastro">
-                    <button onclick="login()" class="botao_cadastro">Cadastre-se</button>
-                </div>
             </div>
-            <div class="container_login">
+            <div class="div_botao_cadastro">
+                <button onclick="login()" class="botao_cadastro">Cadastre-se</button>
+            </div>
+        </div>
+        <div class="container_login">
             <div class="painel_login">
-            <h1>LOGIN</h1>
+                <h1>LOGIN</h1>
             </div>
             <div class="div_login_inputs">
-            <div class="div_loginsenha">
-            Email: <input type="text" id="login_input" autocomplete="off" class="input_login" /> 
-        </div>
-        <div class="div_loginsenha">
-            Senha: <input type="password" id="senha_input" class="input_senha"/>
-        </div>
+                <div class="div_loginsenha">
+                    Email: <input type="text" id="login_input" autocomplete="off" class="input_login" />
+                </div>
+                <div class="div_loginsenha">
+                    Senha: <input type="password" id="senha_input" class="input_senha" />
+                </div>
             </div>
             <div class="div_botao_login">
-            <button onclick="login()" class="botao_login">Login</button>
+                <button onclick="login()" class="botao_login">Login</button>
             </div>
             <div id="div_msg" class="msg"></div>
 
-                </div>
-</div>
-  </body>
+        </div>
+    </div>
+</body>
+
 </html>
 <script>
-    var tentativas = 4
+    var tentativas = 4;
     function login() {
-        var login = login_input.value
-        var senha = senha_input.value
-        var mensagem = ''
-        if (login == 'cliente' && senha == '123' && tentativas > 0){
-            mensagem = 'Login realizado com sucesso!'
-        } else if (tentativas != 0){
-            mensagem = 'Erro! Login ou senha inválidos.'
-            tentativas--
-        } else if (tentativas == 0){
-            mensagem = 'Bloqueado! Espere alguns instantes'
+        var login = login_input.value;
+        var senha = senha_input.value;
+        var mensagem = '';
+        if (login == 'cliente' && senha == '123' && tentativas > 0) {
+            mensagem = 'Login realizado com sucesso!';
+        } else if (tentativas != 0) {
+            mensagem = 'Erro! Login ou senha inválidos.';
+            tentativas--;
+        } else if (tentativas == 0) {
+            mensagem = 'Bloqueado! Espere alguns instantes';
         }
 
-        div_msg.innerHTML = mensagem
-      //  console.log(tentativas)
+        div_msg.innerHTML = mensagem;
+        //  console.log(tentativas)
     }
 
 </script>
