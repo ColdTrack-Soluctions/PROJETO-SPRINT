@@ -47,7 +47,7 @@
     height: 45px;
     border-color: white;
     border-radius: 9px;
-    background: url("/assets/imagensLogin/email2.png") no-repeat left;
+    background: url("/assets/imagensLogin/email2.svg") no-repeat left;
     background-size: 35px;
     background-color: #D9D9D9;
     padding-inline-start:  40px;
@@ -68,7 +68,7 @@
     height: 45px;
     border-radius: 9px;
     border-color: white;
-    background: url("/assets/imagensLogin/cadeado.png") no-repeat left;
+    background: url("/assets/imagensLogin/cadeado.svg") no-repeat left;
     background-size: 30px;
     background-color: #D9D9D9;
     padding-inline-start:  40px;
