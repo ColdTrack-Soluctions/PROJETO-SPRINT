@@ -6,17 +6,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Página de Login</title>
     <link rel="stylesheet" href="./css/paginalogin.css" />
+    
 </head>
 
 <body>
+    <div class="header">
+        <div class="imagem1">
+            <img src="./assets/imagens/logo.svg" alt="" class="imagemfixa">
+        </div>
+        <div class="opcPrincipais">
+            <a>Sobre</a>
+            <a href="Solicite-Orçamento.html">Orçamentos</a>
+            <a>Painel</a>
+        </div>
+        <div class="voltar">
+            <a href="pagina-principal.html">Voltar</a>
+        </div>
+    </div>
     <div class="container">
+<div class="container_registro">
+
         <div class="painel_cadastro">
             <div class="div_img">
-                <img src="./assets/imagensLogin/logo.svg" alt="logo" class="img">
+               <div class="img"></div>
             </div>
+        </div>
             <div class="div_texto_cadastro">
-                <h1>NÃO TEM CONTA?</h1>
-                <p style="text-align: center;">Realize o cadastro para ter o <br>
+                <h1><b>NÃO TEM CONTA?</b></h1>
+                <br>
+                <p >Realize o cadastro para ter o <br>
                     acesso ao nosso painel de <br>
                     monitoramento</p>
             </div>
@@ -24,11 +42,13 @@
                 <button onclick="login()" class="botao_cadastro">Cadastre-se</button>
             </div>
         </div>
+        
         <div class="container_login">
             <div class="painel_login">
                 <h1>LOGIN</h1>
             </div>
             <div class="div_login_inputs">
+
                 <div class="div_loginsenha">
                     Email: <input type="text" id="login_input" autocomplete="off" class="input_login" />
                 </div>
@@ -53,16 +73,24 @@
         var senha = senha_input.value;
         var mensagem = '';
         if (login == 'cliente' && senha == '123' && tentativas > 0) {
-            mensagem = 'Login realizado com sucesso!';
+            window.location.href = '/pagina-principal.html'
         } else if (tentativas != 0) {
             mensagem = 'Erro! Login ou senha inválidos.';
             tentativas--;
         } else if (tentativas == 0) {
-            mensagem = 'Bloqueado! Espere alguns instantes';
+            mensagem = 'Bloqueado! Recarregue a página.';
+            
         }
 
+    
         div_msg.innerHTML = mensagem;
-        //  console.log(tentativas)
+         console.log(tentativas)
     }
+
+    function possofazerlogin(){
+    tentativas = 4;
+}
+
+
 
 </script>
