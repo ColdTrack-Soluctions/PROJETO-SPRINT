@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="ipt_valorMes"><br>
+    <button onclick="calcular()">Calcular</button>
+    <div id="divMensagem"></div>
+</body>
+</html>
+<script>
+    function calcular() {
+        var mes = Number(ipt_valorMes.value)
+        var conta = mes / 30
+       var conta2= conta * 1.26
+       var valorcom = conta2 * 30
+       var anual =  valorcom * 12
+       var semcont = mes * 12  
+var final = valorcom - mes
+var finaAnul = final * 12
+        divMensagem.innerHTML = `Conta com sensor: ${valorcom}<br>Conta sem sensor: ${mes} <br>
+        nosso valor anual : ${anual} seu valor anual ${semcont} <br> <br>
+        seu lucro será de : ${final} com a coldtrack<br>
+        seu lucro anual será de : ${finaAnul} com a coldtrack `
+    }
+</script>
