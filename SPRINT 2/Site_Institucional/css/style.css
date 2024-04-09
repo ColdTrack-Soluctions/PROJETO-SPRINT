@@ -133,3 +133,11 @@ body {
 .botao:hover{
     background-color: rgba(4, 1, 137, 1);
 }
+
+.mensagem{
+    color: white;
+    font-weight: bolder;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 8px;
+}
