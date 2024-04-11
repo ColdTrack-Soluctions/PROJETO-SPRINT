@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Crete+Round:ital@0;1&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
 
-*{
+* {
     margin: 0%;
     padding: 0%;
 }
@@ -52,45 +53,86 @@ body {
 
 .centro {
     display: flex;
-    flex-direction: column;
     align-items: center;
     text-align: center;
+    justify-content: center;
+    margin-top: 6%;
+    gap: 12%;
+}
+
+.textoPrinc {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    font-weight: 600px;
+    margin-top: 80px;
+    font-size: 30px;
+    width: 30%;
+    text-align: justify;
+    align-items: flex-start;
+    gap: 50px;
+    font-family: "Crete Round", serif;
+}
+
+.botao {
+    border: 2px solid white;
+    color: white;
+    font-weight: bolder;
+    border-radius: 30px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: transparent;
+    cursor: pointer;
+    background: radial-gradient(circle, rgba(217,54,160,1) 12%, rgba(156,130,207,1) 51%, rgba(94,119,237,1) 65%, rgba(55,77,170,1) 85%);
+    background-size: 400%;
+    height: 60px;
+    width: 300px;
+    animation: steam 20s linear infinite;
+}
+
+@keyframes steam {
+    0% {
+        background-position: 0 0;
+    }
+
+    50% {
+        background-position: 400% 0;
+    }
+
+    100% {
+        background-position: 0 0;
+    }
+}
+
+.verde {
+    color: lightgreen;
+    text-decoration: underline;
+}
+
+.visu {
+    text-decoration: underline;
+    color: lightblue;
 }
 
 .logoCentral {
-    margin-top: 5%;
+    margin-top: 0%;
 }
 
 .imagemLogoCentral {
-    height: 350px;
-    width: 350px;
-}
-
-.centro .botao {
-    height: 50px;
-    width: 300px;
-    border: rgb(158, 158, 158) 2px solid;
-    border-radius: 30px;
-    background-color: #364DAA;
-    color: white;
-    font-weight: bolder;
-    cursor: pointer;
-    font-size: 20px;
-}
-
-.centro .botao:hover{
-    background-color: #203589;
+    height: 470px;
+    width: 470px;
 }
 
 .header a:link {
     text-decoration: none;
-   }
-   
-   .header a:hover {
+}
+
+.header a:hover {
     text-decoration: underline;
     color: #5F9EA0;
-   }
- a {
+}
+
+a {
     text-decoration: none;
     color: white;
- }
+}
