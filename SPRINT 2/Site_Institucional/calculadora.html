@@ -4,18 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora Financeira</title>
+    <title>Document</title>
+    <link rel="stylesheet" href="css/calculadora.css">
 </head>
 
 <body>
-    <input type="text" id="ipt_valorMes"><br>
-    <button onclick="calcular()">Calcular</button>
-    <div id="divMensagem"></div>
+    <div class="header">
+        <div class="imagem1">
+            <img src="./assets/imagens/logo.svg" alt="" class="imagemfixa">
+        </div>
+        <div class="opcPrincipais">
+            <a href="pagina-sobre.html">Sobre</a>
+            <a href="pagina-principal.html">Home</a>
+            <a>Painel</a>
+        </div>
+        <div class="cadastro">
+            <a href="pagina-cadastro.html">Cadastro</a>
+            <li>|</li>
+            <a href="pagina-login.html">Login</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <div>
+            <p class="texto">Simule o seu lucro</p>
+        </div>
+
+        <div class="campos">
+
+            Nome do seu local :<br> <input type="text" class="ipt" id="ipt_nome">
+        </div>
+        <div class="campos">
+          <br>  Quantos refrigeradores você tem ? <br> <input type="number" class="ipt" id="ipt_refrigeradores">
+        </div>
+        <div class="campos">
+           <br> Quantos reais você fatura no mês : <br><input type="number" class="ipt" id="ipt_valorMes">
+        </div><br><br>
+
+
+        <div class="botao">
+            <button onclick="calcular()">Calcular</button>
+        </div>
+        <div id="divMensagem" class="mensagem"></div>
+
+    </div>
 </body>
 
 </html>
 <script>
     function calcular() {
+        var nome = ipt_nome.value
+        var refrigeradores = Number(ipt_refrigeradores.value)
         var mes = Number(ipt_valorMes.value);
         var conta = mes / 30;
         var conta2 = conta * 1.26;
@@ -24,9 +63,11 @@
         var semcont = mes * 12;
         var final = valorcom - mes;
         var finaAnul = final * 12;
-        divMensagem.innerHTML = `Conta com sensor: ${valorcom}<br>Conta sem sensor: ${mes} <br>
-        nosso valor anual : ${anual} seu valor anual ${semcont} <br> <br>
-        seu lucro será de : ${final} com a coldtrack<br>
-        seu lucro anual será de : ${finaAnul} com a coldtrack `;
+
+        divMensagem.innerHTML = `<span>A empresa ${nome} com ${refrigeradores} refrigeradores <br> fez a simulação de seus lucros : <br><br>Com o aumento de 26% no valor líquido: <br> Valor mensal com sensor: <span style =" color: lightgreen">R$${valorcom} </span><br>Valor mensal sem sensor: <span style =" color: lightcoral">R$${mes} </span><br><br>
+        Faturamento anual com nosso sensor: <span style =" color: lightgreen">R$${anual}</span><br> 
+        Faturamento anual sem nosso sensor: <span style =" color: lightcoral">R$${semcont}</span> <br> <br>
+        Seu lucro mensal será de : <span style =" color: lightgreen">R$${final}</span> com a ColdTrack<br>
+        Seu lucro anual será de : <span style =" color: lightgreen">R$${finaAnul}</span> com a ColdTrack</span>`;
     }
 </script>
