@@ -14,6 +14,7 @@
     justify-content: space-around;
     border-bottom: 3px solid #040189;
     font-size: 20px;
+    margin-bottom: 7%;
 }
 
 ::-webkit-scrollbar{
@@ -41,7 +42,7 @@ a{
 }
 
 b{
-    color: #364DAA;
+    color: rgb(115, 202, 231);
 }
 
 .opcPrincipais {
@@ -63,22 +64,25 @@ b{
 
 body{
     font-family: "Josefin Sans", sans-serif;
-    background: rgb(51,159,217);
-    background: linear-gradient(267deg, rgba(51,159,217,1) 10%, rgba(132,198,234,1) 55%, rgba(186,225,246,1) 84%);
+    /* background: rgb(51,159,217);
+    background: linear-gradient(267deg, rgba(51,159,217,1) 10%, rgba(132,198,234,1) 55%, rgba(186,225,246,1) 84%); */
+    background-image: url('../assets/imagens/6402714_3257600.jpg');
+    height: 100%;
+    background-size: cover;
 }
 
 .texto1{
     display: flex;
     align-items: center;
-    margin-left: 20%;
-    margin-right: 40px;
-    gap: 200px;
-    margin-top: 7%;
+    margin-left: 15%;
+    margin-right: 70px;
+    gap: 150px;
 }
 
 .textos{
     text-align:justify;
     width: 30%;
+    color: white;
 }
 
 .quemSomos{
@@ -114,6 +118,7 @@ body{
     margin-top: 10%;
     align-items: center;
     margin-bottom: 100px;
+    color: white;
 }
 
 .segundotextos{
@@ -159,4 +164,8 @@ body{
     display: flex;
     justify-content: center;
     color: black;
+}
+
+.fotoNossa{
+    margin-right: 30px;
 }

@@ -66,6 +66,9 @@
         else if (mensagem == '' && email == '' && nomeEmpresa == '') {
             divMensagem.innerHTML = `<span style =" color: lightcoral">Preencha todos os campos.</span>`;
         }
+        else if (mensagem.length < 50) {
+            divMensagem.innerHTML = `<p style='color:lightblue'>Escreva uma mensagem mais <br>detalhada antes de enviar!</p>`;
+        }
     }
 
     function escrevendo() {
