@@ -81,7 +81,7 @@ a {
 
 }
 .container_total {
-    height: 88vh;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -91,21 +91,26 @@ a {
 .painel1 {
     height: 100%;
     width: 30%;
-    gap: 6px;
+    gap: 7px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
     background-color: #364DAA;
     border-radius: 7px;
+    border: 3px #040189 solid;
     color: white;
     margin: 2px;
-    border-color: black;
-    
+
 }
 .painel1 p {
     font-size: 17px;
 }
+
+::-webkit-scrollbar{
+    display: none;
+}
+
 .painel1 input {
     width: 280px;
     height: 30px;
@@ -115,34 +120,7 @@ a {
     padding-inline-start: 10px;
 
 }
-.painel2 {
-    margin: 2px;
-    height: 100%;
-    width: 30%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    background-color: #364DAA;
-    border-radius: 7px;
-    color: white;
-    border-color: black;
 
-}
-.painel2 p {
-    font-size: 17px;
-    
-}
-.painel2 input {
-    
-    width: 280px;
-    height: 30px;
-    border-radius: 9px;
-    border-color: white;
-    background-color: #D9D9D9;
-    padding-inline-start: 10px;
-
-}
 .texto_cadastro {
     font-family: "Josefin Sans", sans-serif;
     height: 15%;

@@ -106,13 +106,15 @@ body {
 .input-2 {
     border-radius: 10px;
     margin-top: 5px;
-    width: 300px;
+    width: 280px;
     height: 93px;
     border: 1px black solid;
     margin-bottom: 17px;
     text-align: center;
     font-weight: bold;
+    padding: 10px;
 }
+
 
 .botao {
     background-color: #82B4FF;
@@ -135,9 +137,9 @@ body {
 }
 
 .mensagem{
-    color: white;
     font-weight: bolder;
     display: flex;
     justify-content: center;
     margin-bottom: 8px;
+    font-size: 24px;
 }
