@@ -31,47 +31,25 @@
         </div>
         <div class="container">
             <div class="painel1">
-                <p>Nome do estabelecimento:</p>
-                <input type="text" placeholder="Minha empresa se chama...">
                 <p>Nome do Responsável:</p>
                 <input type="text" placeholder="Meu nome é...">
                 <p>Email:</p>
                 <input type="email" id="email_input" placeholder="example@gmail.com" onkeyup="valida_email()">
                 <span id="alerta_email"></span>
-                <p>CNPJ</p>
-                <input type="text" placeholder="00.000.000/0000-00">
                 <p>Senha:</p>
                 <input type="password" placeholder="*****" id="senha_input" onkeyup="valida_senha(), valida_senha2()">
                 <span id="alerta_senha"></span>
                 <p>Confirme a Senha:</p>
                 <input type="password" placeholder="*****" id="senha2_input" onkeyup="valida_senha2()">
                 <span id="alerta_confirme_senha"></span>
-                <p> CEP do Estabelecimento</p>
-                <input placeholder="00000-000" type="text">
-            </div>
-            <div class="painel1">
-
-                <p>Cidade do Estabelecimento:</p>
-                <input type="text" placeholder="A cidade do meu estabelecimento é..." name="" id="">
-                <!-- <p>País do Estabelecimento</p>
-            <input type="text" placeholder="Brasil" name="" id=""> -->
-                <p>Bairro do Estabelecimento</p>
-                <input type="text" placeholder="O bairro do meu estabelecimento é..." name="" id="">
-                <p>UF do Estabelecimento:</p>
-                <input placeholder="O UF do meu estabelecimento é..." type="text">
-                <p>Logradouro do Estabelecimento:</p>
-                <input placeholder="A rua do meu estabelecimento é... " type="text">
-                <p> Número do Estabelecimento:</p>
-                <input placeholder="XXXX" type="n">
-                <p>Complemento do Estabelecimento:</p>
-                <input placeholder="XXXX" type="text">
-                <p>Quantidade de Refrigerafores no Estabelecimento:</p>
-                <input placeholder="XXXX" type="number">
+                <p>CNPJ</p>
+                <input type="text" placeholder="00.000.000/0000-00">
+                <div class="botao_cadastro">
+                    <button onclick="cadastrar()">Cadastre - se</button>
+                </div>
             </div>
         </div>
-        <div class="botao_cadastro">
-            <button onclick="cadastrar()">Cadastre - se</button>
-        </div>
+        
     </div>
 </body>
 
