@@ -1,0 +1,250 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Crete+Round:ital@0;1&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+
+* {
+    margin: 0%;
+    padding: 0%;
+}
+
+body {
+    font-family: "Josefin Sans", sans-serif;
+    
+
+        /* The image used */
+  background-image: url("../assets/imagens/6402714_3257600.jpg");
+
+  /* Set a specific height */
+  min-height: 500px;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.header {
+    width: 100%;
+    background-color: #364DAA;
+    color: white;
+    height: 80px;
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 3px solid #040189;
+    font-size: 20px;
+}
+
+.imagem1 {
+    display: flex;
+    align-items: center;
+    margin-top: 17px;
+}
+
+.imagemfixa {
+    height: 230px;
+    width: 230px;
+}
+
+.opcPrincipais {
+    display: flex;
+    align-items: center;
+    gap: 26px;
+    margin-right: 0px;
+    padding: 0px;
+    font-weight: bold;
+}
+
+.cadastro {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    font-weight: bold;
+    list-style: none;
+}
+
+.container{
+    background: rgb(51, 159, 217);
+    background: linear-gradient(267deg, rgba(51, 159, 217, 1) 0%, rgba(4, 1, 137, 1) 50%, rgba(2, 1, 59, 1) 84%);
+    height: 900px;
+    border-bottom: #040189 40px solid;
+    width: 100%;
+}
+
+.centro {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 6%;
+    gap: 12%;   
+}
+
+.textoPrinc {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    font-weight: 600px;
+    margin-top: 80px;
+    font-size: 30px;
+    width: 30%;
+    text-align: justify;
+    align-items: flex-start;
+    gap: 50px;
+    font-family: "Crete Round", serif;
+}
+
+.botao {
+    border: 2px solid white;
+    color: white;
+    font-weight: bolder;
+    border-radius: 30px;
+    padding: 10px 20px;
+    font-size: 20px;
+    cursor: pointer;
+    height: 60px;
+    width: 300px;
+    background-color: rgb(255, 0, 166);
+}
+
+.botao:hover{
+    background-color: rgba(217,54,160,1);
+
+}
+
+.verde {
+    color: lightgreen;
+}
+
+.logoCentral {
+    margin-top: 0%;
+}
+
+.imagemLogoCentral {
+    height: 470px;
+    width: 470px;
+}
+
+.header a:link {
+    text-decoration: none;
+}
+
+.header a:hover {
+    text-decoration: underline;
+    color: #5F9EA0;
+}
+
+.header a {
+    text-decoration: none;
+    color: white;
+    scroll-behavior: smooth;
+}
+
+.texto1{
+    display: flex;
+    align-items: center;
+    margin-left: 15%;
+    margin-right: 70px;
+    gap: 150px;
+    margin-top: 10%;
+}
+
+.textos{
+    text-align:justify;
+    width: 30%;
+    color: white;
+}
+
+.quemSomos{
+    margin-bottom: 10px;
+    font-size: 35px;
+    font-weight: bolder;
+}
+.jornada{
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: bolder;
+}
+
+.textoNos{
+    font-weight: 500;
+    font-size: 22px;
+}
+
+.diagrama{
+    height: 350px;
+    width: 550px;
+    border: 4px white dashed;
+    border-radius: 30px;
+    margin-bottom: 10%;
+}
+
+.texto2{
+    display: flex;
+    flex-direction: row-reverse;
+    text-align: end;
+    margin-left: 17%;
+    margin-right: 40px;
+    gap: 100px;
+    margin-top: 10%;
+    align-items: center;
+    margin-bottom: 100px;
+    color: white;
+}
+
+.segundotextos{
+    margin-right: 350px;
+}
+
+.oqueFazemos{
+    margin-bottom: 10px;
+    font-size: 27px;
+    font-weight: bolder;
+}
+
+.textoFazemos{
+    font-weight: 500;
+    font-size: 20px;
+    text-align: justify;
+}
+
+.rodape{
+    width: 100%;
+    background-color: #364DAA;
+    color: white;
+    height: 210px;
+    display: flex;
+    flex-direction: column;  
+    border-top: 3px solid #040189;
+    font-size: 20px;
+}
+.textContatos{
+    margin-top: 10px;
+    font-weight: bolder;
+    font-size: 25px;
+}
+
+.infos{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+    margin-left: 15px;
+}
+
+b{
+    color: rgb(115, 202, 231);
+}
+
+.ultimoTexto{
+    display: flex;
+    justify-content: center;
+    color: black;
+}
+
+.fotoNossa{
+    margin-right: 30px;
+}
+  
+  ::-webkit-scrollbar{
+    display: none;
+}
+

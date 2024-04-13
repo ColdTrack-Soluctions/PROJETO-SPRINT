@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Página de Cadastro</title>
+    <link rel="stylesheet" href="pagina-cadastro.css" />
+    <link REL="SHORTCUT ICON" HREF="../assets/imagens/Logo_Quadrada-removebg.png">
+
+</head>
+
+<body>
+    <div class="header">
+        <div class="container_header">
+            <div class="imagem1">
+                <img src="../assets/imagens/logo.svg" alt="" class="imagemfixa">
+            </div>
+            <div class="opcPrincipais">
+                <a href="../Pagina Principal/pagina-principal.html #sobreNos">Sobre</a>
+                <a href="../Orçamento/Solicite-Orçamento.html">Orçamentos</a>
+                <a>Painel</a>
+            </div>
+            <a href="../Pagina Principal/pagina-principal.html">Voltar</a>
+        </div>
+    </div>
+
+
+    <!-- <div class="container_total"> -->
+
+    <div class="container">
+        <div class="painel1">
+            <div class="textoCadastro">
+                <p>Cadastre-se</p>
+            </div>
+            <p class="paragrafos">Nome do Responsável:</p>
+            <input type="text">
+
+            <p class="paragrafos">Email:</p>
+            <input type="email" id="email_input" onkeyup="valida_email()">
+            <div class="informacao" id="alerta_email"></div>
+
+            <p class="paragrafos">Senha:</p>
+            <input type="password" id="senha_input" onkeyup="valida_senha(), valida_senha2()">
+            <div class="informacao" id="alerta_senha"></div>
+
+            <p class="paragrafos">Confirme a Senha:</p>
+            <input type="password" id="senha2_input" onkeyup="valida_senha2()">
+            <div class="informacao" id="alerta_confirme_senha"></div>
+
+            <p class="paragrafos">CNPJ:</p>
+            <input type="text">
+
+            <div class="botao_cadastro">
+                <button onclick="cadastrar()">Cadastre - se</button>
+            </div>
+            <div class="ultimaMsg">
+                <p>Já tem um login? <a href="../Login/pagina-login.html"> Clique aqui</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- </div> -->
+</body>
+
+</html>
+<script>
+    var senha_pode_cadastrar = false;
+    var email_pode_cadastrar = false;
+
+    function valida_email() {
+        var email = email_input.value;
+        var arroba = email.indexOf('@');
+        var ponto = email.indexOf('.');
+        var tamanho_email = email.length;
+        var ultimaletra = email[tamanho_email - 1];
+        var primeiraletra = email[0];
+        if ((arroba == -1 || ponto == -1) || (ponto < arroba) || (ponto == arroba + 1) || (ultimaletra == '.') || (primeiraletra == '@')) {
+            alerta_email.innerHTML = `<p style='color:red; margin: 10px;' 
+>Insira um email válido!</p>`;
+            email_pode_cadastrar = false;
+
+        } else {
+            alerta_email.innerHTML = '';
+            email_pode_cadastrar = true;
+        }
+    }
+    function valida_senha() {
+        var senha1 = senha_input.value;
+        var tamanho = senha1.length;
+        if (tamanho > 5) {
+            alerta_senha.innerHTML = `<p style='color:lightgreen; margin: 10px;'>Senha forte!</p>`;
+        } else {
+            alerta_senha.innerHTML = `<p style='color:red; margin: 10px;'>Senha fraca!</p>`;
+
+        }
+    }
+    function valida_senha2() {
+        var senha1 = senha_input.value;
+        var senha2 = senha2_input.value;
+        if (senha1 != senha2) {
+            alerta_confirme_senha.innerHTML = `<p style='color:red; margin: 10px;'>As senhas não podem ser diferentes!<p>`;
+            senha_pode_cadastrar = false;
+
+        }
+        else {
+            alerta_confirme_senha.innerHTML = "";
+            senha_pode_cadastrar = true;
+        }
+    }
+    function cadastrar() {
+        var mensagem = '';
+
+        if (senha_pode_cadastrar && email_pode_cadastrar) {
+            mensagem = 'Cadastro realizado com sucesso!';
+        } else {
+            mensagem = 'Erro! Cadastro não realizado';
+        }
+        alert(mensagem);
+        if (mensagem == 'Cadastro realizado com sucesso!') {
+            document.location.href = "../Pagina Principal/pagina-principal.html";
+        }
+    }
+</script>

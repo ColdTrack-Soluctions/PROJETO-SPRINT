@@ -17,9 +17,7 @@
     margin-bottom: 7%;
 }
 
-::-webkit-scrollbar{
-    display: none;
-}
+
 
 .imagem1 {
     display: flex;
@@ -77,6 +75,7 @@ body{
     margin-left: 15%;
     margin-right: 70px;
     gap: 150px;
+    margin-top: 10%;
 }
 
 .textos{
@@ -98,7 +97,7 @@ body{
 
 .textoNos{
     font-weight: 500;
-    font-size: 20px;
+    font-size: 22px;
 }
 
 .diagrama{
@@ -106,6 +105,7 @@ body{
     width: 500px;
     border: 4px white dashed;
     border-radius: 30px;
+    margin-bottom: 10%;
 }
 
 .texto2{

@@ -79,42 +79,52 @@ a {
 }
 
 .container {
-    height: 70%;
+    height: 100%;
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-
+    margin-top: 2.5%;
 }
 
 .container_total {
-    height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     align-items: center;
-
+    margin-top: 4%;
+}
+.paragrafos{
+    margin-bottom: 1%;
 }
 
 .painel1 {
-    height: 100%;
     width: 30%;
-    gap: 7px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     background-color: #364DAA;
-    border-radius: 7px;
+    border-radius: 20px;
     border: 3px #040189 solid;
     color: white;
-    margin: 2px;
+    height: 60%;
+    padding-top: 2%;
+    padding-bottom: 2%;
 
+}
+
+.painel1 .textoCadastro p{
+    font-size: 50px;
+    margin-bottom: 13%;
+    text-decoration:underline;
+    color: white;
 }
 
 .painel1 p {
     font-size: 17px;
+    color: rgb(126, 204, 247);
+    font-weight: bold;
 }
 
 ::-webkit-scrollbar {
@@ -124,25 +134,16 @@ a {
 .painel1 input {
     width: 280px;
     height: 30px;
-    border-radius: 9px;
-    border-color: white;
-    background-color: #D9D9D9;
+    border: none;
+    border-bottom: 3px solid white;
+    background-color: transparent;
     padding-inline-start: 10px;
-
-}
-
-.texto_cadastro {
-    font-family: "Josefin Sans", sans-serif;
-    height: 15%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin-bottom: 3%;
     color: white;
 }
 
-.texto_cadastro p {
-    font-size: 23px;
+input:focus {
+    outline: none;
 }
 
 .botao_cadastro {
@@ -151,20 +152,35 @@ a {
     display: flex;
     align-items: center;
     justify-content: center;
-
+    margin-top: 5%;
 }
 
 .botao_cadastro button:hover {
     cursor: pointer;
-    background-color: #203589;
+    background-color: #052bc5;
 }
 
 .botao_cadastro button {
     font-family: "Josefin Sans", sans-serif;
-    width: 140px;
+    width: 180px;
     height: 40px;
     border-radius: 8px;
-    background-color: #364DAA;
+    background-color: #040189;
     color: white;
-    border-color: whitesmoke;
+    border: 2px solid whitesmoke;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.ultimaMsg{
+    margin-top: 25px;
+}
+
+.ultimaMsg p{
+    color: white;
+}
+
+.ultimaMsg a{
+    color: #5F9EA0;
+    text-decoration: underline;
 }
