@@ -49,7 +49,7 @@
             <div class="informacao" id="alerta_confirme_senha"></div>
 
             <p class="paragrafos">CNPJ:</p>
-            <input type="number" id="input_cnpj" oninput="validarCNPJ()">
+            <input type="text" id="cnpj_input" onkeyup="valida_cnpj()" maxlength="18">
             <div class="informacao" id="alerta_cnpj"></div>
 
             <div class="botao_cadastro">
@@ -69,6 +69,8 @@
     var senha_pode_cadastrar = false;
     var email_pode_cadastrar = false;
     var CNPJ_pode_cadastrar = false;
+
+
 
     function valida_email() {
         var email = email_input.value;
@@ -111,6 +113,215 @@
         }
     }
     
+    function valida_cnpj() {
+        var cnpj = cnpj_input.value
+        var cnpj_tamanho = cnpj.length
+        //modelo do cnpj: XX.XXX.XXX/XXXX-XX
+        //metodo 1 da mascara do cnpj  
+        if (cnpj_tamanho == '2')
+          {
+              cnpj_input.value += '.'        
+          }
+          else if (cnpj_tamanho == '6')
+          {
+              cnpj_input.value += '.'        
+          }
+          else if (cnpj_tamanho == '10')
+          {
+              cnpj_input.value += '/'        
+          }
+          else if (cnpj_tamanho == '15')
+          {
+              cnpj_input.value += '-'        
+          }
+
+          
+        //metodo 2 da mascara do cnpj
+        // if (cnpj_tamanho > 2){
+        // cnpj_input.value = cnpj.substring(0, 2) + '.' + cnpj.substring(3)
+        // }
+        // if (cnpj_tamanho > 6){
+        // cnpj_input.value = cnpj.substring(0, 6) + '.' + cnpj.substring(7)
+        // }
+        // if (cnpj_tamanho > 10){
+        // cnpj_input.value = cnpj.substring(0, 10) + '/' + cnpj.substring(11)
+        // }
+        // if (cnpj_tamanho > 15){
+        // cnpj_input.value = cnpj.substring(0, 15) + '-' + cnpj.substring(16)
+        // }
+//condições para o cnpj ser falso
+var cnpj_correto = false
+if (
+    cnpj[0] != "0" &&
+    cnpj[0] != "1" &&
+    cnpj[0] != "2" &&
+    cnpj[0] != "3" &&
+    cnpj[0] != "4" &&
+    cnpj[0] != "5" &&
+    cnpj[0] != "6" &&
+    cnpj[0] != "7" &&
+    cnpj[0] != "8" &&
+    cnpj[0] != "9" 
+    ||
+    cnpj[1] != "0" &&
+    cnpj[1] != "1" &&
+    cnpj[1] != "2" &&
+    cnpj[1] != "3" &&
+    cnpj[1] != "4" &&
+    cnpj[1] != "5" &&
+    cnpj[1] != "6" &&
+    cnpj[1] != "7" &&
+    cnpj[1] != "8" &&
+    cnpj[1] != "9" 
+    ||
+    cnpj[3] != "0" &&
+    cnpj[3] != "1" &&
+    cnpj[3] != "2" &&
+    cnpj[3] != "3" &&
+    cnpj[3] != "4" &&
+    cnpj[3] != "5" &&
+    cnpj[3] != "6" &&
+    cnpj[3] != "7" &&
+    cnpj[3] != "8" &&
+    cnpj[3] != "9" 
+    ||
+    cnpj[4] != "0" &&
+    cnpj[4] != "1" &&
+    cnpj[4] != "2" &&
+    cnpj[4] != "3" &&
+    cnpj[4] != "4" &&
+    cnpj[4] != "5" &&
+    cnpj[4] != "6" &&
+    cnpj[4] != "7" &&
+    cnpj[4] != "8" &&
+    cnpj[4] != "9" 
+    ||
+    cnpj[5] != "0" &&
+    cnpj[5] != "1" &&
+    cnpj[5] != "2" &&
+    cnpj[5] != "3" &&
+    cnpj[5] != "4" &&
+    cnpj[5] != "5" &&
+    cnpj[5] != "6" &&
+    cnpj[5] != "7" &&
+    cnpj[5] != "8" &&
+    cnpj[5] != "9"
+    ||
+    cnpj[7] != "0" &&
+    cnpj[7] != "1" &&
+    cnpj[7] != "2" &&
+    cnpj[7] != "3" &&
+    cnpj[7] != "4" &&
+    cnpj[7] != "5" &&
+    cnpj[7] != "6" &&
+    cnpj[7] != "7" &&
+    cnpj[7] != "8" &&
+    cnpj[7] != "9"
+    ||
+    cnpj[8] != "0" &&
+    cnpj[8] != "1" &&
+    cnpj[8] != "2" &&
+    cnpj[8] != "3" &&
+    cnpj[8] != "4" &&
+    cnpj[8] != "5" &&
+    cnpj[8] != "6" &&
+    cnpj[8] != "7" &&
+    cnpj[8] != "8" &&
+    cnpj[8] != "9" 
+    ||
+    cnpj[9] != "0" &&
+    cnpj[9] != "1" &&
+    cnpj[9] != "2" &&
+    cnpj[9] != "3" &&
+    cnpj[9] != "4" &&
+    cnpj[9] != "5" &&
+    cnpj[9] != "6" &&
+    cnpj[9] != "7" &&
+    cnpj[9] != "8" &&
+    cnpj[9] != "9"
+    ||
+    cnpj[11] != "0" &&
+    cnpj[11] != "1" &&
+    cnpj[11] != "2" &&
+    cnpj[11] != "3" &&
+    cnpj[11] != "4" &&
+    cnpj[11] != "5" &&
+    cnpj[11] != "6" &&
+    cnpj[11] != "7" &&
+    cnpj[11] != "8" &&
+    cnpj[11] != "9"
+    ||
+    cnpj[12] != "0" &&
+    cnpj[12] != "1" &&
+    cnpj[12] != "2" &&
+    cnpj[12] != "3" &&
+    cnpj[12] != "4" &&
+    cnpj[12] != "5" &&
+    cnpj[12] != "6" &&
+    cnpj[12] != "7" &&
+    cnpj[12] != "8" &&
+    cnpj[12] != "9"
+    ||
+    cnpj[13] != "0" &&
+    cnpj[13] != "1" &&
+    cnpj[13] != "2" &&
+    cnpj[13] != "3" &&
+    cnpj[13] != "4" &&
+    cnpj[13] != "5" &&
+    cnpj[13] != "6" &&
+    cnpj[13] != "7" &&
+    cnpj[13] != "8" &&
+    cnpj[13] != "9"
+    ||
+    cnpj[14] != "0" &&
+    cnpj[14] != "1" &&
+    cnpj[14] != "2" &&
+    cnpj[14] != "3" &&
+    cnpj[14] != "4" &&
+    cnpj[14] != "5" &&
+    cnpj[14] != "6" &&
+    cnpj[14] != "7" &&
+    cnpj[14] != "8" &&
+    cnpj[14] != "9"
+    ||
+    cnpj[16] != "0" &&
+    cnpj[16] != "1" &&
+    cnpj[16] != "2" &&
+    cnpj[16] != "3" &&
+    cnpj[16] != "4" &&
+    cnpj[16] != "5" &&
+    cnpj[16] != "6" &&
+    cnpj[16] != "7" &&
+    cnpj[16] != "8" &&
+    cnpj[16] != "9"
+    ||
+    cnpj[17] != "0" &&
+    cnpj[17] != "1" &&
+    cnpj[17] != "2" &&
+    cnpj[17] != "3" &&
+    cnpj[17] != "4" &&
+    cnpj[17] != "5" &&
+    cnpj[17] != "6" &&
+    cnpj[17] != "7" &&
+    cnpj[17] != "8" &&
+    cnpj[17] != "9"
+    
+)
+{
+     cnpj_correto = false
+} else {
+    cnpj_correto = true
+}
+        if (cnpj_tamanho != 18 || cnpj_correto == false) {
+            alerta_cnpj.innerHTML = `<p style='color:red; margin: 10px;'>Insira um CNPJ válido!<p>`;
+            cnpj_pode_cadastrar = false;
+
+        }
+        else {
+            alerta_cnpj.innerHTML = "";
+            cnpj_pode_cadastrar = true;
+        }
+    }
     // var texto_final = '';
     // function validarCNPJ() {
     //     var cnpj = input_cnpj.value;
@@ -142,7 +353,7 @@
     function cadastrar() {
         var mensagem = '';
 
-        if (senha_pode_cadastrar && email_pode_cadastrar) {
+        if (senha_pode_cadastrar && email_pode_cadastrar && cnpj_pode_cadastrar) {
             mensagem = 'Cadastro realizado com sucesso!';
         } else {
             mensagem = 'Erro! Cadastro não realizado';

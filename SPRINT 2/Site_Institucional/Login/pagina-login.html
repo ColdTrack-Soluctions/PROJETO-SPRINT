@@ -55,8 +55,10 @@
             <div class="div_login_inputs">
 
                 <div class="div_loginsenha">
-                    Email: <input type="text" id="login_input" autocomplete="off" class="input_login" />
+                    Email: <input type="text" id="login_input" autocomplete="off" class="input_login" onkeyup="valida_email()"/>
                 </div>
+                <div class="informacao" id="alerta_email"></div>
+
                 <div class="div_loginsenha">
                     Senha: <input type="password" id="senha_input" class="input_senha" />
                 </div>
@@ -73,6 +75,23 @@
 </html>
 <script>
     var tentativas = 4;
+    function valida_email() {
+        var email = login_input.value;
+        var arroba = email.indexOf('@');
+        var ponto = email.indexOf('.');
+        var tamanho_email = email.length;
+        var ultimaletra = email[tamanho_email - 1];
+        var primeiraletra = email[0];
+        if ((arroba == -1 || ponto == -1) || (ponto < arroba) || (ponto == arroba + 1) || (ultimaletra == '.') || (primeiraletra == '@')) {
+            alerta_email.innerHTML = `<p style='color:red; margin: 10px' 
+>Insira um email válido!</p>`;
+           
+
+        } else {
+            alerta_email.innerHTML = '';
+           
+        }
+    }
     function login() {
         var login = login_input.value;
         var senha = senha_input.value;
