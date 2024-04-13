@@ -4,11 +4,13 @@
     margin: 0%;
     padding: 0%;
 }
+
 body {
     font-family: "Josefin Sans", sans-serif;
     background: rgb(51, 159, 217);
     background: linear-gradient(267deg, rgba(51, 159, 217, 1) 0%, rgba(4, 1, 137, 1) 50%, rgba(2, 1, 59, 1) 84%);
 }
+
 .header {
     width: 100%;
     background-color: #364DAA;
@@ -20,6 +22,7 @@ body {
     font-size: 20px;
 
 }
+
 .container_header {
     height: 100%;
     width: 82%;
@@ -28,6 +31,7 @@ body {
     justify-content: space-between;
     align-items: center;
 }
+
 .header a:link {
     text-decoration: none;
 }
@@ -41,6 +45,7 @@ a {
     text-decoration: none;
     color: white;
 }
+
 .opcPrincipais {
     width: 31%;
     display: flex;
@@ -50,6 +55,7 @@ a {
     padding: 0px;
     font-weight: bold;
 }
+
 .imagem1 {
     display: flex;
     align-items: center;
@@ -63,13 +69,14 @@ a {
     margin-right: 0px;
     padding: 0px;
     font-weight: bold;
-  
+
 }
 
 .imagemfixa {
     height: 100%;
     width: 230px;
 }
+
 .painel_login {
     height: 135px;
     display: flex;
@@ -172,7 +179,7 @@ a {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-   
+
 }
 
 .div_login_inputs {
@@ -212,7 +219,7 @@ a {
 }
 
 .div_botao_cadastro {
-    
+
     display: flex;
     justify-content: center;
 }
@@ -230,18 +237,22 @@ a {
 .div_botao_cadastro button {
     font-family: "Josefin Sans", sans-serif;
 }
+
 .div_botao_login button {
     font-family: "Josefin Sans", sans-serif;
 
 }
+
 .div_botao_cadastro button:hover {
     cursor: pointer;
     background-color: #b5b1b1;
 }
+
 .div_botao_login button:hover {
     cursor: pointer;
     background-color: #040189;
 }
+
 a {
     text-decoration: none;
     color: white;

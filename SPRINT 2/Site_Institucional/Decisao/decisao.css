@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Crete+Round:ital@0;1&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+
+* {
+    margin: 0%;
+    padding: 0%;
+}
+
+body {
+    font-family: "Josefin Sans", sans-serif;
+    background: rgb(51, 159, 217);
+    background: linear-gradient(267deg, rgba(51, 159, 217, 1) 0%, rgba(4, 1, 137, 1) 50%, rgba(2, 1, 59, 1) 84%);
+}

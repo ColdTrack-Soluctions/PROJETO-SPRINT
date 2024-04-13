@@ -49,7 +49,8 @@
             <div class="informacao" id="alerta_confirme_senha"></div>
 
             <p class="paragrafos">CNPJ:</p>
-            <input type="text">
+            <input type="number" id="input_cnpj" oninput="validarCNPJ()">
+            <div class="informacao" id="alerta_cnpj"></div>
 
             <div class="botao_cadastro">
                 <button onclick="cadastrar()">Cadastre - se</button>
@@ -67,6 +68,7 @@
 <script>
     var senha_pode_cadastrar = false;
     var email_pode_cadastrar = false;
+    var CNPJ_pode_cadastrar = false;
 
     function valida_email() {
         var email = email_input.value;
@@ -108,6 +110,35 @@
             senha_pode_cadastrar = true;
         }
     }
+    
+    // var texto_final = '';
+    // function validarCNPJ() {
+    //     var cnpj = input_cnpj.value;
+    //     var ponto = cnpj.indexOf('.');
+
+    //     if (cnpj.indexOf(2) >= 0) {
+    //         texto_final = cnpj;
+    //     }
+
+    //     if (cnpj.length == 2) {
+    //         texto_final = "";
+    //     }    
+    //     if (cnpj.indexOf(1) >= 2) {
+    //         texto_final = cnpj;
+    //     }
+       
+    //     input_cnpj.value = texto_final;
+    //     alerta_cnpj.innerHTML = texto_final;
+
+    //     // if (ponto == 2) {
+    //     //     texto_final = cnpj;
+    //     // }
+    //     // else{
+    //     //     texto_final = "";
+    //     // }
+    // }
+
+
     function cadastrar() {
         var mensagem = '';
 
@@ -118,7 +149,7 @@
         }
         alert(mensagem);
         if (mensagem == 'Cadastro realizado com sucesso!') {
-            document.location.href = "../Pagina Principal/pagina-principal.html";
+            document.location.href = "../Principal Cadastrado/principal-cadastrado.html";
         }
     }
 </script>
