@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+
+* {
+    margin: 0%;
+    padding: 0%;
+}
+
+body {
+    font-family: "Josefin Sans", sans-serif;
+
+    background: rgb(51, 159, 217);
+    background: linear-gradient(267deg, rgba(51, 159, 217, 1) 0%, rgba(4, 1, 137, 1) 50%, rgba(2, 1, 59, 1) 84%);
+}
+
+.header {
+    width: 100%;
+    background-color: #364DAA;
+    color: white;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    border-bottom: 3px solid #040189;
+    font-size: 20px;
+
+}
+
+.container_header {
+    height: 100%;
+    width: 82%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header a:link {
+    text-decoration: none;
+}
+
+.header a:hover {
+    text-decoration: underline;
+    color: #5F9EA0;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+.opcPrincipais {
+    width: 31%;
+    display: flex;
+    align-items: center;
+    gap: 26px;
+    margin-right: 0px;
+    padding: 0px;
+    font-weight: bold;
+}
+
+.imagem1 {
+    display: flex;
+    align-items: center;
+    margin-top: 17px;
+}
+
+h1 {
+    color:#ffffff;
+    text-align: center;
+    margin: 30px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-chart {
+    display: flex;
+    width: 80%;
+    height: 40vh;;
+    justify-content: space-between;
+}
+.container-chart2 {
+    margin: 30px;
+}
