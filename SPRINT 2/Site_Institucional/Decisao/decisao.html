@@ -15,12 +15,12 @@
             <img src="../assets/imagens/logo.svg" class="imagemfixa">
         </div>
         <div class="opcPrincipais">
-            <a href="../Principal Cadastrado/principal-cadastrado.html">Home</a>
+            <a href="../Principal Cadastrado/principal-cadastrado.html #sobreNos">Sobre</a>
             <a href="../Principal Cadastrado/orcamento-cadastrado.html">Orçamentos</a>
             <a href="../Principal Cadastrado/dashboard-cadastrado.html">Painel</a>
         </div>
         <div class="cadastro2">
-            <a href="../Decisao/decisao.html"> Voltar</a>
+            <a href="../Principal Cadastrado/principal-cadastrado.html"> Voltar</a>
         </div>
     </div>
     <div class="opcoes" id="divPrincipal">
@@ -35,8 +35,8 @@
             </div>
 
             <div class="botao">
-                <button class="botaoF" onclick="deixaFuncionario()">Funcionário</button>
-                <button class="botaoE" onclick="deixaEstabelecimento()">Estabelecimento</button>
+                <button class="botaoF" onclick="funcionario()">Funcionário</button>
+                <button class="botaoE" onclick="estabelecimento()">Estabelecimento</button>
             </div>
         </div>
         <div class="imagemPergunta">
@@ -49,169 +49,12 @@
 
 </html>
 <script>
-
-    var telaPrincipal = `    
-    <div class="opcoes" id="divPrincipal">
-        <div class="textoBotao">
-            <div class="texto">
-
-                <p class="pergunta">E AGORA?</p>
-
-                <p class="textinho">Já que agora você é um dos <b>nossos clientes</b>, desejamos que seja cadastrado <e>
-                        um
-                        estabelecimento</e> ou algum <e>funcionário</e> para ter acesso ao dados</p>
-            </div>
-
-            <div class="botao">
-                <button class="botaoF" onclick="deixaFuncionario()">Funcionário</button>
-                <button class="botaoE" onclick="deixaEstabelecimento()">Estabelecimento</button>
-            </div>
-        </div>
-        <div class="imagemPergunta">
-            <img src="../assets/imagens/30576701_7718877-ai-brush-removebg-7g7bvysh.png" alt="" class="imagemPergunta">
-        </div>
-    </div>`;
-
-    var telaFuncionario = `
-    <div class="tudoF">
-            <div class="cardF">
-                <div>
-                    <p class="tituloFunc">Funcionário</p>
-                </div>
-                <div class="preguntasFunc">
-                    <div>
-                        <p class="perguntas">Nome do funcionário</p>
-                        <input type="text" id="input_nomeFunc">
-                    </div>
-                    <div>
-                        <p class="perguntas">Cargo do funcionário</p>
-                        <input type="text" id="input_cargo">
-                    </div>
-                    <div>
-                        <p class="perguntas">Telefone do funcionário</p>
-                        <input type="number" id="input_telefone">
-                    </div>
-                    <div>
-                        <p class="perguntas">Nome do Estabelecimento <br>em que este funcionário trabalha</p>
-                        <input type="text" id="input_nomeEstFuncTrab">
-                    </div>
-                </div>
-                <div>
-                    <button class="botaoFF" onclick="cadastrarFuncionario()">Cadastrar Funcionário</button>
-                </div>
-                <div>
-                    <p>Deseja cadastrar um Estabelecimento? <span class="cliqueAqui" onclick="deixaEstabelecimento()">Clique aqui</span></p>
-                </div>
-            </div>
-            <div class="imagemPergunta">
-                <img src="../assets/imagens/30576701_7718877-ai-brush-removebg-7g7bvysh.png" alt=""
-                    class="imagemPergunta">
-            </div>
-        </div>`;
-
-    var telaEstabelecimento = `
-    <div class="tudoE">
-            <div class="cardE">
-
-                <div>
-                    <p class="tituloEsta">Estabelecimento</p>
-                </div>
-                <div class="preguntasEsta">
-                    <div class='card1'>
-                        <div>
-                            <p class="perguntas">Nome do Estabelecimento</p>
-                            <input type="text" id="input_nomeEsta">
-                        </div>
-                        <div>
-                            <p class="perguntas">Unidade Federativa do Estabelecimento</p>
-                            <input type="text" id="input_uf">
-                        </div>
-                        <div>
-                            <p class="perguntas">Cidade do Estabelecimento</p>
-                            <input type="text" id="input_cidade">
-                        </div>
-                        <div>
-                            <p class="perguntas">Bairro do Estabelecimento</p>
-                            <input type="text" id="input_bairro">
-                        </div>
-                    </div>
-                </div>
-                <div class="card2">
-                    <div>
-                        <p class="perguntas">CEP do Estabelecimento</p>
-                        <input type="number" id="input_cep">
-                    </div>
-                    <div>
-                        <p class="perguntas">Número do Estabelecimento</p>
-                        <input type="number" id="input_numero">
-                    </div>
-                    <div>
-                        <p class="perguntas">Telefone do Estabelecimento</p>
-                        <input type="number" id="input_bairro">
-                    </div>
-                    <div>
-                        <p class="perguntas">Quantidade de Refrigeradores no Estabelecimento</p>
-                        <input type="number" id="input_qntRefrigeradores">
-                    </div>
-                </div>
-
-                <div>
-                    <button class="botaoEE" onclick="cadastrarEstabelecimento()">Cadastrar Estabelecimento</button>
-                </div>
-                <div class="cliqueAquiDiv">
-                    <p>Deseja cadastrar um Funcionário? <span class="cliqueAqui" onclick="deixaFuncionario()">Clique
-                            aqui</span></p>
-                </div>
-            </div>
-            <div class="imagemPergunta">
-                <img src="../assets/imagens/30576701_7718877-ai-brush-removebg-7g7bvysh.png" alt=""
-                    class="imagemPergunta">
-            </div>
-        </div>`;
-
-    function deixaFuncionario() {
-        divPrincipal.innerHTML = '';
-        divFunc.innerHTML = telaFuncionario;
-        divEst.innerHTML = '';
+    function funcionario() {
+        window.location.href = 'telaFunc.html';
     }
 
-    function deixaEstabelecimento() {
-        divPrincipal.innerHTML = '';
-        divFunc.innerHTML = '';
-        divEst.innerHTML = telaEstabelecimento;
+    function estabelecimento() {
+        window.location.href = 'telaEst.html';
     }
 
-    function cadastrarFuncionario() {
-        var nomeFunc = input_nomeFunc.value;
-        var cargo = input_cargo.value;
-        var telefone = input_telefone.value;
-        var ondeTrabalha = input_nomeEstFuncTrab.value;
-
-        if (nomeFunc != '' && cargo != '' && telefone != '' && ondeTrabalha != '') {
-            alert('Funcionário cadastrado com sucesso!');
-            setTimeout(function espera() {
-                telaFuncionario = '';
-                divPrincipal.innerHTML = telaPrincipal;
-            }, 2300);
-        }
-    }
-
-    function cadastrarEstabelecimento() {
-        var nomeE = input_nomeEsta.value;
-        var uf = input_uf.value;
-        var cidade = input_cidade.value;
-        var bairro = input_bairro.value;
-        var cep = input_cep.value;
-        var numero = input_numero.value;
-        var bairro = input_bairro.value;
-        var qntRefrigeradores = input_qntRefrigeradores.value;
-
-        if (nomeE != '' && uf != '' && cidade != '' && bairro != '' && cep != '' && numero != '' && bairro != '' && qntRefrigeradores != '') {
-            alert('Estabelecimento cadastrado com sucesso!');
-            setTimeout(function espera() {
-                telaEstabelecimento = '';
-                divPrincipal.innerHTML = telaPrincipal;
-            }, 2300);
-        }
-    }
 </script>

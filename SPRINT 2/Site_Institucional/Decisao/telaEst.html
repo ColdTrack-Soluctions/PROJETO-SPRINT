@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estabelecimento</title>
+    <link REL="SHORTCUT ICON" HREF="../assets/imagens/Logo_Quadrada-removebg.png">
+    <link rel="stylesheet" href="decisao.css">
+</head>
+
+<body>
+    <div class="header">
+        <div class="imagem1">
+            <img src="../assets/imagens/logo.svg" class="imagemfixa">
+        </div>
+        <div class="opcPrincipais">
+            <a href="../Principal Cadastrado/principal-cadastrado.html">Home</a>
+            <a href="../Principal Cadastrado/orcamento-cadastrado.html">Orçamentos</a>
+            <a href="../Principal Cadastrado/dashboard-cadastrado.html">Painel</a>
+        </div>
+        <div class="cadastro2">
+            <a href="../Decisao/decisao.html"> Voltar</a>
+        </div>
+    </div>
+    <div class="tudoE">
+        <div class="cardE">
+
+            <div>
+                <p class="tituloEsta">Estabelecimento</p>
+            </div>
+            <div class="preguntasEsta">
+                <div class='card1'>
+                    <div>
+                        <p class="perguntas">Nome do Estabelecimento</p>
+                        <input type="text" id="input_nomeEsta">
+                    </div>
+                    <div>
+                        <p class="perguntas">Unidade Federativa do Estabelecimento</p>
+                        <input type="text" id="input_uf">
+                    </div>
+                    <div>
+                        <p class="perguntas">Cidade do Estabelecimento</p>
+                        <input type="text" id="input_cidade">
+                    </div>
+                    <div>
+                        <p class="perguntas">Bairro do Estabelecimento</p>
+                        <input type="text" id="input_bairro">
+                    </div>
+                </div>
+            </div>
+            <div class="card2">
+                <div>
+                    <p class="perguntas">CEP do Estabelecimento</p>
+                    <input type="number" id="input_cep">
+                </div>
+                <div>
+                    <p class="perguntas">Número do Estabelecimento</p>
+                    <input type="number" id="input_numero">
+                </div>
+                <div>
+                    <p class="perguntas">Telefone do Estabelecimento</p>
+                    <input type="number" id="input_bairro">
+                </div>
+                <div>
+                    <p class="perguntas">Quantidade de Refrigeradores no Estabelecimento</p>
+                    <input type="number" id="input_qntRefrigeradores">
+                </div>
+            </div>
+
+            <div>
+                <button class="botaoEE" onclick="cadastrarEstabelecimento()">Cadastrar Estabelecimento</button>
+            </div>
+            <div class="cliqueAquiDiv">
+                <p>Deseja cadastrar um Funcionário? <span class="cliqueAqui" onclick="funcionario()">Clique
+                        aqui</span></p>
+            </div>
+        </div>
+        <div class="imagemPergunta">
+            <img src="../assets/imagens/30576701_7718877-ai-brush-removebg-7g7bvysh.png" alt="" class="imagemPergunta">
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    function cadastrarEstabelecimento() {
+        var verificacao = false;
+        var nomeE = input_nomeEsta.value;
+        var uf = input_uf.value;
+        var cidade = input_cidade.value;
+        var bairro = input_bairro.value;
+        var cep = input_cep.value;
+        var numero = input_numero.value;
+        var bairro = input_bairro.value;
+        var qntRefrigeradores = input_qntRefrigeradores.value;
+
+        if (nomeE != '' && uf != '' && cidade != '' && bairro != '' && cep != '' && numero != '' && bairro != '' && qntRefrigeradores != '') {
+            alert('Estabelecimento cadastrado com sucesso!');
+            verificacao = true;
+        }
+        if (verificacao) {
+            window.location.href = 'decisao.html';
+        }
+        else {
+            alert('Preencha todos os campos');
+        }
+    }
+
+    function funcionario() {
+        window.location.href = 'telaFunc.html';
+    }
+</script>
