@@ -5,6 +5,15 @@
     padding: 0%;
 }
 
+.cadastro2{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    font-family: "Josefin Sans", sans-serif;
+    font-weight: bold;
+}
+
 .header {
     width: 100%;
     background-color: #364DAA;
@@ -85,13 +94,19 @@ body {
 }
 
 .card input {
-    padding: 4px;
-    justify-content: space-between;
-    border-radius: 10px; 
-    align-items: center;
-    color: black;
+    background-color: transparent;
+    border: none;
+    width: 200px;
+    height: min-content;
+    border-bottom: #5F9EA0 3px solid;
+    color: rgb(149, 217, 219);
+    padding-left: 50px;
+    padding-bottom: 3px;
     font-size: 18px;
-    padding-left: 10px;
+}
+
+input:focus {
+    outline: none;
 }
 
 .imagem1 {

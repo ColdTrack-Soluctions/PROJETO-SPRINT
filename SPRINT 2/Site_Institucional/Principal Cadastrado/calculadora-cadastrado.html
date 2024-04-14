@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Financeira</title>
+    <link rel="stylesheet" href="../Calculadora/calculadora.css">
+    <link REL="SHORTCUT ICON" HREF="../assets/imagens/Logo_Quadrada-removebg.png">
+</head>
+
+<body>
+    <div class="header">
+        <div class="imagem1">
+            <img src="../assets/imagens/logo.svg" alt="" class="imagemfixa">
+        </div>
+        <div class="opcPrincipais">
+            <a href="principal-cadastrado.html #sobreNos">Sobre</a>
+            <a href="principal-cadastrado.html">Home</a>
+            <a href="../Dashboard/dashboard.html">Painel</a>
+        </div>
+        <div class="cadastro2">
+            <a href="../Decisao/decisao.html"> Cadastrar <br> Estabelecimento | Funcionários </a>
+        </div>
+    </div>
+
+    <div class="card">
+        <div>
+            <p class="texto">Simule o seu lucro</p>
+        </div>
+
+        <div class="campos">
+
+            Nome do seu estabeleciemento:<br> <input type="text" class="ipt" id="ipt_nome">
+        </div>
+        <div class="campos">
+          <br>  Quantos refrigeradores você tem? <br> <input type="number" class="ipt" id="ipt_refrigeradores">
+        </div>
+        <div class="campos">
+           <br> Quantos reais você fatura no mês: <br><input type="number" class="ipt" id="ipt_valorMes">
+        </div><br><br>
+
+
+        <div class="botao">
+            <button onclick="calcular()">Calcular</button>
+        </div>
+        <div id="divMensagem" class="mensagem"></div>
+
+    </div>
+</body>
+
+</html>
+<script>
+    function calcular() {
+        var nome = ipt_nome.value
+        var refrigeradores = Number(ipt_refrigeradores.value)
+        var mes = Number( ipt_valorMes.value);
+        var conta = mes / 30;
+        var conta2 = conta * 1.26;
+        var valorcom = conta2 * 30 ;
+        var anual = valorcom * 12;
+        var semcont = mes * 12;
+        var final = valorcom - mes;
+        var finaAnul = final * 12;
+
+        divMensagem.innerHTML = `<span>Fizemos a simulação da empresa ${nome} <br>com ${refrigeradores} refrigeradores: <br><br>Com o aumento de 26% no valor líquido: <br> Valor mensal com sensor: <span style =" color: lightgreen">R$${valorcom.toFixed(2)} </span><br>Valor mensal sem sensor: <span style =" color: lightcoral">R$${mes.toFixed(2)} </span><br><br>
+        Faturamento anual com nosso sensor: <span style =" color: lightgreen">R$${anual.toFixed(2)}</span><br> 
+        Faturamento anual sem nosso sensor: <span style =" color: lightcoral">R$${semcont.toFixed(2)}</span> <br> <br>
+        Seu lucro mensal será de: <span style =" color: lightgreen">R$${final.toFixed(2)}</span> com a ColdTrack<br>
+        Seu lucro anual será de: <span style =" color: lightgreen">R$${finaAnul.toFixed(2)}</span> com a ColdTrack</span>`;
+    }
+</script>

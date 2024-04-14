@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicite seu orçamento</title>
+    <link rel="stylesheet" href="../Orçamento/orcamento.css">
+    <link REL="SHORTCUT ICON" HREF="../assets/imagens/Logo_Quadrada-removebg.png">
+
+</head>
+
+<body>
+    <div class="header">
+        <div class="imagem1">
+            <img src="../assets/imagens/logo.svg" alt="" class="imagemfixa">
+        </div>
+        <div class="opcPrincipais">
+            <a href="principal-cadastrado.html #sobreNos">Sobre</a>
+            <a href="principal-cadastrado.html">Home</a>
+            <a href="../Dashboard/dashboard.html">Painel</a>
+        </div>
+        <div class="cadastro2">
+            <a href="../Decisao/decisao.html"> Cadastrar <br> Estabelecimento | Funcionários </a>
+        </div>
+    </div>
+
+    <div class="card">
+        <div>
+            <p class="texto">Solicite seu orçamento</p>
+        </div>
+
+        <div class="input1">
+            Nome da empresa: <br> <input type="text" class="input-1" id="input_empresa">
+        </div>
+
+        <div class="input1">
+            Email: <br><input type="text" class="input-1" oninput="escrevendo()" id="input_email">
+        </div>
+
+        <div class="input1">
+            Mensagem: <br> <textarea id="input_mensagem" cols="30" rows="10" oninput="escrevendo()" class="input-2"></textarea>
+            
+            <!-- <input type="text" class="input-2" id="input_mensagem" oninput="escrevendo()"> -->
+        </div>
+        <div>
+            <button class="botao" onclick="enviar()">Enviar</button>
+        </div>
+        <div id="divMensagem" class="mensagem"></div>
+    </div>
+</body>
+
+</html>
+<script>
+
+    var nomeEmpresa = '';
+    var email = '';
+    var mensagem = '';
+
+    function enviar() {
+        if (nomeEmpresa != '' && email != '' && (mensagem != '' && mensagem.length >= 50)) {
+            divMensagem.innerHTML = `<span style =" color: lightgreen">Orçamento enviado com sucesso!</span>`;
+        }
+        else if (mensagem == '' && email == '' && nomeEmpresa == '') {
+            divMensagem.innerHTML = `<span style =" color: lightcoral">Preencha todos os campos.</span>`;
+        }
+        else if (mensagem.length < 50) {
+            divMensagem.innerHTML = `<p style='color:lightblue'>Escreva uma mensagem mais <br>detalhada antes de enviar!</p>`;
+        }
+    }
+
+    function escrevendo() {
+
+        nomeEmpresa = input_empresa.value;
+        email = input_email.value;
+        mensagem = input_mensagem.value;
+        var arroba = email.indexOf('@');
+        var ponto = email.indexOf('.');
+        var tamanhoMensagem = mensagem.length;
+
+        if ((arroba == -1 || ponto == -1) || (ponto < arroba) || (ponto == arroba + 1)) {
+            divMensagem.innerHTML = `<p style='color:red'>Insira um email válido!</p>`;
+
+        }
+        else if (tamanhoMensagem < 50) {
+            divMensagem.innerHTML = `<p style='color:lightblue'>Faça uma mensagem detalhada!</p>`;
+        }
+
+
+    }
+</script>

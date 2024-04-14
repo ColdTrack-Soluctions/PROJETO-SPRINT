@@ -231,7 +231,7 @@ input:focus {
     display: none;
 }
 
-.tudoF .cardF .cliqueAqui{
+.cliqueAqui{
     color: #5F9EA0;
     text-decoration: underline;
     cursor: pointer;
@@ -246,3 +246,91 @@ input:focus {
     flex-direction: column;
 }
 
+.tudoE .imagemPergunta{
+    margin-top: -2%;
+    margin-left: 10%;
+    height: 600px;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.tudoE{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 200px;
+}
+
+.tudoE .cardE{
+    width: auto;
+    height: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    text-align: center;
+    /* border: #5F9EA0 2px solid; */
+    color: white;
+}
+
+.tudoE .cardE .card2{
+    margin-left: 160%;
+    margin-top: -59%;
+}
+
+.tudoE .cardE input{
+    background-color: transparent;
+    border: none;
+    width: 300px;
+    height: min-content;
+    border-bottom: #5F9EA0 2px solid;
+    color: rgb(149, 217, 219);
+    padding-left: 50px;
+    padding-bottom: 3px;
+    font-size: 18px;
+}
+
+input:focus {
+    outline: none;
+}
+
+.tudoE .cardE .tituloEsta{
+    font-size: 50px;
+    font-weight: bolder;
+    margin-top: 20%;
+    margin-bottom: 15%;
+    margin-left: 60%;
+}
+
+.cardE .cliqueAquiDiv{
+    margin-left: 120%;
+    display: flex;
+    width: 100%;
+}
+
+.tudoE .cardE .perguntas{
+    font-size: 25px;
+    margin-top: 4%;
+    margin-bottom: 4%;
+}   
+
+.tudoE .cardE .botaoEE {
+    height: 50px;
+    width: 260px;
+    background-color: #5F9EA0;
+    color: white;
+    border: white 2px solid;
+    border-radius: 20px;
+    font-weight: bolder;
+    font-size: 20px;
+    cursor: pointer;
+    margin-top: 9%;
+    margin-bottom: 10%;
+    margin-left: 90%;
+    box-shadow: 4px 4px 8px rgb(40, 110, 133);
+}
+
+.tudoE .cardE .botaoEE:hover{
+    background-color: rgb(40, 110, 133);
+}

@@ -5,6 +5,15 @@
     padding: 0%;
 }
 
+.cadastro2{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    font-family: "Josefin Sans", sans-serif;
+    font-weight: bold;
+}
+
 .header {
     width: 100%;
     background-color: #364DAA;

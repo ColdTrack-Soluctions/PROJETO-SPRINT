@@ -16,14 +16,14 @@
         </div>
         <div class="opcPrincipais">
             <a href="../Principal Cadastrado/principal-cadastrado.html">Home</a>
-            <a href="../Orçamento/Solicite-Orçamento.html">Orçamentos</a>
-            <a href="../Dashboard/dashboard.html">Painel</a>
+            <a href="../Principal Cadastrado/orcamento-cadastrado.html">Orçamentos</a>
+            <a href="../Principal Cadastrado/dashboard-cadastrado.html">Painel</a>
         </div>
         <div class="cadastro2">
             <a href="../Decisao/decisao.html"> Voltar</a>
         </div>
     </div>
-    <!-- <div class="opcoes" id="divPrincipal">
+    <div class="opcoes" id="divPrincipal">
         <div class="textoBotao">
             <div class="texto">
 
@@ -31,7 +31,7 @@
 
                 <p class="textinho">Já que agora você é um dos <b>nossos clientes</b>, desejamos que seja cadastrado <e>
                         um
-                        estabelecimento</e> ou algum <e>funcionário</e> para ter acesso ao dados</p>
+                        estabelecimento</e> ou algum <e>funcionário</e> para ter acesso aos dados</p>
             </div>
 
             <div class="botao">
@@ -42,11 +42,9 @@
         <div class="imagemPergunta">
             <img src="../assets/imagens/30576701_7718877-ai-brush-removebg-7g7bvysh.png" alt="" class="imagemPergunta">
         </div>
-    </div> -->
-    <div id="divFunc"></div>
-    <div id="divEst">
-        
     </div>
+    <div id="divFunc"></div>
+    <div id="divEst"></div>
 </body>
 
 </html>
@@ -111,6 +109,66 @@
             </div>
         </div>`;
 
+    var telaEstabelecimento = `
+    <div class="tudoE">
+            <div class="cardE">
+
+                <div>
+                    <p class="tituloEsta">Estabelecimento</p>
+                </div>
+                <div class="preguntasEsta">
+                    <div class='card1'>
+                        <div>
+                            <p class="perguntas">Nome do Estabelecimento</p>
+                            <input type="text" id="input_nomeEsta">
+                        </div>
+                        <div>
+                            <p class="perguntas">Unidade Federativa do Estabelecimento</p>
+                            <input type="text" id="input_uf">
+                        </div>
+                        <div>
+                            <p class="perguntas">Cidade do Estabelecimento</p>
+                            <input type="text" id="input_cidade">
+                        </div>
+                        <div>
+                            <p class="perguntas">Bairro do Estabelecimento</p>
+                            <input type="text" id="input_bairro">
+                        </div>
+                    </div>
+                </div>
+                <div class="card2">
+                    <div>
+                        <p class="perguntas">CEP do Estabelecimento</p>
+                        <input type="number" id="input_cep">
+                    </div>
+                    <div>
+                        <p class="perguntas">Número do Estabelecimento</p>
+                        <input type="number" id="input_numero">
+                    </div>
+                    <div>
+                        <p class="perguntas">Telefone do Estabelecimento</p>
+                        <input type="number" id="input_bairro">
+                    </div>
+                    <div>
+                        <p class="perguntas">Quantidade de Refrigeradores no Estabelecimento</p>
+                        <input type="number" id="input_qntRefrigeradores">
+                    </div>
+                </div>
+
+                <div>
+                    <button class="botaoEE" onclick="cadastrarEstabelecimento()">Cadastrar Estabelecimento</button>
+                </div>
+                <div class="cliqueAquiDiv">
+                    <p>Deseja cadastrar um Funcionário? <span class="cliqueAqui" onclick="deixaFuncionario()">Clique
+                            aqui</span></p>
+                </div>
+            </div>
+            <div class="imagemPergunta">
+                <img src="../assets/imagens/30576701_7718877-ai-brush-removebg-7g7bvysh.png" alt=""
+                    class="imagemPergunta">
+            </div>
+        </div>`;
+
     function deixaFuncionario() {
         divPrincipal.innerHTML = '';
         divFunc.innerHTML = telaFuncionario;
@@ -120,7 +178,7 @@
     function deixaEstabelecimento() {
         divPrincipal.innerHTML = '';
         divFunc.innerHTML = '';
-        divEst.innerHTML = ``;
+        divEst.innerHTML = telaEstabelecimento;
     }
 
     function cadastrarFuncionario() {
@@ -129,10 +187,29 @@
         var telefone = input_telefone.value;
         var ondeTrabalha = input_nomeEstFuncTrab.value;
 
-        if (nomeFunc != '' && cargo != '' && telefone != null && ondeTrabalha != '') {
-            alert('Funcionário cadastrado com sucesso!')
+        if (nomeFunc != '' && cargo != '' && telefone != '' && ondeTrabalha != '') {
+            alert('Funcionário cadastrado com sucesso!');
             setTimeout(function espera() {
                 telaFuncionario = '';
+                divPrincipal.innerHTML = telaPrincipal;
+            }, 2300);
+        }
+    }
+
+    function cadastrarEstabelecimento() {
+        var nomeE = input_nomeEsta.value;
+        var uf = input_uf.value;
+        var cidade = input_cidade.value;
+        var bairro = input_bairro.value;
+        var cep = input_cep.value;
+        var numero = input_numero.value;
+        var bairro = input_bairro.value;
+        var qntRefrigeradores = input_qntRefrigeradores.value;
+
+        if (nomeE != '' && uf != '' && cidade != '' && bairro != '' && cep != '' && numero != '' && bairro != '' && qntRefrigeradores != '') {
+            alert('Estabelecimento cadastrado com sucesso!');
+            setTimeout(function espera() {
+                telaEstabelecimento = '';
                 divPrincipal.innerHTML = telaPrincipal;
             }, 2300);
         }
