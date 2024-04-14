@@ -1,12 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Escolha o cadastro</title>
     <link rel="stylesheet" href="decisao.css">
+    <link REL="SHORTCUT ICON" HREF="../assets/imagens/Logo_Quadrada-removebg.png">
 </head>
+
 <body>
-    
+    <div class="header">
+        <div class="imagem1">
+            <img src="../assets/imagens/logo.svg" class="imagemfixa">
+        </div>
+        <div class="opcPrincipais">
+            <a href="../Principal Cadastrado/principal-cadastrado.html #sobreNos" onclick="teste()">Sobre</a>
+            <a href="../Orçamento/Solicite-Orçamento.html">Orçamentos</a>
+            <a href="../Dashboard/dashboard.html">Painel</a>
+        </div>
+        <div class="cadastro2">
+            <a href="../Principal Cadastrado/principal-cadastrado.html" id="Voltar"> Voltar</a>
+        </div>
+    </div>
+    <div class="opcoes" id="divPrincipal">
+        <div class="textoBotao">
+            <div class="texto">
+
+                <p class="pergunta">E AGORA?</p>
+
+                <p class="textinho">Já que agora você é um dos <b>nossos clientes</b>, desejamos que seja cadastrado <e>
+                        um
+                        estabelecimento</e> ou algum <e>funcionário</e> para ter acesso ao dados</p>
+            </div>
+
+            <div class="botao">
+                <button class="botaoF" onclick="deixaFuncionario()">Funcionário</button>
+                <button class="botaoE" onclick="deixaEstabelecimento()">Estabelecimento</button>
+            </div>
+        </div>
+        <div class="imagemPergunta">
+            <img src="../assets/imagens/30576701_7718877-ai-brush-removebg-7g7bvysh.png" alt="" class="imagemPergunta">
+        </div>
+    </div>
+    <div id="divFunc">
+
+        </div>
+
+
+
+
+
+
+
+
+    </div>
+    <div id="divEst"></div>
 </body>
+
 </html>
+<script>
+    function deixaFuncionario() {
+        divPrincipal.innerHTML = '';
+        divFunc.innerHTML = `       
+        <div class="tudoF">
+            <div class="cardF">
+                <div>
+                    <p class="tituloFunc">Funcionário</p>
+                </div>
+                <div class="preguntasFunc">
+                    <div>
+                        <p class="perguntas">Nome do funcionário</p>
+                        <input type="text" id="input_nomeFunc">
+                    </div>
+                    <div>
+                        <p class="perguntas">Cargo do funcionário</p>
+                        <input type="text" id="input_cargo">
+                    </div>
+                    <div>
+                        <p class="perguntas">Telefone do funcionário</p>
+                        <input type="number" id="input_telefone">
+                    </div>
+                    <div>
+                        <p class="perguntas">Nome do Estabelecimento <br>em que este funcionário trabalha</p>
+                        <input type="text" id="input_nomeEstFuncTrab">
+                    </div>
+                </div>
+                <div>
+                    <button class="botaoFF">Cadastrar Funcionário</button>
+                </div>
+                <div>
+                    <p>Deseja cadastrar um Estabelecimento? <span class="cliqueAqui" onclick="deixaEstabelecimento()">Clique aqui</span></p>
+                </div>
+            </div>
+            <div class="imagemPergunta">
+                <img src="../assets/imagens/30576701_7718877-ai-brush-removebg-7g7bvysh.png" alt=""
+                    class="imagemPergunta">
+            </div>`;
+        divEst.innerHTML = '';
+
+        var nomeFunc = input_nomeFunc.value;
+        var cargo = input_cargo.value;
+        var telefone = input_telefone.value
+        var ondeTrabalha = input_nomeEstFuncTrab.value
+
+        if (nomeFunc != '' && cargo != '' && telefone != null && ondeTrabalha != '') {
+            setTimeout(function espera() { 
+            window.location.href = '../Decisa/decisao.html';
+        }, 2300);
+        }
+    }
+
+    function deixaEstabelecimento() {
+        divPrincipal.innerHTML = '';
+        divFunc.innerHTML = '';
+        divEst.innerHTML = ``;
+    }
+</script>
