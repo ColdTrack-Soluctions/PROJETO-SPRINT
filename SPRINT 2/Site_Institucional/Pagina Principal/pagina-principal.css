@@ -75,7 +75,7 @@ body {
     align-items: center;
     justify-content: center;
     margin-top: 6%;
-    gap: 12%;   
+    gap: 12%;
 }
 
 .textoPrinc {
@@ -145,12 +145,16 @@ body {
     margin-right: 70px;
     gap: 150px;
     margin-top: 10%;
+
 }
 
 .textos{
     text-align: justify;
     width: 30%;
     color: white;
+    background-color: #000000CC;
+    padding: 20px;
+    border-radius: 50px;
 }
 
 .quemSomos{
@@ -187,7 +191,6 @@ body {
     align-items: center;
     margin-bottom: 100px;
     color: white;
-
 }
 
 .segundotextos{
@@ -195,6 +198,9 @@ body {
     justify-content: center;
     margin-right: 30%;
     margin-left: 30%;
+    background-color: #000000CC;
+    padding: 20px;
+    border-radius: 50px;
 }
 
 .cadastro2{
@@ -225,13 +231,13 @@ body {
     width: 100%;
     background-color: #364DAA;
     color: white;
-    height: 210px;
+    height: 120px;
     display: flex;
     flex-direction: column;  
     border-top: 3px solid #040189;
     font-size: 20px;
 }
-.textContatos{
+.rodape .textContatos{
     margin-top: 10px;
     font-weight: bolder;
     font-size: 25px;
@@ -241,18 +247,18 @@ body {
     height: 100%;
     display: flex;
     flex-direction: column;
+    text-align: center;
     gap: 35px;
-    margin-left: 15px;
+}
+
+.emails{
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
 }
 
 b{
     color: rgb(115, 202, 231);
-}
-
-.ultimoTexto{
-    display: flex;
-    justify-content: center;
-    color: black;
 }
 
 .fotoNossa{
@@ -274,3 +280,4 @@ b{
     width: 40px;
     height: 40px;
 }
+

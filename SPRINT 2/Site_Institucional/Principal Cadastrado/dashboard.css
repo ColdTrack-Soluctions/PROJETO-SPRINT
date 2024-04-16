@@ -85,3 +85,7 @@ h1 {
 .container-chart2 {
     margin: 30px;
 }
+
+::-webkit-scrollbar{
+    display: none;
+}

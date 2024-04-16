@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Painel - Dashboard</title>
     <link REL="SHORTCUT ICON" HREF="../assets/imagens/Logo_Quadrada-removebg.png">
-    <link rel="stylesheet" href="../Dashboard/dashboard.css">
+    <link rel="stylesheet" href="dashboard.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 
@@ -21,6 +21,7 @@
             <div class="opcPrincipais">
                 <a href="principal-cadastrado.html #sobreNos">Sobre</a>
                 <a href="orcamento-cadastrado.html">Orçamentos</a>
+                <a href="calculadora-cadastrado.html">Calculadora</a>
             </div>
             <a href="principal-cadastrado.html">Voltar</a>
         </div>
@@ -69,11 +70,11 @@ const dataBar = {
 };
 
 const dataLine = {
-  labels: ['04:00', '08:00', '12:00', '16:00', '20:00', '00:00'],
+  labels: ['04:00', '08:00', '12:00', '16:00', '20:00', '22:00'],
   datasets: [
     {
       label: 'Temperatura média',
-      data:[2, 1, -2.5, 5, -0.7, 2],
+      data:[1.5, 0.5, 5, -2.5, -1.7, -3.5],
       borderColor: 'rgb(245, 242, 86)',
       backgroundColor: 'rgb(245, 242, 86, 0.1)',
       pointStyle: 'circle',
