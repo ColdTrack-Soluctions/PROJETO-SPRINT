@@ -28,16 +28,19 @@
 
     </div>
 
+
+    []
+
     <!-- <h3>Dashboard</h3> -->
 
     
     <div class="container">
 
         <div class="container-kpi">
-          <div class="kpi"> <span> 🌡 2.4 °C </span> <p>Temperatura atual</p> </div>
+          <div class="kpi"> <span> 🌡 2.3 °C </span> <p>Temperatura atual</p> </div>
           <div class="kpi"> <span style="color:#128205"> ✔ Porta 02</span> <p>Foi aberta o maior número de vezes</p> </div>
           <div class="kpi"> <span style="color: #ff8400;"> 💰 Alcatra </span> <p>Produto mais vendido </p> </div>
-          <div class="kpi"> <span style="color: #e62600">🌡 5 °C</span> <p>Temperatura máxima registrada no dia de hoje</p> </div>
+          <div class="kpi"> <span style="color: #e62600">🌡 4.4 °C</span> <p>Temperatura máxima registrada no dia de hoje</p> </div>
         </div>
 
         <div class="container-chart">
@@ -50,13 +53,12 @@
 
           <div class="chart">
             <canvas id="chart2" ></canvas>
-
-            <div class="alerta">ALERTA - TEMPERATURA ACIMA DA MÁXIMA PERMITIDA!</div>
-
+            <div class="alerta">ALERTA - TEMPERATURA PRÓXIMA DA MÁXIMA PERMITIDA ÁS 10:00!</div><br>
+            <div class="alerta">ALERTA - TEMPERATURA ACIMA DA MÁXIMA PERMITIDA ÁS 13:00!</div>
             <p>Monitora a <b>temperaturas</b> de um determinado refrigerador para que o produto <b>não perca sua qualidade</b> e também evitar            <b>desperdícios</b> pelo mal
               armazenamento Caso a temperatura captada pelo sensor não for adequada, uma <b>sinalização</b> será exibida na tela para que as devidas ações
               sejam efetuadas, 
-            </p>
+            </p>  
           </div>
         </div>
     </div>
@@ -135,16 +137,17 @@ const dataBar = {
 };
 
 const dataLine = {
-  labels: ['16:00', '20:00', '00:00', '04:00', '08:00', '12:00'],
+  labels: ['08:00','10:00', '13:00', '16:00', '19:00', '22:00',],
   datasets: [
     {
       label: 'Temperatura Atual',
-      data:[2.4, 3.4, 2.2, 1.2, 2.0, 5],
+      data:[2.4, 3.5 , 4.4, 2.4, 1.5, 2.3, -1],
       borderColor: 'rgb(245, 242, 86)',
       backgroundColor: 'rgb(245, 242, 86, 0.1)',
       pointStyle: 'circle',
       pointRadius: 5,
-      pointHoverRadius: 10
+      pointHoverRadius: 10,
+      backgroundColor : 'yellow'
     },
     {
       label: 'Temperatura Máxima',
