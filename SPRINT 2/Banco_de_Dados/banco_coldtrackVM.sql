@@ -1,6 +1,5 @@
 -- CRIANDO A NOSSA BASE DE DADOS
 create database bd_coldtrack;
-drop database bd_coldtrack;
 -- ULTILIZANDO A BASE DE DADOS
 use bd_coldtrack;
 
@@ -176,7 +175,7 @@ temperatura float,
 dataHora datetime default current_timestamp,
 constraint fkDadosSensor foreign key (fkSensor) references sensor(idSensor) 
 );
-
+alter table dadosCaptados modify column idDadosCaptados int auto_increment;
 /* INSERINDO ALGUNS REGRISTROS DE DADOS DOS SENSORES (APENAS UM EXEMPLO)
 
 	OBS : Em nosso projeto real usaremos uma API que irá dizer ao banco apenas quando as portas foram abertas e o seu respectivo horario.
@@ -191,13 +190,13 @@ insert into dadosCaptados values
 select * from dadosCaptados join sensor on fkSensor = idSensor;
 
 
+truncate table dadoscaptados;
 select * from dadosCaptados;
 
--- VIZUALIZANDO A QUANTIDADE DE VEZES QUE UMA PORTA FOI ABERTA
-select dadosCaptados.qtdAbertura as 'Quantidade de Aberturas', portaRefrigerador.idPorta as 'Número da Porta' 
+-- VIZUALIZANDO A QUANTIDADE DE VEZES QUE UMA PORTA FOI ABERTA E A TEMPERATURA DO REFRIGERADOR NAQUELE HORARIO
+select dadosCaptados.qtdAbertura as 'Quantidade de Aberturas', dadosCaptados.dataHora as 'Horario da Abertura', dadosCaptados.temperatura as 'Temperatura Interna', portaRefrigerador.idPorta as 'Número da Porta'
 	from dadosCaptados
 	join sensor on dadosCaptados.fkSensor = sensor.idSensor
-    join portaRefrigerador on portaRefrigerador.fkSensor = sensor.idSensor where idPorta = 2;
+    join portaRefrigerador on portaRefrigerador.fkSensor = sensor.idSensor where idPorta = 1;
     
-
 
