@@ -71,20 +71,86 @@ h1 {
 
 .container {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
+    flex-direction: column;
+}
+
+.container-kpi {
+    display: flex;
+    margin: 15px;
+    justify-content: space-around;
+    width: 75%;
+}
+
+.kpi {
+    background-color: #ffffff;
+    border-radius: 5px;
+    height: 95px;
+    width: 230px;
+    padding: 5px;
+    color: #364DAA;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.kpi span {
+    font-size: 37px;
+
+}
+
+.kpi p {
+    font-size: 16px;
+    color: #800160;
+    margin-top: 10px;
+    text-align: center;
+    font-weight: bolder 
 }
 
 .container-chart {
     display: flex;
-    width: 80%;
+    justify-content: space-around;
     height: 40vh;;
-    justify-content: space-between;
+    
 }
+
+.chart {
+    flex-direction: column;
+    width: 45%;
+}
+
+.chart .alerta {
+    width: fit-content;
+    color: #e62600;
+    font-weight: bold;
+    background-color: rgb(0, 0, 0);
+    padding:10px;
+    border-radius: 6px;
+
+}
+
+.chart b {
+    color: rgb(115, 202, 231)
+}
+
+.chart p {
+    margin-top:2px;
+    background-color: rgb(0, 0, 0, 0.8);
+    padding: 13px;
+    border-radius: 10px;
+}
+
+.container-chart p {
+    margin-top: 30px;
+    color:#ffffff;
+    text-align:center;
+}
+
 .container-chart2 {
     margin: 30px;
 }
+
 
 ::-webkit-scrollbar{
     display: none;

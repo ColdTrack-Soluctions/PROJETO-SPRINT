@@ -28,33 +28,54 @@
 
     </div>
 
-    <h1>Dashboard</h1>
+    <!-- <h3>Dashboard</h3> -->
 
+    
     <div class="container">
-        <div class="container-chart">
-            <canvas id="chart1" ></canvas>
-            <canvas id="chart2" ></canvas>
+
+        <div class="container-kpi">
+          <div class="kpi"> <span> 🌡 2.4 °C </span> <p>Temperatura atual</p> </div>
+          <div class="kpi"> <span style="color:#128205"> ✔ Porta 02</span> <p>Foi aberta o maior número de vezes</p> </div>
+          <div class="kpi"> <span style="color: #ff8400;"> 💰 Alcatra </span> <p>Produto mais vendido </p> </div>
+          <div class="kpi"> <span style="color: #e62600">🌡 5 °C</span> <p>Temperatura máxima registrada no dia de hoje</p> </div>
         </div>
-        <div class="container-chart2">
-            <canvas id="chart3"></canvas>
+
+        <div class="container-chart">
+          <div class="chart">
+            <canvas id="chart1" ></canvas>
+            <p>Monitora o <b>fluxo de abertura </b>de portas de um determinado refrigerador durante o período de um dia, permitindo uma posterior <b>análise</b>  de qual produto é mais vendido e qual <b>decisões</b> devem ser tomadas para que haja um aumento de suas vendas.
+            </p>
+
+          </div>
+
+          <div class="chart">
+            <canvas id="chart2" ></canvas>
+
+            <div class="alerta">ALERTA - TEMPERATURA ACIMA DA MÁXIMA PERMITIDA!</div>
+
+            <p>Monitora a <b>temperaturas</b> de um determinado refrigerador para que o produto <b>não perca sua qualidade</b> e também evitar            <b>desperdícios</b> pelo mal
+              armazenamento Caso a temperatura captada pelo sensor não for adequada, uma <b>sinalização</b> será exibida na tela para que as devidas ações
+              sejam efetuadas, 
+            </p>
+          </div>
         </div>
     </div>
 </body>
 
 
 <script>
-    const labels =['Porta1', 'Porta2', 'Porta3', 'Porta4', 'Porta5'];
+    const labels =['Segunda-Feira', 'Terça-Feira', 'Quarta-Feira', 'Quinta-Feira', 'Sexta-Feira'];
 const dataBar = {
   labels: labels,
   datasets: [{
-    label: 'Gráfico de aberturas',
-    data: [9, 13, 12, 21, 5],
+    label: 'Porta 01',
+    data: [4, 13, 9, 13, 6],
     backgroundColor: [
-        'rgb(179, 0, 18)',
-        'rgb(224, 83, 7)',
-        'rgb(196, 207, 4)',
-        'rgb(18, 130, 5)',
-        'rgb(13, 7, 135)'
+        'rgb(255, 0, 166)',
+        'rgb(255, 0, 166)',
+        'rgb(255, 0, 166)',
+        'rgb(255, 0, 166)',
+        'rgb(255, 0, 166)'
     ],
     borderColor: [
       'rgb(0, 0, 0)',
@@ -66,15 +87,59 @@ const dataBar = {
       'rgb(0, 0, 0)'
     ],
     borderWidth: 1
-}]
+},
+{
+    label: 'Porta 02',
+    data: [9, 13, 12, 21, 5],
+    backgroundColor: [
+        'rgb(115, 202, 231)',
+        'rgb(115, 202, 231)',
+        'rgb(115, 202, 231)',
+        'rgb(115, 202, 231)',
+        'rgb(115, 202, 231)'
+    ],
+    borderColor: [
+      'rgb(0, 0, 0)',
+      'rgb(0, 0, 0)',
+      'rgb(0, 0, 0)',
+      'rgb(0, 0, 0)',
+      'rgb(0, 0, 0)',
+      'rgb(0, 0, 0)',
+      'rgb(0, 0, 0)'
+    ],
+    borderWidth: 1
+},
+{
+    label: 'Porta 03',
+    data: [6, 7, 10, 19, 7],
+    backgroundColor: [
+        'rgb(95, 158, 160)',
+        'rgb(95, 158, 160)',
+        'rgb(95, 158, 160)',
+        'rgb(95, 158, 160)',
+        'rgb(95, 158, 160)'
+    ],
+    borderColor: [
+      'rgb(0, 0, 0)',
+      'rgb(0, 0, 0)',
+      'rgb(0, 0, 0)',
+      'rgb(0, 0, 0)',
+      'rgb(0, 0, 0)',
+      'rgb(0, 0, 0)',
+      'rgb(0, 0, 0)'
+    ],
+    borderWidth: 1
+}
+],
+
 };
 
 const dataLine = {
-  labels: ['04:00', '08:00', '12:00', '16:00', '20:00', '22:00'],
+  labels: ['16:00', '20:00', '00:00', '04:00', '08:00', '12:00'],
   datasets: [
     {
-      label: 'Temperatura média',
-      data:[1.5, 0.5, 5, -2.5, -1.7, -3.5],
+      label: 'Temperatura Atual',
+      data:[2.4, 3.4, 2.2, 1.2, 2.0, 5],
       borderColor: 'rgb(245, 242, 86)',
       backgroundColor: 'rgb(245, 242, 86, 0.1)',
       pointStyle: 'circle',
@@ -84,17 +149,17 @@ const dataLine = {
     {
       label: 'Temperatura Máxima',
       data:[4, 4, 4, 4, 4, 4],
-      borderColor: 'rgb(179, 0, 18)',
-      backgroundColor: 'rgb(179, 0, 18, 0.2)',
+      borderColor: 'rgb(230, 38, 0)',
+      backgroundColor: 'rgb(230, 38, 0)',
       pointStyle: 'circle',
       pointRadius: 2,
       pointHoverRadius: 10
     },
     {
       label: 'Temperatura Mínima',
-      data:[-3, -3, -3, -3, -3, -3],
-      borderColor: 'rgb(13, 7, 135)',
-      backgroundColor: 'rgb(13, 7, 135, 0.2)',
+      data:[0, 0, 0, 0, 0, 0],
+      borderColor: 'rgb(244, 243, 243)',
+      backgroundColor: 'rgb(244, 243, 243)',
       pointStyle: 'circle',
       pointRadius: 2,
       pointHoverRadius: 7
@@ -102,35 +167,8 @@ const dataLine = {
   ]
 };
 
-const DATA_COUNT = 5;
-const NUMBER_CFG = {count: DATA_COUNT, min: 0, max: 100};
 
-const dataDon = {
-  labels: ['Carne moída', 'Picanha', 'Coxão mole', 'Maminha', 'Alcatra'],
-  datasets: [
-    {
-      label: 'Dataset 1',
-      data: [9, 13, 12, 21, 5],
-      backgroundColor: [
-        'rgb(179, 0, 18)',
-        'rgb(224, 83, 7)',
-        'rgb(196, 207, 4)',
-        'rgb(18, 130, 5)',
-        'rgb(13, 7, 135)'
-        ],
-       borderColor: [
-        'rgb(0, 0, 0)',
-        'rgb(0, 0, 0)',
-        'rgb(0, 0, 0)',
-        'rgb(0, 0, 0)',
-        'rgb(0, 0, 0)',
-        'rgb(0, 0, 0)',
-        'rgb(0, 0, 0)'
-        ],
-       hoverOffset: 15
-    },
-  ]
-};
+
 </script>
 
 
@@ -148,11 +186,11 @@ const dataDon = {
                     color: '#ffffff'  
                 },
                 legend: {
-                    labels: {
-                        display: false
-                    }        
-                }
-            },
+                    labels : {
+                      color: '#ffffff'
+                    }
+                  },
+              },
           scales: {
             y: {
               beginAtZero: true,
@@ -199,27 +237,6 @@ const dataDon = {
     }
   }
 };
-
-const configDon = {
-  type: 'doughnut',
-  data: dataDon,
-  options: {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: 'top',
-        labels: {
-            color: '#ffffff'
-        }
-      },
-      title: {
-        display: true,
-        text: 'Chart.js Doughnut Chart',
-        color: '#ffffff'
-      }
-    }
-  },
-};
 </script>
 
 <script>
@@ -232,10 +249,5 @@ const configDon = {
         document.getElementById('chart2'),
         configLine
     );
-
-    const charDon = new Chart (
-        document.getElementById('chart3'),
-        configDon
-    )
 
 </script>
