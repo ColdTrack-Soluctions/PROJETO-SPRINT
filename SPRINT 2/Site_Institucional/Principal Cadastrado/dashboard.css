@@ -125,6 +125,7 @@ h1 {
     background-color: rgb(255, 0, 0);
     padding: 10px;
     border-radius: 6px;
+    margin-top: 10px;
 
 }
 
@@ -140,13 +141,9 @@ h1 {
 }
 
 .container-chart p {
-    margin-top: 30px;
+    margin-top: 10px;
     color: #ffffff;
     text-align: center;
-}
-
-.container-chart2 {
-    margin: 30px;
 }
 
 

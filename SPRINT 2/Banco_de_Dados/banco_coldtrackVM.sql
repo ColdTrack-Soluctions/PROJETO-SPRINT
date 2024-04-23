@@ -147,7 +147,6 @@ select portaRefrigerador.idPorta as 'Número da Porta', portaRefrigerador.produt
 create table temperaturaIdeal (
 idTemperatura int,
 fkSensor int,
-constraint pkCompTemp primary key (idTemperatura, fkSensor),
 tempMax float,
 tempMin float,
 constraint fkTempSensor foreign key (fkSensor) references sensor(idSensor));
