@@ -63,12 +63,6 @@ a {
     margin-top: 17px;
 }
 
-h1 {
-    color:#ffffff;
-    text-align: center;
-    margin: 30px;
-}
-
 .container {
     display: flex;
     justify-content: space-around;
@@ -115,6 +109,12 @@ h1 {
     
 }
 
+.container-chart p {
+    margin-top: 30px;
+    color:#ffffff;
+    text-align:center;
+}
+
 .chart {
     flex-direction: column;
     width: 45%;
@@ -127,6 +127,7 @@ h1 {
     background-color: rgb(255, 0, 0);
     padding:10px;
     border-radius: 6px;
+    margin: 7px;
 
 }
 
@@ -139,16 +140,6 @@ h1 {
     background-color: rgb(0, 0, 0, 0.8);
     padding: 13px;
     border-radius: 10px;
-}
-
-.container-chart p {
-    margin-top: 30px;
-    color:#ffffff;
-    text-align:center;
-}
-
-.container-chart2 {
-    margin: 30px;
 }
 
 
