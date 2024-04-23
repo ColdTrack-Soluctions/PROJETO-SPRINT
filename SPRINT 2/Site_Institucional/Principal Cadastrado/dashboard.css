@@ -7,7 +7,6 @@
 
 body {
     font-family: "Josefin Sans", sans-serif;
-
     background: rgb(51, 159, 217);
     background: linear-gradient(267deg, rgba(51, 159, 217, 1) 0%, rgba(4, 1, 137, 1) 50%, rgba(2, 1, 59, 1) 84%);
 }
@@ -21,7 +20,6 @@ body {
     justify-content: center;
     border-bottom: 3px solid #040189;
     font-size: 20px;
-
 }
 
 .container_header {
@@ -63,6 +61,12 @@ a {
     margin-top: 17px;
 }
 
+h1 {
+    color: #ffffff;
+    text-align: center;
+    margin: 30px;
+}
+
 .container {
     display: flex;
     justify-content: space-around;
@@ -91,7 +95,6 @@ a {
 
 .kpi span {
     font-size: 37px;
-
 }
 
 .kpi p {
@@ -99,20 +102,15 @@ a {
     color: #800160;
     margin-top: 10px;
     text-align: center;
-    font-weight: bolder 
+    font-weight: bolder
 }
 
 .container-chart {
     display: flex;
     justify-content: space-around;
-    height: 40vh;;
-    
-}
+    height: 40vh;
+    ;
 
-.container-chart p {
-    margin-top: 30px;
-    color:#ffffff;
-    text-align:center;
 }
 
 .chart {
@@ -125,9 +123,8 @@ a {
     color: white;
     font-weight: bold;
     background-color: rgb(255, 0, 0);
-    padding:10px;
+    padding: 10px;
     border-radius: 6px;
-    margin: 7px;
 
 }
 
@@ -136,13 +133,31 @@ a {
 }
 
 .chart p {
-    margin-top:2px;
+    margin-top: 2px;
     background-color: rgb(0, 0, 0, 0.8);
     padding: 13px;
     border-radius: 10px;
 }
 
+.container-chart p {
+    margin-top: 30px;
+    color: #ffffff;
+    text-align: center;
+}
 
-::-webkit-scrollbar{
+.container-chart2 {
+    margin: 30px;
+}
+
+
+::-webkit-scrollbar {
     display: none;
+
+
+
+
+
+
+
+
 }
