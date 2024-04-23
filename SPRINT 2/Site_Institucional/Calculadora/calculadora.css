@@ -103,6 +103,7 @@ body {
     padding-left: 50px;
     padding-bottom: 3px;
     font-size: 18px;
+    padding-bottom: 0px;
 }
 
 input:focus {
