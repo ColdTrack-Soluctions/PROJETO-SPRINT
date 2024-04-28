@@ -8,19 +8,19 @@
 
 body {
     font-family: "Josefin Sans", sans-serif;
-    
 
-        /* The image used */
-  background-image: url("../assets/imagens/6402714_3257600.jpg");
 
-  /* Set a specific height */
-  min-height: 500px;
+    /* The image used */
+    background-image: url("../assets/imagens/6402714_3257600.jpg");
 
-  /* Create the parallax scrolling effect */
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+    /* Set a specific height */
+    min-height: 500px;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .header {
@@ -62,7 +62,7 @@ body {
     list-style: none;
 }
 
-.container{
+.container {
     background: rgb(51, 159, 217);
     background: linear-gradient(267deg, rgba(51, 159, 217, 1) 0%, rgba(4, 1, 137, 1) 50%, rgba(2, 1, 59, 1) 84%);
     height: 900px;
@@ -105,9 +105,8 @@ body {
     background-color: rgb(255, 0, 166);
 }
 
-.botao:hover{
-    background-color: rgba(217,54,160,1);
-
+.botao:hover {
+    background-color: rgba(217, 54, 160, 1);
 }
 
 .verde {
@@ -138,7 +137,7 @@ body {
     scroll-behavior: smooth;
 }
 
-.texto1{
+.texto1 {
     display: flex;
     align-items: center;
     margin-left: 15%;
@@ -148,7 +147,7 @@ body {
 
 }
 
-.textos{
+.textos {
     text-align: justify;
     width: 30%;
     color: white;
@@ -157,23 +156,24 @@ body {
     border-radius: 50px;
 }
 
-.quemSomos{
+.quemSomos {
     margin-bottom: 10px;
     font-size: 35px;
     font-weight: bolder;
 }
-.jornada{
+
+.jornada {
     margin-bottom: 20px;
     font-size: 18px;
     font-weight: bolder;
 }
 
-.textoNos{
+.textoNos {
     font-weight: 500;
     font-size: 22px;
 }
 
-.diagrama{
+.diagrama {
     height: auto;
     width: 1100px;
     margin-bottom: 10%;
@@ -182,7 +182,7 @@ body {
     margin-right: 30%;
 }
 
-.texto2{
+.texto2 {
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -193,7 +193,7 @@ body {
     color: white;
 }
 
-.segundotextos{
+.segundotextos {
     margin-right: 350px;
     justify-content: center;
     margin-right: 30%;
@@ -203,7 +203,7 @@ body {
     border-radius: 50px;
 }
 
-.cadastro2{
+.cadastro2 {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -212,14 +212,14 @@ body {
     font-weight: bold;
 }
 
-.oqueFazemos{
+.oqueFazemos {
     margin-bottom: 10px;
     font-size: 30px;
     font-weight: bolder;
     text-align: center;
 }
 
-.textoFazemos{
+.textoFazemos {
     font-weight: 500;
     font-size: 20px;
     text-align: center;
@@ -227,23 +227,24 @@ body {
     margin-right: 20%;
 }
 
-.rodape{
+.rodape {
     width: 100%;
     background-color: #364DAA;
     color: white;
     height: 120px;
     display: flex;
-    flex-direction: column;  
+    flex-direction: column;
     border-top: 3px solid #040189;
     font-size: 20px;
 }
-.rodape .textContatos{
+
+.rodape .textContatos {
     margin-top: 10px;
     font-weight: bolder;
     font-size: 25px;
 }
 
-.infos{
+.infos {
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -251,33 +252,32 @@ body {
     gap: 35px;
 }
 
-.emails{
+.emails {
     display: flex;
     width: 100%;
     justify-content: space-evenly;
 }
 
-b{
+b {
     color: rgb(115, 202, 231);
 }
 
-.fotoNossa{
+.fotoNossa {
     margin-right: 30px;
 }
-  
-  ::-webkit-scrollbar{
+
+::-webkit-scrollbar {
     display: none;
 }
 
-.divLogout{
+.divLogout {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-.logout{
+.logout {
     width: 40px;
     height: 40px;
 }
-
