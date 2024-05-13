@@ -28,24 +28,53 @@
             <div>
                 <p class="tituloFunc">Funcionário</p>
             </div>
-            <div class="preguntasFunc">
-                <div>
-                    <p class="perguntas">Nome do funcionário</p>
-                    <input type="text" id="input_nomeFunc" autocomplete="off">
+
+            <div class="teste">
+                <div class="preguntasFunc">
+                    <div>
+                        <p class="perguntas">Nome do funcionário</p>
+                        <input type="text" id="input_nomeFunc" autocomplete="off">
+                    </div>
+
+                    <div>
+                        <p class="perguntas">E-mail</p>
+                        <input type="text" id="input_emailFunc" autocomplete="off">
+
+                    </div>
+
+
+
+                    <div>
+                        <p class="perguntas">Cargo do funcionário</p>
+                        <input type="text" id="input_cargo" autocomplete="off">
+                    </div>
+
+
                 </div>
-                <div>
-                    <p class="perguntas">Cargo do funcionário</p>
-                    <input type="text" id="input_cargo" autocomplete="off">
+
+                <div class="preguntasFunc2">
+                    <div>
+                        <p class="perguntas">Senha</p>
+                        <input type="text" id="input_senhaFunc" autocomplete="off">
+                    </div>
+
+                    <div>
+                        <p class="perguntas">Telefone do funcionário</p>
+                        <input type="number" id="input_telefone" autocomplete="off">
+                    </div>
+
+                    <div>
+                        <p class="perguntas">Id do Estabelecimento</p>
+                        <input type="number" id="input_nomeEstFuncTrab" autocomplete="off">
+                    </div>
                 </div>
-                <div>
-                    <p class="perguntas">Telefone do funcionário</p>
-                    <input type="number" id="input_telefone" autocomplete="off">
-                </div>
-                <div>
-                    <p class="perguntas">Nome do Estabelecimento <br>em que este funcionário trabalha</p>
-                    <input type="text" id="input_nomeEstFuncTrab" autocomplete="off">
-                </div>
+
             </div>
+
+
+
+
+
             <div>
                 <button class="botaoFF" onclick="cadastrarFuncionario()">Cadastrar Funcionário</button>
             </div>
@@ -77,7 +106,7 @@
         if (verificacao) {
             window.location.href = 'decisao.html';
         }
-        else{
+        else {
             alert('Preencha todos os campos')
         }
 
