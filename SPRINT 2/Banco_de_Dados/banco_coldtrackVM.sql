@@ -147,6 +147,7 @@ select portaRefrigerador.idPorta as 'Número da Porta', portaRefrigerador.produt
 create table temperaturaIdeal (
 idTemperatura int,
 fkSensor int,
+constraint pkCompTemp primary key (idTemperatura, fkSensor),
 tempMax float,
 tempMin float,
 constraint fkTempSensor foreign key (fkSensor) references sensor(idSensor));
@@ -193,7 +194,11 @@ truncate table dadoscaptados;
 select * from dadosCaptados;
 
 -- VIZUALIZANDO A QUANTIDADE DE VEZES QUE UMA PORTA FOI ABERTA E A TEMPERATURA DO REFRIGERADOR NAQUELE HORARIO
-select dadosCaptados.qtdAbertura as 'Quantidade de Aberturas', dadosCaptados.dataHora as 'Horario da Abertura', dadosCaptados.temperatura as 'Temperatura Interna', portaRefrigerador.idPorta as 'Número da Porta'
+select 
+dadosCaptados.qtdAbertura as 'Quantidade de Aberturas',
+dadosCaptados.dataHora as 'Horario da Abertura',
+dadosCaptados.temperatura as 'Temperatura Interna', 
+portaRefrigerador.idPorta as 'Número da Porta'
 	from dadosCaptados
 	join sensor on dadosCaptados.fkSensor = sensor.idSensor
     join portaRefrigerador on portaRefrigerador.fkSensor = sensor.idSensor where idPorta = 1;
