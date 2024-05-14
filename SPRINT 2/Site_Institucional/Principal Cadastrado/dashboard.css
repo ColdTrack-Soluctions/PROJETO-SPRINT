@@ -155,12 +155,29 @@ h1 {
 
 ::-webkit-scrollbar {
     display: none;
+}
+
+.meio{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 80vh;
+}
 
 
+.meio button{
+    width: 200px;
+    height:200px;
+    background-color: aqua;
+    border: 2px solid #040189;
+    border-radius: 30%;
+    font-size: 20px;
+    font-weight: bolder;
+    cursor: pointer;
+}
 
-
-
-
-
-
+.meio img{
+    width: 100px;
+    height:100px;
 }
