@@ -33,12 +33,14 @@ nomeFuncionario varchar(45),
 emailFuncionario varchar(45),
 senhaFuncionario varchar(45),
 telefoneFuncionario varchar(45),
-constraint fkClienteFuncionario foreign key (fkCliente) references cliente(idCliente));
+constraint fkClienteFuncionario foreign key (fkCliente) references cliente(idCliente),
+fkEstabelecimento int,
+constraint fkEstabelecimentoFuncionario foreign key (fkEstabelecimento) references estabelecimento (idEstabelecimento));
 
 -- INSERINDO INFORMAÇÕES SOBRE FUNCIONARIOS CADASTRADOS
 insert into funcionario values
-(default, 1, 'Diretor', 'João','joãodias@gmail.com', 'password','(55) 1198123-67890'),
-(default, 2, 'Gerente', 'Ana', 'anadias@gmail.com','password','(55) 1198765-1234');
+(default, 1, 'Diretor', 'João','joãodias@gmail.com', 'password','(55) 1198123-67890', 1),
+(default, 2, 'Gerente', 'Ana', 'anadias@gmail.com','password','(55) 1198765-1234', 2);
 
 select * from funcionario;
 
@@ -47,17 +49,16 @@ select funcionario.nomeFuncionario as 'Nome do Funcionario', funcionario.cargoFu
 	cliente.nomeCliente as 'Chefe' from funcionario
 	join cliente on fkCliente = idCliente;
 
-
 -- TABELA PARA O ESTABELECIMENTO E SUAS INFORMAÇÕES
 create table estabelecimento(
 idEstabelecimento int primary key auto_increment,
-nomeEstabelecimento varchar(100),
-UnidadefederativaEstabelecimento varchar(100),
-cidadeEstabelecimento varchar(100),
-bairroEstabelecimento varchar(100),
+nomeEstabelecimento varchar(45),
+UnidadefederativaEstabelecimento varchar(45),
+cidadeEstabelecimento varchar(45),
+bairroEstabelecimento varchar(45),
 cepEstabelecimento char(9),
-númeroEstabelecimento varchar(100),
-telefoneEstabelecimento varchar(100),
+númeroEstabelecimento varchar(45),
+telefoneEstabelecimento varchar(45),
 qtdRefrigeradores int,
 fkCliente int,
 constraint fkClienteEstabelecimento foreign key (fkCliente) references cliente(idCliente));
@@ -94,28 +95,60 @@ insert into refrigerador values
 select * from refrigerador;
 
 -- VISUALIZANDO A ÁREA DO REFRIGERADORES ONDE A QUANTIDADE DE PORTAS É "2"
-select localFisico as Área from refrigerador where qtd_portas = 2;
+select localFisico as Área from refrigerador where qtdportas = 2;
 
 
 -- TABELA PARA O ARDUÍNO E SUAS INFORMAÇÕES
-create table sensor(
-idSensor int primary key auto_increment,
-localFisico varchar(100),
+create table Arduino(
+idArduino int primary key auto_increment,
 versaoSistema varchar(100),
 dtInstalação date,
 ultimaManutenção date
 );
 
 -- INSERINDO INFORMAÇÕES SOBRE ARDUÍNOS UTILIZADOS
-insert into sensor values 
-(null,'Área Frigorifica - NORTE','1.0.0', '2023-03-12', '2024-04-04'),
-(null,'Área Frigorifica - SUL','1.0.0', '2023-04-19', '2024-04-03');
+insert into Arduino values 
+(null,'1.0.0', '2023-03-12', '2024-04-04'),
+(null,'1.0.0', '2023-04-19', '2024-04-03');
 
-select * from sensor;
+insert into Arduino values
+(null,'1.0.0', '2023-04-29', '2024-05-06'),
+(null,'1.0.0', '2023-05-06', null);
+
+select * from Arduino;
 
 -- EXIBINDO A DATA DE INSTALAÇÃO DE UM DETERMINADO SENSOR
-select date_format(dtInstalação, '%d-%m-%y')  as 'Data de Instalação' from sensor where idSensor = 1;
+select date_format(dtInstalação, '%d-%m-%y')  as 'Data de Instalação' from Arduino where idArduino = 1;
 
+-- TABELA PARA O SENSOR DE TEMPERATURA 
+
+create table SensorTemperatura(
+idSensorTemperatura int primary key auto_increment, 
+fkArduino int, 
+constraint fkArduinoTemperatura foreign key (fkArduino) references Arduino (idArduino));
+
+ insert into SensorTemperatura values
+ (default, 1),
+ (default, 2),
+ (default, 3),
+ (default, 4);
+ 
+ select * from SensorTemperatura;
+ 
+ -- TABELA PARA O SENSOR DE BLOQUEIO
+
+create table SensorBloqueio(
+idSensorBloqueio int primary key auto_increment, 
+fkArduino int, 
+constraint fkArduinoBloqueio foreign key (fkArduino) references Arduino (idArduino));
+
+insert into SensorBloqueio Values
+ (default, 1),
+ (default, 2),
+ (default, 3),
+ (default, 4);
+
+select * from SensorBloqueio;
 
 -- CRIANDO UMA TABELA PARA ALGUMAS PORTAS DE REFRIGERADORES 
 create table portaRefrigerador (
@@ -125,8 +158,8 @@ constraint pkCompPorta primary key (idPorta, fkRefrigerador),
 produtoArmazenado varchar(45),
 tipoAbertura varchar(45),
 constraint chkAbertura check (tipoAbertura in ('Puxar', 'Arrastar')),
-fkSensor int,
-constraint fkPortaSensor foreign key (fkSensor) references sensor (idSensor));
+fkArduino int,
+constraint fkPortaArduino foreign key (fkArduino) references Arduino (idArduino));
 
 -- INSERINDO DADOS DE PORTAS
 insert into portaRefrigerador values
@@ -146,61 +179,51 @@ select portaRefrigerador.idPorta as 'Número da Porta', portaRefrigerador.produt
 -- TABELA QUE INFORMA A TEMPERATURA IDEAL
 create table temperaturaIdeal (
 idTemperatura int,
-fkSensor int,
-constraint pkCompTemp primary key (idTemperatura, fkSensor),
+fkSensorTemperatura int,
 tempMax float,
 tempMin float,
-constraint fkTempSensor foreign key (fkSensor) references sensor(idSensor));
-
+constraint fkTempSensor foreign key (fkSensorTemperatura) references SensorTemperatura(idSensorTemperatura));
+drop table temperaturaideal;
 -- INSERINDO DADOS SOBRE A TEMPERATURA IDEAL QUE CADA SENSOR DEVE CAPTAR
 insert into temperaturaIdeal values 
-(1, 2, 5, -1),
-(2, 1, 5.3, -0.8);
+(1, 1, 5, -2.3),
+(2, 2, 5, -0.8);
 
 select * from temperaturaIdeal;
 
 -- EXIBINDO A TEMPERATURA MÁXIMA QUE UM DETERMINADO SENSOR DEVE CAPTAR ANTES DE NOTIFICAR O SISTEMA
-select sensor.idSensor as 'Identificador do Sensor', temperaturaIdeal.tempMax as 'Temperatura Máxima' 
+select Arduino.idArduino as 'Identificador do Arduino', temperaturaIdeal.tempMax as 'Temperatura Máxima' 
 	from temperaturaIdeal 
-	join sensor on fkSensor = idSensor where idSensor = 2;
-
+	join Arduino on fkSensorTemperatura = idArduino where idArduino = 2;
 
 -- CRIANDO UMA TABELA PARA INSERIR OS DADOS REGISTRADOS COM NOSSO SENSORES (TEMPERATURA & PROXIMIDADE)
 create table dadosCaptados(
 idDadosCaptados int,
-fkSensor int,
-constraint pkCompDados primary key (fkSensor, idDadosCaptados),
+fkSensorTemperatura int,
+fkSensorBloqueio int, 
+constraint pkCompDados primary key (fkSensorTemperatura, idDadosCaptados, fkSensorBloqueio),
 qtdAbertura int, 
 temperatura float,
 dataHora datetime default current_timestamp,
-constraint fkDadosSensor foreign key (fkSensor) references sensor(idSensor) 
-);
+constraint fkDadosTemperatura foreign key (fkSensorTemperatura) references sensorTemperatura(idSensorTemperatura),
+constraint fkDadosBloqueio foreign key (fkSensorBloqueio) references sensorBloqueio(idSensorBloqueio));
+
 alter table dadosCaptados modify column idDadosCaptados int auto_increment;
-/* INSERINDO ALGUNS REGRISTROS DE DADOS DOS SENSORES (APENAS UM EXEMPLO)
 
-	OBS : Em nosso projeto real usaremos uma API que irá dizer ao banco apenas quando as portas foram abertas e o seu respectivo horario.
-*/
+-- INSERINDO ALGUNS REGRISTROS DE DADOS DOS SENSORES (APENAS UM EXEMPLO)
+
+-- OBS : Em nosso projeto real usaremos uma API que irá dizer ao banco apenas quando as portas foram abertas e o seu respectivo horario.
+
 insert into dadosCaptados values
-(1, 1, 100, 2.3, default),
-(2, 1, 200, 1, default),
-(3, 1, 150, 0.4, default),
-(4, 2, 190, -1.3, default),
-(5, 2, 10, 2, default);
+(1, 1, 1, 5, 2.3, default),
+(2, 2, 2, 2, 0.5, default),
+(3, 3, 3, 6, 0.4, default),
+(4, 4, 4, 8, -1.3, default);
 
-select * from dadosCaptados join sensor on fkSensor = idSensor;
-
-
-truncate table dadoscaptados;
 select * from dadosCaptados;
 
--- VIZUALIZANDO A QUANTIDADE DE VEZES QUE UMA PORTA FOI ABERTA E A TEMPERATURA DO REFRIGERADOR NAQUELE HORARIO
-select 
-dadosCaptados.qtdAbertura as 'Quantidade de Aberturas',
-dadosCaptados.dataHora as 'Horario da Abertura',
-dadosCaptados.temperatura as 'Temperatura Interna', 
-portaRefrigerador.idPorta as 'Número da Porta'
-	from dadosCaptados
-	join sensor on dadosCaptados.fkSensor = sensor.idSensor
-    join portaRefrigerador on portaRefrigerador.fkSensor = sensor.idSensor where idPorta = 1;
+select * from dadosCaptados join sensorTemperatura on fkSensorTemperatura = idSensorTemperatura;
+
+
     
 
