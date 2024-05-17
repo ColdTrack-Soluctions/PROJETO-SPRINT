@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Funcionário</title>
     <link REL="SHORTCUT ICON" HREF="../assets/imagens/Logo_Quadrada-removebg.png">
-    <link rel="stylesheet" href="decisao.css">
+    <link rel="stylesheet" href="css/decisao.css">
 </head>
 
 <body>
@@ -15,12 +15,12 @@
             <img src="../assets/imagens/logo.svg" class="imagemfixa">
         </div>
         <div class="opcPrincipais">
-            <a href="../Principal Cadastrado/principal-cadastrado.html">Home</a>
-            <a href="../Principal Cadastrado/orcamento-cadastrado.html">Orçamentos</a>
-            <a href="../Principal Cadastrado/dashboard-cadastrado.html">Painel</a>
+            <a href="principal-cadastrado.html">Home</a>
+            <a href="orcamento-cadastrado.html">Orçamentos</a>
+            <a href="dashboard-cadastrado.html">Painel</a>
         </div>
         <div class="cadastro2">
-            <a href="../Decisao/decisao.html"> Voltar</a>
+            <a href="decisao.html"> Voltar</a>
         </div>
     </div>
     <div class="tudoF">
@@ -90,25 +90,70 @@
 </body>
 
 </html>
+<script src="./js/sessao.js"></script>
 <script>
+    window.load = Autenticar_Usuario(sessionStorage.NOME_USUARIO, sessionStorage.EMAIL_USUARIO, sessionStorage.ID_USUARIO);
 
     function cadastrarFuncionario() {
-        var verificacao = false
+        var verificacao = false;
+
         var nomeFunc = input_nomeFunc.value;
         var cargo = input_cargo.value;
         var telefone = input_telefone.value;
-        var ondeTrabalha = input_nomeEstFuncTrab.value;
+        var email = input_emailFunc.value;
+        var senha = input_senhaFunc.value;
+        var fkcliente = sessionStorage.ID_USUARIO;
 
-        if (nomeFunc != '' && cargo != '' && telefone != '' && ondeTrabalha != '') {
+        if (nomeFunc != '' && cargo != '' && telefone != '' && email != '' && senha != '') {
+
+            fetch("/usuarios/cadastrar_funcionario", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    // crie um atributo que recebe o valor recuperado aqui
+                    // Agora vá para o arquivo routes/usuario.js
+                    nomeFuncServer: nomeFunc,
+                    cargoServer: cargo,
+                    telefoneServer: telefone,
+                    emailServer: email,
+                    senhaServer: senha,
+                    idClienteServer: fkcliente
+                }),
+            })
+                .then(function (resposta) {
+                    console.log("resposta: ", resposta);
+
+                    if (resposta.ok) {
+                        cardErro.style.display = "block";
+
+                        mensagem_erro.innerHTML =
+                            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+                        // setTimeout(() => {
+                        //     window.location = "decisao.html";
+                        // }, "2000");
+
+
+                    } else {
+                        throw "Houve um erro ao tentar realizar o cadastro!";
+                    }
+                })
+                .catch(function (resposta) {
+                    console.log(`#ERRO: ${resposta}`);
+
+                });
+
             alert('Funcionário cadastrado com sucesso!');
-            verificacao = true
+            verificacao = true;
         }
-        if (verificacao) {
-            window.location.href = 'decisao.html';
-        }
-        else {
-            alert('Preencha todos os campos')
-        }
+        // if (verificacao) {
+        //     window.location.href = 'decisao.html';
+        // }
+        // else {
+        //     alert('Preencha todos os campos')
+        // }
 
 
     }

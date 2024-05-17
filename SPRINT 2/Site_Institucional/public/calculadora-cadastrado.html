@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora Financeira</title>
-    <link rel="stylesheet" href="../Calculadora/calculadora.css">
+    <link rel="stylesheet" href="css/calculadora.css">
     <link REL="SHORTCUT ICON" HREF="../assets/imagens/Logo_Quadrada-removebg.png">
 </head>
 
@@ -20,7 +20,7 @@
             <a href="dashboard-cadastrado.html">Painel</a>
         </div>
         <div class="cadastro2">
-            <a href="../Decisao/decisao.html"> Cadastrar <br> Estabelecimento | Funcionários </a>
+            <a href="decisao.html"> Cadastrar <br> Estabelecimento | Funcionários </a>
         </div>
     </div>
 
@@ -31,13 +31,13 @@
 
         <div class="campos">
 
-            Nome do seu estabeleciemento:<br> <input type="text" class="ipt"  id="ipt_nome">
+            Nome do seu estabeleciemento:<br> <input type="text" class="ipt" id="ipt_nome">
         </div>
         <div class="campos">
-          <br>  Quantos refrigeradores você tem? <br> <input type="number" class="ipt" id="ipt_refrigeradores">
+            <br> Quantos refrigeradores você tem? <br> <input type="number" class="ipt" id="ipt_refrigeradores">
         </div>
         <div class="campos">
-           <br> Quantos reais você fatura no mês: <br><input type="number" class="ipt" id="ipt_valorMes">
+            <br> Quantos reais você fatura no mês: <br><input type="number" class="ipt" id="ipt_valorMes">
         </div><br><br>
 
 
@@ -51,16 +51,16 @@
 
 </html>
 <script>
-        ipt_nome.value = 'SPTech Market'
-        ipt_refrigeradores.value = 50
-        ipt_valorMes.value = 25000
+    ipt_nome.value = 'SPTech Market';
+    ipt_refrigeradores.value = 50;
+    ipt_valorMes.value = 25000;
     function calcular() {
-        var nome = ipt_nome.value
-        var refrigeradores = Number(ipt_refrigeradores.value)
-        var mes = Number( ipt_valorMes.value);
+        var nome = ipt_nome.value;
+        var refrigeradores = Number(ipt_refrigeradores.value);
+        var mes = Number(ipt_valorMes.value);
         var conta = mes / 30;
         var conta2 = conta * 1.26;
-        var valorcom = conta2 * 30 ;
+        var valorcom = conta2 * 30;
         var anual = valorcom * 12;
         var semcont = mes * 12;
         var final = valorcom - mes;

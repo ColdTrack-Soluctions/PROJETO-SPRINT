@@ -19,12 +19,7 @@ function autenticar(req, res) {
                     if (resultadoAutenticar.length == 1) {
                         console.log(resultadoAutenticar);
 
-                        res.json({
-                            id: resultadoAutenticar[0].id,
-                            email: resultadoAutenticar[0].email,
-                            nome: resultadoAutenticar[0].nome,
-                            senha: resultadoAutenticar[0].senha,
-                        });
+                        res.status(200).json(resultadoAutenticar[0]);
 
 
                     } else if (resultadoAutenticar.length == 0) {
@@ -43,6 +38,23 @@ function autenticar(req, res) {
     }
 
 }
+
+function consulta_funcionario(res){
+    usuarioModel.consulta_funcionario(res).then(
+        function(resultado) {
+            if (resultado.length >= 1) {
+                // console.log('resultado: ' + JSON.stringify(resultado, null, 2))
+                return JSON.stringify(resultado);
+            }else{
+                
+                console.log('abc')
+                                        }  
+        }
+    ).catch(console.log('bca'));
+
+}
+
+
 
 function cadastrar(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
@@ -66,7 +78,7 @@ function cadastrar(req, res) {
     else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(nome, email, senha)
+        usuarioModel.cadastrar(nome, email, senha, cnpj)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -84,7 +96,144 @@ function cadastrar(req, res) {
     }
 }
 
+
+function cadastrar_estabelecimento(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+
+    var nomeE = req.body.nomeEServer;
+    var uf = req.body.ufServer;
+    var cidade = req.body.cidadeServer;
+    var bairro = req.body.bairroServer;
+    var cep = req.body.cepServer;
+    var numero = req.body.numeroServer;
+    var qntRefrigeradores = req.body.qntRefrigeradoresServer;
+    var idCliente = req.body.IdClienteServer;
+    var telefone = req.body.telefoneServer;
+
+    // Faça as validações dos valores
+    if (nomeE == undefined) {
+        res.status(400).send("Seu nome está undefined!");
+        console.log("Seu nome está undefined!");
+    } else if (uf == undefined) {
+        res.status(400).send("Seu email está undefined!");
+        console.log("Seu uf está undefined!");
+    } else if (cidade == undefined) {
+        res.status(400).send("Sua senha está undefined!");
+        console.log("Sua cidade está undefined!");
+    }
+    else if (bairro == undefined) {
+        res.status(400).send("Sua senha está undefined!");
+        console.log("Sua bairro está undefined!");
+    }
+    else if (cep == undefined) {
+        res.status(400).send("Sua senha está undefined!");
+        console.log("Sua cep está undefined!");
+    }
+    else if (numero == undefined) {
+        res.status(400).send("Sua senha está undefined!");
+        console.log("Sua numero está undefined!");
+    }
+    else if (qntRefrigeradores == undefined) {
+        res.status(400).send("Sua senha está undefined!");
+        console.log("Sua qntRefri está undefined!");
+    }
+    else if (idCliente == undefined) {
+        res.status(400).send("Sua senha está undefined!");
+        console.log("Sua idCliente está undefined!");
+    }
+    else if (telefone == undefined) {
+        res.status(400).send("Sua senha está undefined!");
+        console.log("Sua telefone está undefined!");
+    }
+    else {
+
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        usuarioModel.cadastrar_estabelecimento(nomeE, uf, cidade, bairro, cep, numero, qntRefrigeradores, idCliente, telefone)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
+
+function cadastrar_funcionario(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+
+
+    var nomeFunc = req.body.nomeFuncServer;
+    var cargo = req.body.cargoServer;
+    var telefone = req.body.telefoneServer;
+    var email = req.body.emailServer;
+    var senha = req.body.senhaServer;
+    var idCliente = req.body.idClienteServer;
+
+    // Faça as validações dos valores
+    if (nomeFunc == undefined) {
+        res.status(400).send("Seu nome está undefined!");
+        console.log("Seu nome está undefined!");
+    } else if (cargo == undefined) {
+        res.status(400).send("Seu cargo está undefined!");
+        console.log("Seu uf está undefined!");
+    } else if (telefone == undefined) {
+        res.status(400).send("Sua telefone está undefined!");
+        console.log("Sua cidade está undefined!");
+    }
+    else if (email == undefined) {
+        res.status(400).send("Sua email está undefined!");
+        console.log("Sua bairro está undefined!");
+    }
+    else if (senha == undefined) {
+        res.status(400).send("Sua senha está undefined!");
+        console.log("Sua cep está undefined!");
+    }
+    else if (idCliente == undefined) {
+        res.status(400).send("Sua idCliente está undefined!");
+        console.log("Sua numero está undefined!");
+    }
+    else {
+
+       
+         var aaa = consulta_funcionario(idCliente);
+        console.log('aaa' + aaa);
+        // console.log(teste + 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        // usuarioModel.cadastrar_funcionario(nomeFunc,
+        //     cargo,
+        //     telefone,
+        //     email,
+        //     senha,
+        //     idCliente)
+        //     .then(
+        //         function (resultado) {
+        //             res.json(resultado);
+        //         }
+        //     ).catch(
+        //         function (erro) {
+        //             console.log(erro);
+        //             console.log(
+        //                 "\nHouve um erro ao realizar o cadastro! Erro: ",
+        //                 erro.sqlMessage
+        //             );
+        //             res.status(500).json(erro.sqlMessage);
+        //         }
+        //     );
+    }
+}
+
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    cadastrar_estabelecimento,
+    cadastrar_funcionario
 };

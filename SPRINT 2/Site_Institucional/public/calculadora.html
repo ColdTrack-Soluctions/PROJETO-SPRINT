@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora Financeira</title>
-    <link rel="stylesheet" href="calculadora.css">
+    <link rel="stylesheet" href="css/calculadora.css">
     <link REL="SHORTCUT ICON" HREF="../assets/imagens/Logo_Quadrada-removebg.png">
 </head>
 
@@ -15,14 +15,14 @@
             <img src="../assets/imagens/logo.svg" alt="" class="imagemfixa">
         </div>
         <div class="opcPrincipais">
-            <a href="../Pagina Principal/pagina-principal.html #sobreNos">Sobre</a>
-            <a href="../Pagina Principal/pagina-principal.html">Home</a>
-            <a href="../Orçamento/Solicite-Orçamento.html">Orçamento</a>
+            <a href="pagina-principal.html #sobreNos">Sobre</a>
+            <a href="pagina-principal.html">Home</a>
+            <a href="Solicite-Orçamento.html">Orçamento</a>
         </div>
         <div class="cadastro">
-            <a href="../Cadastro/pagina-cadastro.html">Cadastro</a>
+            <a href="pagina-cadastro.html">Cadastro</a>
             <li>|</li>
-            <a href="../Login/pagina-login.html">Login</a>
+            <a href="pagina-login.html">Login</a>
         </div>
     </div>
 
@@ -36,10 +36,12 @@
             Nome do seu estabeleciemento:<br> <input type="text" class="ipt" id="ipt_nome" autocomplete="off">
         </div>
         <div class="campos">
-          <br>  Quantos refrigeradores você tem? <br> <input type="number" class="ipt" id="ipt_refrigeradores" autocomplete="off">
+            <br> Quantos refrigeradores você tem? <br> <input type="number" class="ipt" id="ipt_refrigeradores"
+                autocomplete="off">
         </div>
         <div class="campos">
-           <br> Quantos reais você faturou <br> no último mês: <br><input type="number" class="ipt" id="ipt_valorMes" autocomplete="off">
+            <br> Quantos reais você faturou <br> no último mês: <br><input type="number" class="ipt" id="ipt_valorMes"
+                autocomplete="off">
         </div><br><br>
 
 
@@ -54,16 +56,16 @@
 </html>
 <script>
 
-        ipt_nome.value = 'SPTech Market'
-        ipt_refrigeradores.value = 50
-        ipt_valorMes.value = 25000
+    ipt_nome.value = 'SPTech Market';
+    ipt_refrigeradores.value = 50;
+    ipt_valorMes.value = 25000;
     function calcular() {
-        var nome = ipt_nome.value
-        var refrigeradores = Number(ipt_refrigeradores.value)
-        var mes = Number( ipt_valorMes.value);
+        var nome = ipt_nome.value;
+        var refrigeradores = Number(ipt_refrigeradores.value);
+        var mes = Number(ipt_valorMes.value);
         var conta = mes / 30;
         var conta2 = conta * 1.26;
-        var valorcom = conta2 * 30 ;
+        var valorcom = conta2 * 30;
         var anual = valorcom * 12;
         var semcont = mes * 12;
         var final = valorcom - mes;

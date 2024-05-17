@@ -17,6 +17,17 @@ function limparSessao() {
     window.location = "../login.html";
 }
 
+function Autenticar_Usuario(usuario, email, id) {
+
+    if (usuario == undefined || email == undefined || id == undefined) {
+        window.location = 'pagina-login.html';
+    }
+    
+    else {
+        console.log('ESTOU AUTENTICADO');
+    }
+}
+
 // carregamento (loading)
 function aguardar() {
     var divAguardar = document.getElementById("div_aguardar");

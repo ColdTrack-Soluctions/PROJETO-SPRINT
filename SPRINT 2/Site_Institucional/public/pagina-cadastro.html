@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Página de Cadastro</title>
-    <link rel="stylesheet" href="pagina-cadastro.css" />
+    <link rel="stylesheet" href="css/pagina-cadastro.css" />
     <link REL="SHORTCUT ICON" HREF="../assets/imagens/Logo_Quadrada-removebg.png">
 
 </head>
@@ -17,11 +17,11 @@
                 <img src="../assets/imagens/logo.svg" alt="" class="imagemfixa">
             </div>
             <div class="opcPrincipais">
-                <a href="../Pagina Principal/pagina-principal.html #sobreNos">Sobre</a>
-                <a href="../Orçamento/Solicite-Orçamento.html">Orçamentos</a>
-                <a href="../Calculadora/calculadora.html">Calculadora</a>
+                <a href="pagina-principal.html #sobreNos">Sobre</a>
+                <a href="Solicite-Orçamento.html">Orçamentos</a>
+                <a href="calculadora.html">Calculadora</a>
             </div>
-            <a href="../Pagina Principal/pagina-principal.html">Voltar</a>
+            <a href="pagina-principal.html">Voltar</a>
         </div>
     </div>
 
@@ -56,7 +56,7 @@
                 <button onclick="cadastrar()">Cadastre - se</button>
             </div>
             <div class="ultimaMsg">
-                <p>Já tem um login? <a href="../Login/pagina-login.html"> Clique aqui</a></p>
+                <p>Já tem um login? <a href="pagina-login.html"> Clique aqui</a></p>
             </div>
         </div>
     </div>
@@ -70,6 +70,8 @@
     var senha_forte = false;
     var email_pode_cadastrar = false;
     var CNPJ_pode_cadastrar = false;
+
+    var nomeVar = nome_input.value
 
     function valida_email() {
         var email = email_input.value;
@@ -185,184 +187,47 @@
         }
         alert(mensagem);
         if (mensagem == 'Cadastro realizado com sucesso!') {
-            document.location.href = "../Principal Cadastrado/principal-cadastrado.html";
-        }
-    }
-</script>
-<script>
-    function cadastrar() {
-        aguardar();
-
-        //Recupere o valor da nova input pelo nome do id
-        // Agora vá para o método fetch logo abaixo
-        var senhas_iguais = false;
-        var senha_forte = false;
-        var email_pode_cadastrar = false;
-        var CNPJ_pode_cadastrar = false;
-
-        function valida_email() {
-            var emailVar = email_input.value;
-            var arroba = emailVar.indexOf('@');
-            var ponto = emailVar.indexOf('.');
-            var tamanho_email = emailVar.length;
-            var ultimaletra = emailVar[tamanho_email - 1];
-            var primeiraletra = emailVar[0];
-            if ((arroba == -1 || ponto == -1) || (ponto < arroba) || (ponto == arroba + 1) || (ultimaletra == '.') || (primeiraletra == '@')) {
-                alerta_email.innerHTML = `<span class = 'invalido'> Insira um email válido!</span>`;
-                email_pode_cadastrar = false;
-
-            } else {
-                alerta_email.innerHTML = '';
-                email_pode_cadastrar = true;
-            }
-        }
-        function valida_senha() {
-            var senhaVar = senha_input.value;
-            var tamanho = senhaVar.length;
-            if (tamanho > 5) {
-                alerta_senha.innerHTML = `<p style='color:green; padding: 5px; background-color: white; border-radius: 10px;'>Senha forte!</p>`;
-                senha_forte = true;
-            } else {
-                alerta_senha.innerHTML = `<span class = 'invalido' >Insira pelo menos 6 dígitos!</span>`;
-                senha_forte = false;
-            }
-        }
-        function valida_senha2() {
-            var senhaVar = senha_input.value;
-            var senha2 = senha2_input.value;
-            if (senhaVar != senha2) {
-                alerta_confirme_senha.innerHTML = `<span class = 'invalido'>As senhas não podem ser diferentes!</span>`;
-                senhas_iguais = false;
-
-            }
-            else {
-                alerta_confirme_senha.innerHTML = "";
-                senhas_iguais = true;
-            }
-        }
-
-        function valida_cnpj() {
-            var cnpj = cnpj_input.value;
-            var cnpj_tamanho = cnpj.length;
-            //modelo do cnpj: XX.XXX.XXX/XXXX-XX
-            //metodo 1 da mascara do cnpj  
-            if (cnpj_tamanho == '2') {
-                cnpj_input.value += '.';
-            }
-            else if (cnpj_tamanho == '6') {
-                cnpj_input.value += '.';
-            }
-            else if (cnpj_tamanho == '10') {
-                cnpj_input.value += '/';
-            }
-            else if (cnpj_tamanho == '15') {
-                cnpj_input.value += '-';
-            }
-
-            var cnpj_correto = true;
-
-            //for que percorre o tamanho do meu texto e valida se ele esta correto
-            for (var cnt = 0; (cnt <= cnpj_tamanho - 1); cnt++) {
-
-                if (cnt != 2 && cnt != 6 && cnt != 10 && cnt != 15) { //esse if representa os caracteres do cnpj, exceto os caracteres 2, 6, 10 e 15
-                    if ( //esse if valida se os caracteres inseridos são numeros de 0 a 9 
-                        cnpj[cnt] != "0" &&
-                        cnpj[cnt] != "1" &&
-                        cnpj[cnt] != "2" &&
-                        cnpj[cnt] != "3" &&
-                        cnpj[cnt] != "4" &&
-                        cnpj[cnt] != "5" &&
-                        cnpj[cnt] != "6" &&
-                        cnpj[cnt] != "7" &&
-                        cnpj[cnt] != "8" &&
-                        cnpj[cnt] != "9"
-                    )//se eles forem diferentes dos numeros de 0 a 9, o cnpj esta errado    
-                    {
-                        cnpj_correto = false;
-                    }
-
-                } else { //esse else representa e excessão do if de cima, ou seja, os caracteres 2, 6, 10 e 15 (que precisam necessariamente ser "." ou "-" ou "/")
-                    if ( //esse if valida se os caracteres estão na condição correta  
-                        cnpj[2] != "." ||
-                        cnpj[6] != "." ||
-                        cnpj[10] != "/" ||
-                        cnpj[15] != "-"
-                    ) { //se eles nao estiverem, o cnpj esta errado
-                        cnpj_correto = false;
-                    }
-                }
-            }
-
-            if (cnpj_tamanho != 18 || cnpj_correto == false) {
-                alerta_cnpj.innerHTML = `<span class = 'invalido'>Insira um CNPJ válido!</span>`;
-                cnpj_pode_cadastrar = false;
-
-            }
-            else {
-                alerta_cnpj.innerHTML = "";
-                cnpj_pode_cadastrar = true;
-            }
-        }
-
-        // Enviando o valor da nova input
-        fetch("/usuarios/cadastrar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                // crie um atributo que recebe o valor recuperado aqui
-                // Agora vá para o arquivo routes/usuario.js
-                nomeServer: nomeVar,
-                emailServer: emailVar,
-                senhaServer: senhaVar,
-                cnpjServer: cnpj
-            }),
-        })
-            .then(function (resposta) {
-                console.log("resposta: ", resposta);
-
-                if (resposta.ok) {
-                    cardErro.style.display = "block";
-
-                    mensagem_erro.innerHTML =
-                        "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
-                    setTimeout(() => {
-                        window.location = "principal-cadastrado.html";
-                    }, "2000");
-
-                    limparFormulario();
-                    finalizarAguardar();
-                } else {
-                    throw "Houve um erro ao tentar realizar o cadastro!";
-                }
+            document.location.href = "principal-cadastrado.html";
+      
+            fetch("/usuarios/cadastrar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    // crie um atributo que recebe o valor recuperado aqui
+                    // Agora vá para o arquivo routes/usuario.js
+                    nomeServer: nome_input.value,
+                    emailServer: email_input.value,
+                    senhaServer: senha_input.value,
+                    cnpjServer: cnpj_input.value
+                }),
             })
-            .catch(function (resposta) {
-                console.log(`#ERRO: ${resposta}`);
-                finalizarAguardar();
-            });
-
-        return false;
-    }
-
-    function listar() {
-        fetch("/empresas/listar", {
-            method: "GET",
-        })
-            .then(function (resposta) {
-                resposta.json().then((empresas) => {
-                    empresas.forEach((empresa) => {
-                        listaEmpresas.innerHTML += `<option value='${empresa.id}'>${empresa.cnpj}</option>`;
-                    });
+                .then(function (resposta) {
+                    console.log("resposta: ", resposta);
+    
+                    if (resposta.ok) {
+                        cardErro.style.display = "block";
+    
+                        mensagem_erro.innerHTML =
+                            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+    
+                        setTimeout(() => {
+                            window.location = "pagina-login.html";
+                        }, "2000");
+    
+                        limparFormulario();
+                        
+                    } else {
+                        throw "Houve um erro ao tentar realizar o cadastro!";
+                    }
+                })
+                .catch(function (resposta) {
+                    console.log(`#ERRO: ${resposta}`);
+                    
                 });
-            })
-            .catch(function (resposta) {
-                console.log(`#ERRO: ${resposta}`);
-            });
-    }
-
-    function sumirMensagem() {
-        cardErro.style.display = "none";
+        
+        
+        }
     }
 </script>
