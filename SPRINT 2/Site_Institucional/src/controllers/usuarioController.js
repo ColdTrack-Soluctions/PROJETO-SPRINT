@@ -39,18 +39,48 @@ function autenticar(req, res) {
 
 }
 
-function consulta_funcionario(res){
-    usuarioModel.consulta_funcionario(res).then(
-        function(resultado) {
-            if (resultado.length >= 1) {
-                // console.log('resultado: ' + JSON.stringify(resultado, null, 2))
-                return JSON.stringify(resultado);
-            }else{
+function consulta_funcionario(req, res){
+    var fkCliente = req.body.FkClienteServer;
+
+    if (fkCliente == undefined) {
+        res.status(400).send("Seu fkcliente da tabela funcionario está undefined!");
+    } else {
+
+        usuarioModel.consulta_funcionario(fkCliente)
+            .then(
+                function (resultado) {
+                    console.log(`\nResultados encontrados: ${resultado.length}`);
+                    console.log(`Resultados: ${JSON.stringify(resultado)}`); // transforma JSON em String
+
+                    if (resultado.length == 1) {
+                        console.log(resultado);
+                        res.status(200).json(resultado[0]);
+                    } else if (resultado.length == 0) {
+                        res.status(403).send("O cliente não tem funcionarios");
+                    } else {
+                        res.status(403).send("ERROEEREOREORERO");
+                    }
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+
+    // usuarioModel.consulta_funcionario(res).then(
+    //     function(resultado) {
+    //         if (resultado.length >= 1) {
+    //             // console.log('resultado: ' + JSON.stringify(resultado, null, 2))
+    //             return JSON.stringify(resultado);
+    //         }else{
                 
-                console.log('abc')
-                                        }  
-        }
-    ).catch(console.log('bca'));
+    //             console.log('abc')
+    //                                     }  
+    //     }
+    // ).catch(console.log('bca'));
 
 }
 
@@ -167,7 +197,7 @@ function cadastrar_estabelecimento(req, res) {
 }
 
 
-function cadastrar_funcionario(req, res) {
+async function cadastrar_funcionario(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
 
 
@@ -204,30 +234,32 @@ function cadastrar_funcionario(req, res) {
     else {
 
        
-         var aaa = consulta_funcionario(idCliente);
-        console.log('aaa' + aaa);
-        // console.log(teste + 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
+      
+        const id = await usuarioModel.consulta_funcionario(idCliente).then((data) =>{
+            return data.length == 0 ? 1 : data[0].idFuncionario + 1;
+        })
+
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        // usuarioModel.cadastrar_funcionario(nomeFunc,
-        //     cargo,
-        //     telefone,
-        //     email,
-        //     senha,
-        //     idCliente)
-        //     .then(
-        //         function (resultado) {
-        //             res.json(resultado);
-        //         }
-        //     ).catch(
-        //         function (erro) {
-        //             console.log(erro);
-        //             console.log(
-        //                 "\nHouve um erro ao realizar o cadastro! Erro: ",
-        //                 erro.sqlMessage
-        //             );
-        //             res.status(500).json(erro.sqlMessage);
-        //         }
-        //     );
+        usuarioModel.cadastrar_funcionario(id,nomeFunc,
+            cargo,
+            telefone,
+            email,
+            senha,
+            idCliente)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
     }
 }
 
@@ -235,5 +267,6 @@ module.exports = {
     autenticar,
     cadastrar,
     cadastrar_estabelecimento,
-    cadastrar_funcionario
+    cadastrar_funcionario,
+    consulta_funcionario
 };

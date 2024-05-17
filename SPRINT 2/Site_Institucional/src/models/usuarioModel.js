@@ -41,31 +41,31 @@ function cadastrar_estabelecimento(nomeE, uf, cidade, bairro, cep, numero, qntRe
 }
 
 
-function cadastrar_funcionario(nomeFunc, cargo, telefone, email, senha, idcliente) {
+function cadastrar_funcionario(id, nomeFunc, cargo, telefone, email, senha, idcliente) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar_estabelecimento():", nomeFunc, cargo, telefone, email, senha, idcliente);
 
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     var instrucaoSql = `
-    INSERT INTO funcionario (fkCliente,
+    INSERT INTO funcionario (idFuncionario, fkCliente,
         cargoFuncionario,
         nomeFuncionario,
         emailFuncionario,
         senhaFuncionario,
-        telefoneFuncionario) VALUES  ('${idcliente}', '${cargo}', '${nomeFunc}', '${email}', '${senha}','${telefone}');
+        telefoneFuncionario) VALUES  (${id}, '${idcliente}', '${cargo}', '${nomeFunc}', '${email}', '${senha}','${telefone}');
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
 
 
-function consulta_funcionario(idCliente) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function consulta_funcionario():", idCliente);
+function consulta_funcionario(fkCliente) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function consulta_funcionario():", fkCliente);
 
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     var instrucaoSql = `
-    select count(idFuncionario) from funcionario where fkCliente = ${idCliente}
+    select idFuncionario from funcionario where fkCliente = ${fkCliente} order by idFuncionario desc limit 1
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
