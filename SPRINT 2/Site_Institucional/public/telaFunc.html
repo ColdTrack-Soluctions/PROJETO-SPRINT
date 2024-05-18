@@ -103,8 +103,12 @@
         var email = input_emailFunc.value;
         var senha = input_senhaFunc.value;
         var fkcliente = sessionStorage.ID_USUARIO;
+        var ultimo_funcionario = 0;
 
         if (nomeFunc != '' && cargo != '' && telefone != '' && email != '' && senha != '') {
+          
+
+            console.log(ultimo_funcionario)
 
             fetch("/usuarios/cadastrar_funcionario", {
                 method: "POST",
