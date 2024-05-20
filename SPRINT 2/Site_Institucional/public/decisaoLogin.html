@@ -19,11 +19,11 @@
         </div>
     </div>
     <div class="meioLogin">
-        <div class="loginFuncionario">
+        <div onclick="funcionario()" class="loginFuncionario">
             <p>Você é um Funcionário de <br> um dos nossos clientes? </p>
             <p> Clique Aqui! </p>
         </div>
-        <div class="loginCliente">
+        <div onclick="cliente()" class="loginCliente">
             <p>Você é um dos nossos Clientes? </p>
             <p> Clique Aqui! </p>
         </div>
@@ -31,3 +31,11 @@
 </body>
 
 </html>
+<script>
+    function funcionario() {
+        window.location = 'pagina-login_funcionario.html'
+    }
+    function cliente() {
+        window.location = 'pagina-login.html'
+    }
+</script>
