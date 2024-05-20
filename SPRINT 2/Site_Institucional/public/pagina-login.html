@@ -17,7 +17,6 @@
                 <img src="../assets/imagens/logo.svg" alt="" class="imagemfixa">
             </div>
             <div class="opcPrincipais">
-                <a href="pagina-principal.html #sobreNos">Sobre</a>
                 <a href="Solicite-Orçamento.html">Orçamentos</a>
                 <a href="calculadora.html">Calculadora</a>
             </div>
@@ -66,7 +65,6 @@
             </div>
             <div class="div_botao_login">
                 <button onclick="entrar()" class="botao_login">Login</button>
-                É um funcionario? <a href="">Login como funcionário</a>
             </div>
             <div id="div_msg" class="msg"></div>
 
@@ -135,7 +133,7 @@
                         sessionStorage.ID_USUARIO = json.idCliente;
                         setTimeout(() => {
                             window.location = "principal-cadastrado.html";
-                        }, "3000");
+                        }, "2000");
                     });
 
                     finalizarAguardar();
