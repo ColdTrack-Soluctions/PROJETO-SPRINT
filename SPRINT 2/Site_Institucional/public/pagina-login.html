@@ -119,33 +119,26 @@
                 console.log("ESTOU NO THEN DO entrar()!");
 
                 if (resposta.ok) {
+                    console.log('ENTREI AQUI');
                     // console.log(resposta);
                     //     setTimeout(function espera() {
                     //         window.location.href = 'principal-cadastrado.html';
                     //     }, 2300);
                     resposta.json().then(json => {
+                        console.log('ESTOU NO JSON');
                         console.log(json);
                         console.log(JSON.stringify(json));
                         mensagem = '<span style =" color: green"> Login correto! </span> ';
-<<<<<<< HEAD
                         sessionStorage.EMAIL_USUARIO = json.email;
                         sessionStorage.NOME_USUARIO = json.nome;
                         sessionStorage.ID_USUARIO = json.id;
-                        sessionStorage.setItem('Refrigeradores',JSON.stringify(json.refrigeradores))
-                        // setTimeout(() => {
-                        //     window.location = "principal-cadastrado.html";
-                        // }, "3000");
-=======
-                        sessionStorage.EMAIL_USUARIO = json.emailCliente;
-                        sessionStorage.NOME_USUARIO = json.nomeCliente;
-                        sessionStorage.ID_USUARIO = json.idCliente;
+                        sessionStorage.setItem('Refrigeradores', JSON.stringify(json.refrigeradores));
                         setTimeout(() => {
                             window.location = "principal-cadastrado.html";
-                        }, "2000");
->>>>>>> 41067127af5df85248a3ee3b090113b25c85e69b
+                        }, "3000");
                     });
 
-                    finalizarAguardar();
+                    // finalizarAguardar();
 
 
                     console.log('DEU CERTOOOOOOOOOOOOOOOOOOOOOO');

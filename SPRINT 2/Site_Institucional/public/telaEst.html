@@ -85,7 +85,7 @@
 </html>
 <script src="./js/sessao.js"></script>
 <script>
-    window.load = Autenticar_Usuario(sessionStorage.NOME_USUARIO, sessionStorage.EMAIL_USUARIO, sessionStorage.ID_USUARIO);
+    // window.load = Autenticar_Usuario(sessionStorage.NOME_USUARIO, sessionStorage.EMAIL_USUARIO, sessionStorage.ID_USUARIO);
 
     function cadastrarEstabelecimento() {
         var verificacao = false;
@@ -131,7 +131,7 @@
                     "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
 
                 setTimeout(() => {
-                    window.location = "decisao.html";
+                    window.location = "telaRefrigerador.html";
                 }, "2000");
 
                 
@@ -146,12 +146,6 @@
             alert('Estabelecimento cadastrado com sucesso!');
             verificacao = true;
         }
-        // if (verificacao) {
-        //     window.location.href = 'decisao.html';
-        // }
-        // else {
-        //     alert('Preencha todos os campos');
-        // }
     }
 
     function funcionario() {
