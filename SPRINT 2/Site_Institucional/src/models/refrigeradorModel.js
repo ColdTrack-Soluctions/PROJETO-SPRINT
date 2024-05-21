@@ -1,8 +1,11 @@
 var database = require("../database/config");
 
-function buscarAquariosPorEmpresa(empresaId) {
+function buscarRefrigeradorPorCliente(idcliente) {
 
-  var instrucaoSql = `SELECT * FROM aquario a WHERE fk_empresa = ${empresaId}`;
+  var instrucaoSql = `select idEstabelecimento as 'Estabelecimento_id', nomeEstabelecimento as 'Estabelecimento_nome', fkCliente as 'Cliente_Id', qtdRefrigeradores as 'Refrigeradores_qtd', idRefrigerador as 'Refrigerador_id' from estabelecimento join  refrigerador on fkestabelecimento = idestabelecimento 
+  where fkcliente = ${idcliente};
+  `;
+  
 
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
   return database.executar(instrucaoSql);
@@ -18,6 +21,6 @@ function cadastrar(empresaId, descricao) {
 
 
 module.exports = {
-  buscarAquariosPorEmpresa,
+  buscarRefrigeradorPorCliente,
   cadastrar
 }

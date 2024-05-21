@@ -1,4 +1,6 @@
 var usuarioModel = require("../models/usuarioModel");
+var refrigeradorModel = require("../models/refrigeradorModel");
+
 
 function autenticar(req, res) {
     var email = req.body.emailServer;
@@ -15,11 +17,28 @@ function autenticar(req, res) {
                 function (resultadoAutenticar) {
                     console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);
                     console.log(`Resultados: ${JSON.stringify(resultadoAutenticar)}`); // transforma JSON em String
-
                     if (resultadoAutenticar.length == 1) {
-                        console.log(resultadoAutenticar);
+                        // console.log(resultadoAutenticar);
+                        refrigeradorModel.buscarRefrigeradorPorCliente(resultadoAutenticar[0].idCliente)
+                            .then((resultadoRefrigeradores) => {
+                                if (resultadoRefrigeradores.length > 0) {
+                                    res.json({
+                                        id: resultadoAutenticar[0].idCliente,
+                                        email: resultadoAutenticar[0].emailCliente,
+                                        nome: resultadoAutenticar[0].nomeCliente,
+                                        senha: resultadoAutenticar[0].senhaCliente,
+                                        refrigeradores: resultadoRefrigeradores
+                                    });
+                                } else {
+                                    res.status(204).json({ refrigeradores: [] });
+                                }
+                            })
 
-                        res.status(200).json(resultadoAutenticar[0]);
+
+
+                        // res.status(200).json(resultadoAutenticar[0]);
+
+
 
 
                     } else if (resultadoAutenticar.length == 0) {
@@ -236,6 +255,72 @@ function cadastrar_estabelecimento(req, res) {
 }
 
 
+
+
+async function cadastrar_refrigerador(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+
+    var local_fisico = req.body.local_fisicoServer; 
+    var marca = req.body.marcaServer; 
+    var modelo = req.body.modeloServer; 
+    var qntportas = req.body.qntportasServer; 
+    var idCliente = req.body.idClienteServer; 
+
+    // Faça as validações dos valores
+    if (local_fisico == undefined) {
+        res.status(400).send("Seu local fisico está undefined!");
+        console.log("Seu loscal fisico está undefined!");
+    } else if (marca == undefined) {
+        res.status(400).send("Sua marca está undefined!");
+        console.log("Sua marca está undefined!");
+    } else if (modelo == undefined) {
+        res.status(400).send("Seu modelo está undefined!");
+        console.log("Seu modelo está undefined!");
+    }
+    else if (qntportas == undefined) {
+        res.status(400).send("Sua qtdportas está undefined!");
+        console.log("Sua qntdportas está undefined!");
+    }
+    else if (idCliente == undefined) {
+        res.status(400).send("Sua senha está undefined!");
+        console.log("Sua idCliente está undefined!");
+    }
+    else {
+
+        const idrefrigerador = await usuarioModel.consulta_refrigerador(idCliente).then((data) =>{
+            return data.length == 0 ? 1 : data[0].idRefrigerador + 1;
+        })
+
+     
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+
+        const data = await usuarioModel.cadastrar_refrigerador(local_fisico, marca, modelo, qntportas, idCliente, idrefrigerador)
+            .then(
+                function (resultado) {
+                    return resultado;
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+
+
+            usuarioModel.atualiza_refrigerador_estabelecimento(idrefrigerador, idCliente).then((resultado) => {
+                res.json([resultado, data]);
+            }).catch((erro) => {
+                console.log(erro);
+                res.status(500).json(erro.sqlMessage);
+            });
+    }
+}
+
+
 async function cadastrar_funcionario(req, res){
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
 
@@ -299,6 +384,7 @@ module.exports = {
     autenticar_funcionario,
     cadastrar,
     cadastrar_estabelecimento,
+    cadastrar_refrigerador,
     cadastrar_funcionario,
     consulta_funcionario
 };
