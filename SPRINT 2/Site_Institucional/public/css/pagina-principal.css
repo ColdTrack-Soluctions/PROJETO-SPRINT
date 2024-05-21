@@ -281,3 +281,50 @@ b {
     width: 40px;
     height: 40px;
 }
+
+.meioLogin {
+    display: flex;
+    height: 80vh;
+    justify-content: center;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.loginFuncionario,
+.loginCliente {
+    display: flex;
+    flex-direction: column;
+    border: 3px solid white;
+    border-radius: 30px;
+    height: 40vh;
+    gap: 60px;
+    width: 30vw;
+    text-align: center;
+    color: white;
+    padding: 15px;
+    font-size: 30px;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginCliente {
+    background: linear-gradient(160deg, rgb(6, 183, 249) 11.2%, rgb(25, 74, 236) 91.1%);
+    cursor: pointer;
+}
+
+.loginCliente:hover {
+    background: linear-gradient(160deg, rgb(2, 159, 216) 11.2%, rgb(10, 59, 221) 91.1%);
+    margin-top: -30px;
+    transition: 0.5s;
+}
+
+.loginFuncionario {
+    background: linear-gradient(160deg, rgb(30, 144, 231) 27.1%, rgb(67, 101, 225) 77.8%);
+    cursor: pointer;
+}
+
+.loginFuncionario:hover {
+    background: linear-gradient(160deg, rgb(15, 126, 210) 29.1%, rgb(56, 95, 234) 75.8%);
+    margin-top: -30px;
+    transition: 0.5s;
+}

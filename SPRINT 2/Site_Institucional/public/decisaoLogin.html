@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funcionário ou Cliente</title>
+    <link rel="stylesheet" href="css/pagina-principal.css">
+    <link REL="SHORTCUT ICON" HREF="../assets/imagens/Logo_Quadrada-removebg.png">
+</head>
+
+<body>
+    <div class="header">
+        <div class="imagem1">
+            <img src="../assets/imagens/logo.svg" class="imagemfixa">
+        </div>
+        <div class="opcPrincipais">
+            <a href="index.html">Voltar</a>
+        </div>
+    </div>
+    <div class="meioLogin">
+        <div onclick="funcionario()" class="loginFuncionario">
+            <p>Você é um Funcionário de <br> um dos nossos clientes? </p>
+            <p> Clique Aqui! </p>
+        </div>
+        <div onclick="cliente()" class="loginCliente">
+            <p>Você é um dos nossos Clientes? </p>
+            <p> Clique Aqui! </p>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    function funcionario() {
+        window.location = 'pagina-login_funcionario.html'
+    }
+    function cliente() {
+        window.location = 'pagina-login.html'
+    }
+</script>

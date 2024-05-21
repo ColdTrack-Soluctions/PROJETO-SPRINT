@@ -157,7 +157,10 @@ input:focus {
     border-radius: 10px;
 }
 
-#alerta_email, #alerta_senha, #alerta_confirme_senha, #alerta_cnpj{
+#alerta_email,
+#alerta_senha,
+#alerta_confirme_senha,
+#alerta_cnpj {
     margin-bottom: 20px;
 }
 
