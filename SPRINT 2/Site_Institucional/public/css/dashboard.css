@@ -48,7 +48,7 @@ body {
 a {
     text-decoration: none;
     color: white;
-    font-weight:bolder 
+    font-weight: bolder
 }
 
 .opcPrincipais {
@@ -155,7 +155,7 @@ h1 {
     display: none;
 }
 
-.meio{
+.meio {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -163,13 +163,13 @@ h1 {
     height: 80vh;
 }
 
-.meio button{
+.meio button {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 200px;
-    height:200px;
+    height: 200px;
     background-color: #364DAA;
     border: 4px solid white;
     border-radius: 30%;
@@ -178,13 +178,54 @@ h1 {
     cursor: pointer;
 }
 
-.meio button:hover{
+.meio button:hover {
     margin-top: -20px;
     transition: 0.5s;
     background-color: #4865d5;
 }
 
-.meio img{
+.meio img {
     width: 100px;
-    height:100px;
+    height: 100px;
+}
+
+.tudoCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    gap: 50px  ;
+}
+
+.refrigeradores{
+    font-size: 30px;
+    color: white;
+    display: flex;
+    font-weight: bold;
+    margin-bottom: 6%;
+}
+
+.cardRefri {
+    height: 300px;
+    width: 600px;
+    border: white 3px solid;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+    background: linear-gradient(160deg, rgb(0, 82, 212), rgb(67, 100, 247), rgb(111, 177, 252));
+    ;
+}
+
+.cardRefri:hover {
+    margin-top: -10px;
+    margin-bottom: 10px;
+    transition: 0.5s;
+    background: linear-gradient(160deg, rgb(2, 64, 165), rgb(53, 88, 240), rgb(51, 122, 203));
+}
+
+.cardRefri p {
+    color: white;
+    font-size: 25px;
 }
