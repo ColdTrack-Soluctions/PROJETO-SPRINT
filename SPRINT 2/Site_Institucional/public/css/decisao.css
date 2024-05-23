@@ -264,6 +264,15 @@ input:focus {
     flex-direction: column;
 }
 
+.tudoE .imagemPerguntaR{
+    margin-top: -2%;
+    /* margin-left: 10%; */
+    height: 550px;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+}
+
 .tudoE{
     display: flex;
     align-items: center;
@@ -312,6 +321,13 @@ input:focus {
     margin-left: 60%;
 }
 
+.tudoE .cardE .tituloR{
+    font-size: 50px;
+    font-weight: bolder;
+    margin-top: 20%;
+    margin-bottom: 15%;
+}
+
 .cardE .cliqueAquiDiv{
     margin-left: 120%;
     display: flex;
@@ -340,6 +356,24 @@ input:focus {
     box-shadow: 4px 4px 8px rgb(40, 110, 133);
 }
 
+.tudoE .cardE .botaoR {
+    height: 50px;
+    width: 260px;
+    background-color: #5F9EA0;
+    color: white;
+    border: white 2px solid;
+    border-radius: 20px;
+    font-weight: bolder;
+    font-size: 20px;
+    cursor: pointer;
+    margin-top: 9%;
+    margin-bottom: 10%;
+    box-shadow: 4px 4px 8px rgb(40, 110, 133);
+}
+
 .tudoE .cardE .botaoEE:hover{
+    background-color: rgb(40, 110, 133);
+}
+.tudoE .cardE .botaoR:hover{
     background-color: rgb(40, 110, 133);
 }
