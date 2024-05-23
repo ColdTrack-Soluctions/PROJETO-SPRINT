@@ -2,7 +2,7 @@ var database = require("../database/config");
 
 function buscarRefrigeradorPorCliente(idcliente) {
 
-  var instrucaoSql = `select idEstabelecimento as 'Estabelecimento_id', nomeEstabelecimento as 'Estabelecimento_nome', fkCliente as 'Cliente_Id', qtdRefrigeradores as 'Refrigeradores_qtd', idRefrigerador as 'Refrigerador_id' from estabelecimento join  refrigerador on fkestabelecimento = idestabelecimento 
+  var instrucaoSql = `select idEstabelecimento as 'Estabelecimento_id', nomeEstabelecimento as 'Estabelecimento_nome', fkCliente as 'Cliente_Id', qtdRefrigeradores as 'Refrigeradores_qtd', idRefrigerador as 'Refrigerador_id', localFisico as 'Local' from estabelecimento join  refrigerador on fkestabelecimento = idestabelecimento 
   where fkcliente = ${idcliente};
   `;
   
