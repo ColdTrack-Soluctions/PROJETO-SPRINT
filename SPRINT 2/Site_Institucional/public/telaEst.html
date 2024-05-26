@@ -23,7 +23,7 @@
             <a href="decisao.html"> Voltar</a>
         </div>
     </div>
-    <div class="tudoE">
+    <div class="tudoE" id="tudoE">
         <div class="cardE">
 
             <div>
@@ -62,10 +62,6 @@
                     <p class="perguntas">Telefone do Estabelecimento</p>
                     <input type="number" id="input_telefone" autocomplete="off">
                 </div>
-                <div>
-                    <p class="perguntas">Quantidade de Refrigeradores no Estabelecimento</p>
-                    <input type="number" id="input_qntRefrigeradores" autocomplete="off">
-                </div>
             </div>
 
             <div>
@@ -96,10 +92,12 @@
         var telefone = input_telefone.value;
         var cep = input_cep.value;
         var numero = input_numero.value;
-        var qntRefrigeradores = input_qntRefrigeradores.value;
         var idCliente = sessionStorage.ID_USUARIO;
 
-        if (nomeE != '' && uf != '' && cidade != '' && bairro != '' && cep != '' && numero != '' && telefone != '' && qntRefrigeradores != '') {
+
+
+
+        if (nomeE != '' && uf != '' && cidade != '' && bairro != '' && cep != '' && numero != '' && telefone != '') {
             var mensagem = '';
 
     fetch("/usuarios/cadastrar_estabelecimento", {
@@ -117,7 +115,6 @@
             telefoneServer: telefone,
             cepServer: cep,
             numeroServer: numero,
-            qntRefrigeradoresServer: qntRefrigeradores,
             IdClienteServer: idCliente
         }),
     })
@@ -125,14 +122,33 @@
             console.log("resposta: ", resposta);
 
             if (resposta.ok) {
-                cardErro.style.display = "block";
 
-                mensagem_erro.innerHTML =
-                    "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
+              
+    
+                tudoE.classList.add('invisivel');
+                        setTimeout(()=>{
+                                            tudoE.style.display = 'none'
+                                            var novoelemento = document.createElement('div')
+                                            novoelemento.classList.add('painel_sucesso')
+                                            novoelemento.id = 'painel_sucesso'
+                                            novoelemento.innerHTML = `
+                                            <h1>Cadastro realizado com sucesso!</h1> <br>
+                                            <br>
+                                            <h3>Redirecionando Para a página de Refrigeradores. </h3><br>
+                                            <br>
+                                            <div class="loader"></div>
+                                            `
+                                            document.body.appendChild(novoelemento)
+                                            setTimeout(()=>{
+                                                            painel_sucesso.classList.add('visivel')
+                                                        }
+                                                        ,100)
+                                            }
+                                             ,500)
+                      
                 setTimeout(() => {
                     window.location = "telaRefrigerador.html";
-                }, "2000");
+                }, 2500);
 
                 
             } else {
@@ -143,9 +159,12 @@
             console.log(`#ERRO: ${resposta}`);
             
         });
-            alert('Estabelecimento cadastrado com sucesso!');
+            
             verificacao = true;
         }
+
+
+
     }
 
     function funcionario() {

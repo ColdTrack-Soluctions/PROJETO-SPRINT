@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/decisao.css">
 </head>
 
-<body>
+<body onload="buscar_estabelecimentos(1)">
     <div class="header">
         <div class="imagem1">
             <img src="../assets/imagens/logo.svg" class="imagemfixa">
@@ -23,7 +23,7 @@
             <a href="decisao.html"> Voltar</a>
         </div>
     </div>
-    <div class="tudoF">
+    <div class="tudoF" id="tudoE">
         <div class="cardF">
             <div>
                 <p class="tituloFunc">Funcionário</p>
@@ -31,6 +31,9 @@
 
             <div class="teste">
                 <div class="preguntasFunc">
+                    <div id="estabelecimento_escolha">
+                        
+                    </div>
                     <div>
                         <p class="perguntas">Nome do funcionário</p>
                         <input type="text" id="input_nomeFunc" autocomplete="off">
@@ -62,11 +65,6 @@
                         <p class="perguntas">Telefone do funcionário</p>
                         <input type="number" id="input_telefone" autocomplete="off">
                     </div>
-
-                    <div>
-                        <p class="perguntas">Id do Estabelecimento</p>
-                        <input type="number" id="input_nomeEstFuncTrab" autocomplete="off">
-                    </div>
                 </div>
 
             </div>
@@ -93,22 +91,22 @@
 <script src="./js/sessao.js"></script>
 <script>
     window.load = Autenticar_Usuario(sessionStorage.NOME_USUARIO, sessionStorage.EMAIL_USUARIO, sessionStorage.ID_USUARIO);
-
+    
+            
     function cadastrarFuncionario() {
-        var verificacao = false;
 
+        var estabelecimento = estabelecimento_slc.value;  
         var nomeFunc = input_nomeFunc.value;
         var cargo = input_cargo.value;
         var telefone = input_telefone.value;
         var email = input_emailFunc.value;
         var senha = input_senhaFunc.value;
         var fkcliente = sessionStorage.ID_USUARIO;
-        var ultimo_funcionario = 0;
 
         if (nomeFunc != '' && cargo != '' && telefone != '' && email != '' && senha != '') {
           
 
-            console.log(ultimo_funcionario)
+    
 
             fetch("/usuarios/cadastrar_funcionario", {
                 method: "POST",
@@ -118,6 +116,7 @@
                 body: JSON.stringify({
                     // crie um atributo que recebe o valor recuperado aqui
                     // Agora vá para o arquivo routes/usuario.js
+                    idEstabelecimento: estabelecimento,
                     nomeFuncServer: nomeFunc,
                     cargoServer: cargo,
                     telefoneServer: telefone,
@@ -130,14 +129,32 @@
                     console.log("resposta: ", resposta);
 
                     if (resposta.ok) {
-                        cardErro.style.display = "block";
+                        
 
-                        mensagem_erro.innerHTML =
-                            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
-                        // setTimeout(() => {
-                        //     window.location = "decisao.html";
-                        // }, "2000");
+                        tudoE.classList.add('invisivel');
+                            setTimeout(()=>{
+                                                tudoE.style.display = 'none'
+                                                var novoelemento = document.createElement('div')
+                                                novoelemento.classList.add('painel_sucesso')
+                                                novoelemento.id = 'painel_sucesso'
+                                                novoelemento.innerHTML = `
+                                                <h1>Cadastro realizado com sucesso!</h1> <br>
+                                                <br>
+                                                <h3>Redirecionando Para a página principal. </h3><br>
+                                                <br>
+                                                <div class="loader"></div>
+                                                `
+                                                document.body.appendChild(novoelemento)
+                                                setTimeout(()=>{
+                                                                painel_sucesso.classList.add('visivel')
+                                                            }
+                                                            ,100)
+                                                }
+                                                ,500)
+                        
+                    setTimeout(() => {
+                                         window.location = "principal-cadastrado.html";
+                                     }, 2500);
 
 
                     } else {
@@ -149,11 +166,8 @@
 
                 });
 
-            alert('Funcionário cadastrado com sucesso!');
-            verificacao = true;
+           
         }
     }
-    function estabelecimento() {
-        window.location.href = 'telaEst.html';
-    }
+    
 </script>

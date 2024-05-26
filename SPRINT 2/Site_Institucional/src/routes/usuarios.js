@@ -27,6 +27,11 @@ router.post("/autenticar", function (req, res) {
     usuarioController.autenticar(req, res);
 });
 
+
+router.post("/autenticardash", function (req, res) {
+    usuarioController.autenticardash(req, res);
+});
+
 router.post("/autenticar_funcionario", function (req, res) {
     usuarioController.autenticar_funcionario(req, res);
 });

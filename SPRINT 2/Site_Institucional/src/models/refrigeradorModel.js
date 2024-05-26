@@ -1,9 +1,16 @@
 var database = require("../database/config");
 
-function buscarRefrigeradorPorCliente(idcliente) {
+function buscarRefrigeradorPorCliente(idcliente, idestabelecimento) {
 
-  var instrucaoSql = `select idEstabelecimento as 'Estabelecimento_id', nomeEstabelecimento as 'Estabelecimento_nome', fkCliente as 'Cliente_Id', qtdRefrigeradores as 'Refrigeradores_qtd', idRefrigerador as 'Refrigerador_id', localFisico as 'Local' from estabelecimento join  refrigerador on fkestabelecimento = idestabelecimento 
-  where fkcliente = ${idcliente};
+  var instrucaoSql = `select * from refrigerador 
+  where refrigerador.fkcliente = ${idcliente} and refrigerador.fkestabelecimento = ${idestabelecimento};
+  `;
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
+}
+function buscarPortasPorRefrigerador(idestabelecimento, idcliente) {
+
+  var instrucaoSql = ` select * from portarefrigerador where fkestabelecimento = ${idestabelecimento} and fkcliente = ${idcliente};
   `;
   
 
@@ -22,5 +29,6 @@ function cadastrar(empresaId, descricao) {
 
 module.exports = {
   buscarRefrigeradorPorCliente,
-  cadastrar
+  cadastrar,
+  buscarPortasPorRefrigerador
 }

@@ -17,6 +17,7 @@ var app = express();
 
 var indexRouter = require("./src/routes/index");
 var usuarioRouter = require("./src/routes/usuarios");
+var estabelecimentoRouter = require("./src/routes/estabelecimento");
 var avisosRouter = require("./src/routes/avisos");
 var medidasRouter = require("./src/routes/medidas");
 var refrigeradoresRouter = require("./src/routes/refrigeradores");
@@ -30,6 +31,7 @@ app.use(cors());
 
 app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
+app.use("/estabelecimento", estabelecimentoRouter);
 app.use("/avisos", avisosRouter);
 app.use("/medidas", medidasRouter);
 app.use("/refrigeradores", refrigeradoresRouter);

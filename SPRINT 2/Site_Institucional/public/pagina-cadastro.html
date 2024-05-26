@@ -27,8 +27,8 @@
 
     <!-- <div class="container_total"> -->
 
-    <div class="container">
-        <div class="painel1">
+    <div class="container" id="container">
+        <div class="painel1" id="painel1">
             <div class="textoCadastro">
                 <p>Cadastre-se</p>
             </div>
@@ -178,15 +178,10 @@
 
     function cadastrar() {
         var mensagem = '';
-
         if (senhas_iguais && senha_forte && email_pode_cadastrar && cnpj_pode_cadastrar) {
-            mensagem = 'Cadastro realizado com sucesso!';
-        } else {
-            mensagem = 'Erro! Cadastro não realizado';
-        }
-        alert(mensagem);
-        if (mensagem == 'Cadastro realizado com sucesso!') {
-            document.location.href = "principal-cadastrado.html";
+           
+
+       
       
             fetch("/usuarios/cadastrar", {
                 method: "POST",
@@ -206,16 +201,34 @@
                     console.log("resposta: ", resposta);
     
                     if (resposta.ok) {
-                        cardErro.style.display = "block";
-    
-                        mensagem_erro.innerHTML =
-                            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+                        painel1.classList.add('invisivel');
+                        setTimeout(()=>{
+                                            painel1.style.display = 'none'
+                                            var novoelemento = document.createElement('div')
+                                            novoelemento.classList.add('painel_sucesso')
+                                            novoelemento.id = 'painel_sucesso'
+                                            novoelemento.innerHTML = `
+                                            <h1>Cadastro realizado com sucesso!</h1> <br>
+                                            <br>
+                                            <h3>Redirecionando Para a página de Login. </h3><br>
+                                            <br>
+                                            <div class="loader"></div>
+
+                                        
+                                            `
+                                            container.appendChild(novoelemento)
+                                            setTimeout(()=>{
+                                                            painel_sucesso.classList.add('visivel')
+                                                        }
+                                                        ,100)
+                                            }
+                                             ,500)
     
                         setTimeout(() => {
                             window.location = "pagina-login.html";
-                        }, "2000");
+                        }, 2000);
     
-                        limparFormulario();
+                     
                         
                     } else {
                         throw "Houve um erro ao tentar realizar o cadastro!";
@@ -226,7 +239,8 @@
                     
                 });
         
+            } 
         
-        }
+        
     }
 </script>

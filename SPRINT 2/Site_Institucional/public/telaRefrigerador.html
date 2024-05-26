@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/decisao.css">
 </head>
 
-<body>
+<body onload="buscar_estabelecimentos(1)">
     <div class="header">
         <div class="imagem1">
             <img src="../assets/imagens/logo.svg" class="imagemfixa">
@@ -23,13 +23,16 @@
             <a href="telaEst.html"> Voltar</a>
         </div> 
     </div>
-    <div class="tudoE">
+    <div class="tudoE" id="tudoE">
         <div class="cardE" style="display: flex; flex-direction: column; align-items: center;">
             <div style="display: flex; justify-content: center; align-items: center;">
                 <p class="tituloR">Refrigerador</p>
             </div>
             <div class="preguntasEsta">
                 <div class='card1'>
+                    <div id="estabelecimento_escolha">
+                        
+                    </div>
                     <div>
                         <p class="perguntas">Local Fisico</p>
                         <input type="text" id="input_local_fisico" autocomplete="off">
@@ -61,14 +64,20 @@
 <script>
     // window.load = Autenticar_Usuario(sessionStorage.NOME_USUARIO, sessionStorage.EMAIL_USUARIO, sessionStorage.ID_USUARIO);
 
+
+ 
+
+
     function cadastrarRefrigerador() {
 
-
+        var estabelecimento = estabelecimento_slc.value;
         var local_fisico = input_local_fisico.value;
         var marca = input_marca.value;
         var modelo = input_modelo.value;
         var qntportas = input_qntportas.value;
         var idCliente = sessionStorage.ID_USUARIO;
+
+       
 
         if (local_fisico != '' && marca != '' && modelo != '' && qntportas != '' && idCliente != '') {
             var mensagem = '';
@@ -85,21 +94,39 @@
                     marcaServer: marca,
                     modeloServer: modelo,
                     qntportasServer: qntportas,
-                    idClienteServer: idCliente
+                    idClienteServer: idCliente,
+                    idEstabelecimento: estabelecimento
                 }),
             })
                 .then(function (resposta) {
                     console.log("resposta: ", resposta);
 
                     if (resposta.ok) {
-                        cardErro.style.display = "block";
+                            tudoE.classList.add('invisivel');
+                                    setTimeout(()=>{
+                                                        tudoE.style.display = 'none'
+                                                        var novoelemento = document.createElement('div')
+                                                        novoelemento.classList.add('painel_sucesso')
+                                                        novoelemento.id = 'painel_sucesso'
+                                                        novoelemento.innerHTML = `
+                                                        <h1>Cadastro realizado com sucesso!</h1> <br>
+                                                        <br>
+                                                        <h3>Redirecionando Para a página principal. </h3><br>
+                                                        <br>
+                                                        <div class="loader"></div>
+                                                        `
+                                                        document.body.appendChild(novoelemento)
+                                                        setTimeout(()=>{
+                                                                        painel_sucesso.classList.add('visivel')
+                                                                    }
+                                                                    ,100)
+                                                        }
+                                                        ,500)
+                                
+                            setTimeout(() => {
+                                                 window.location = "principal-cadastrado.html";
+                                             }, 2500);
 
-                        mensagem_erro.innerHTML =
-                            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
-                        setTimeout(() => {
-                            window.location = "decisao.html";
-                        }, "2000");
 
 
                     } else {
@@ -114,14 +141,9 @@
 
 
 
-            alert('Refrigerador cadastrado com sucesso!');
-            verificacao = true;
+            
+           
         }
-        // if (verificacao) {
-        //     window.location.href = 'decisao.html';
-        // }
-        // else {
-        //     alert('Preencha todos os campos');
-        // }
+      
     }
 </script>

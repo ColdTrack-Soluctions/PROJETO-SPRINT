@@ -9,6 +9,15 @@ function autenticar(email, senha) {
     return database.executar(instrucaoSql);
 }
 
+function autenticardash(idUsuario) {
+ 
+    var instrucaoSql = `
+        SELECT idCliente, nomeCliente, emailCliente FROM cliente WHERE idCliente = '${idUsuario}';
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 function autenticar_funcionario(email, senha) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", email, senha);
     var instrucaoSql = `
@@ -32,49 +41,38 @@ function cadastrar(nome, email, senha, cnpj) {
     return database.executar(instrucaoSql);
 }
 
-function atualiza_refrigerador_estabelecimento(qtd_refrigeradores, idcliente) {
+function atualiza_refrigerador_estabelecimento(qtd_refrigeradores, idcliente, idEstabelecimento) {
     
 
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     var instrucaoSql = `
-        update estabelecimento set qtdRefrigeradores = ${qtd_refrigeradores} where fkCliente = ${idcliente};
+        update estabelecimento set qtdRefrigeradores = ${qtd_refrigeradores} where fkCliente = ${idcliente} and idEstabelecimento = ${idEstabelecimento};
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
 
-function cadastrar_estabelecimento(nomeE, uf, cidade, bairro, cep, numero, qntRefrigeradores, idCliente, telefone) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar_estabelecimento():", nomeE, uf, cidade, bairro, cep, numero, qntRefrigeradores, idCliente, telefone);
+function cadastrar_estabelecimento(idEstabelecimento, nomeE, uf, cidade, bairro, cep, numero, idCliente, telefone) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar_estabelecimento():", nomeE, uf, cidade, bairro, cep, numero, idCliente, telefone);
 
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     var instrucaoSql = `
-    INSERT INTO estabelecimento (UnidadefederativaEstabelecimento, telefoneEstabelecimento, qtdRefrigeradores,
-        númeroEstabelecimento,
-        nomeEstabelecimento,
-        fkCliente,
-        cidadeEstabelecimento,
-        cepEstabelecimento,
-        bairroEstabelecimento) VALUES ('${uf}', '${telefone}', '${qntRefrigeradores}', '${numero}', '${nomeE}','${idCliente}','${cidade}','${cep}','${bairro}');
+    INSERT INTO estabelecimento  VALUES (${idEstabelecimento}, ${idCliente},'${nomeE}', '${uf}', '${cidade}', '${bairro}',  '${cep}', '${numero}', '${telefone}', null);
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
 
 
-function cadastrar_funcionario(id, nomeFunc, cargo, telefone, email, senha, idcliente) {
+function cadastrar_funcionario(id, nomeFunc, cargo, telefone, email, senha, idcliente, idEstabelecimento) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar_estabelecimento():", nomeFunc, cargo, telefone, email, senha, idcliente);
 
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     var instrucaoSql = `
-    INSERT INTO funcionario (idFuncionario, fkCliente,
-        cargoFuncionario,
-        nomeFuncionario,
-        emailFuncionario,
-        senhaFuncionario,
-        telefoneFuncionario) VALUES  (${id}, '${idcliente}', '${cargo}', '${nomeFunc}', '${email}', '${senha}','${telefone}');
+    INSERT INTO funcionario VALUES  (${id}, ${idcliente}, ${idEstabelecimento} , '${cargo}', '${nomeFunc}', '${email}', '${senha}','${telefone}');
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -82,41 +80,40 @@ function cadastrar_funcionario(id, nomeFunc, cargo, telefone, email, senha, idcl
 
 
 
-function cadastrar_refrigerador(local_fisico, marca, modelo, qntportas, idCliente, idrefrigerador) {
+function cadastrar_refrigerador(local_fisico, marca, modelo, qntportas, idCliente, idrefrigerador, idEstabelecimento) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar_refrigerador():", local_fisico, marca, modelo, qntportas, idCliente, idrefrigerador);
 
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     var instrucaoSql = `
-    INSERT INTO refrigerador (idRefrigerador, localFisico,
+    INSERT INTO refrigerador (idRefrigerador, fkEstabelecimento, fkCliente, localFisico,
         marca,
-        modelo,
-        qtdPortas,
-        fkEstabelecimento) VALUES  (${idrefrigerador}, '${local_fisico}', '${marca}', '${modelo}', '${qntportas}', '${idCliente}');
+        modelo
+        ) VALUES  (${idrefrigerador}, ${idEstabelecimento}, ${idCliente} ,'${local_fisico}', '${marca}', '${modelo}');
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
 
 
-function consulta_funcionario(fkCliente) {
+function consulta_funcionario(fkCliente, fkEstabelecimento) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function consulta_funcionario():", fkCliente);
 
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     var instrucaoSql = `
-    select idFuncionario from funcionario where fkCliente = ${fkCliente} order by idFuncionario desc limit 1
+    select idFuncionario from funcionario where fkCliente = ${fkCliente} and fkEstabelecimento = ${fkEstabelecimento} order by idFuncionario desc limit 1;
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
-function consulta_refrigerador(fkCliente) {
+function consulta_refrigerador(fkCliente, fkEstabelecimento) {
     // console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function consulta_funcionario():", fkCliente);
 
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     var instrucaoSql = `
-    select idRefrigerador from refrigerador where fkEstabelecimento = ${fkCliente} order by idRefrigerador desc limit 1
+    select idRefrigerador from refrigerador where fkcliente = ${fkCliente} and fkestabelecimento = ${fkEstabelecimento} order by idRefrigerador desc limit 1;
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -124,6 +121,7 @@ function consulta_refrigerador(fkCliente) {
 
 module.exports = {
     autenticar,
+    autenticardash,
     autenticar_funcionario,
     cadastrar,
     cadastrar_estabelecimento,
