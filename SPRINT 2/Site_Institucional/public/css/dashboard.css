@@ -195,10 +195,10 @@ h1 {
     justify-content: center;
     align-items: center;
     height: 100%;
-    gap: 50px  ;
+    gap: 50px;
 }
 
-.refrigeradores{
+.refrigeradores {
     font-size: 30px;
     color: white;
     display: flex;
@@ -218,7 +218,6 @@ h1 {
     padding-top: 10px;
     gap: 20px;
     background: linear-gradient(160deg, rgb(0, 82, 212), rgb(67, 100, 247), rgb(111, 177, 252));
-    ;
 }
 
 .cardRefri:hover {
@@ -229,7 +228,6 @@ h1 {
 }
 
 .cardRefri p {
-
     color: white;
     font-size: 25px;
 }
@@ -242,9 +240,9 @@ h1 {
     width: 100%;
     align-items: center;
     color: white;
-  }
-  
-  .card-refrigerador {
+}
+
+.card-refrigerador {
     height: 300px;
     width: 600px;
     border: white 3px solid;
@@ -258,9 +256,33 @@ h1 {
     gap: 20px;
     background: linear-gradient(160deg, rgb(0, 82, 212), rgb(67, 100, 247), rgb(111, 177, 252));
     font-size: 20px;
-  }
-  
-  .card-refrigerador:hover {
+}
+
+.card-refrigerador1 {
+    height: 300px;
+    width: 600px;
+    border: white 3px solid;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    text-align: center;
+    padding-top: 10px;
+    gap: 20px;
+    background: radial-gradient(circle at 85.4% 50.8%, rgb(14, 72, 222) 0%, rgb(3, 22, 65) 74.2%);
+    font-size: 20px;
+}
+
+
+.card-refrigerador1:hover {
+    margin-top: -10px;
+    margin-bottom: 10px;
+    transition: 0.5s;
+    background: radial-gradient(circle at 85.4% 50.8%, rgb(14, 72, 222) 0%, rgb(3, 22, 65) 74.2%);
+}
+
+.card-refrigerador:hover {
     margin-top: -10px;
     margin-bottom: 10px;
     transition: 0.5s;
@@ -269,7 +291,7 @@ h1 {
 
 .card-portas-refrigerador {
     height: auto;
-    min-height: 300px;
+    min-height: 350px;
     width: 900px;
     border: white 3px solid;
     border-radius: 30px;
@@ -282,58 +304,62 @@ h1 {
     gap: 20px;
     background: linear-gradient(160deg, rgb(0, 82, 212), rgb(67, 100, 247), rgb(111, 177, 252));
     font-size: 20px;
-  }
-  
-  .card-portas-refrigerador:hover {
+}
+
+/* .card-portas-refrigerador:hover {
     margin-top: -10px;
     margin-bottom: 10px;
     transition: 0.5s;
     background: linear-gradient(160deg, rgb(2, 64, 165), rgb(53, 88, 240), rgb(51, 122, 203));
-}
-  .card-refrigerador h1 {
+} */
+
+.card-refrigerador h1 {
     width: fit-content;
-  }
-  
-  .card-refrigerador p {
+}
+
+.card-refrigerador p {
     margin: 0;
     font-size: 50px;
     font-weight: lighter;
     text-align: left;
-  }
-  
-  .card-btn{
+}
+
+.card-btn {
     width: 60px;
     height: 60px;
     background-color: transparent;
     border-color: transparent;
     font-size: 40px;
     color: white;
-  }
-  .card-btn:hover{
+}
+
+.card-btn:hover {
     cursor: pointer;
-  }
-  .desc-refrigerador {
+}
+
+.desc-refrigerador {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     width: 100%;
     font-weight: bold;
-  }
-  
-  .desc-refrigerador .cor-alerta {
+}
+
+.desc-refrigerador .cor-alerta {
     width: 30px;
-  }
-  
-  .title-refrigerador {
+}
+
+.title-refrigerador {
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
     width: 100%;
     color: white;
-  }
-  .opcao{
+}
+
+.opcao {
     gap: 20px;
     font-size: 15px;
     border-radius: 10px;
@@ -344,14 +370,21 @@ h1 {
     width: 500px;
     min-height: 250px;
     height: auto;
-    background-color: #364DAA;
-    border: 3px #040189 solid;
+    background: radial-gradient(circle at 10% 20%, rgb(7, 121, 222) 0%, rgb(20, 72, 140) 90%);
+    border: 3px white solid;
     color: white;
     width: 400px;
     height: 70px;
-    
-  }
-  .opcao:hover{
-    margin-top: -10px;
+
+}
+.opcao:hover {
+    margin-top: -15px;
     cursor: pointer;
-  }
+    transition: 0.5s;
+}
+
+.opcao:not(:hover){
+    margin-top: 15px;
+    cursor: pointer;
+    transition: 0.8s;
+}

@@ -29,11 +29,10 @@
                 <p class="tituloFunc">Funcionário</p>
             </div>
 
-            <div class="teste">
+            <div id="estabelecimento_escolha"></div>
+            
+            <div class="teste" style=" display: flex;align-items: center;">
                 <div class="preguntasFunc">
-                    <div id="estabelecimento_escolha">
-                        
-                    </div>
                     <div>
                         <p class="perguntas">Nome do funcionário</p>
                         <input type="text" id="input_nomeFunc" autocomplete="off">
@@ -69,10 +68,6 @@
 
             </div>
 
-
-
-
-
             <div>
                 <button class="botaoFF" onclick="cadastrarFuncionario()">Cadastrar Funcionário</button>
             </div>
@@ -91,11 +86,14 @@
 <script src="./js/sessao.js"></script>
 <script>
     window.load = Autenticar_Usuario(sessionStorage.NOME_USUARIO, sessionStorage.EMAIL_USUARIO, sessionStorage.ID_USUARIO);
-    
-            
+
+    function estabelecimento() {
+        window.location.href = 'telaEst.html';
+    }
+
     function cadastrarFuncionario() {
 
-        var estabelecimento = estabelecimento_slc.value;  
+        var estabelecimento = estabelecimento_slc.value;
         var nomeFunc = input_nomeFunc.value;
         var cargo = input_cargo.value;
         var telefone = input_telefone.value;
@@ -104,9 +102,9 @@
         var fkcliente = sessionStorage.ID_USUARIO;
 
         if (nomeFunc != '' && cargo != '' && telefone != '' && email != '' && senha != '') {
-          
 
-    
+
+
 
             fetch("/usuarios/cadastrar_funcionario", {
                 method: "POST",
@@ -129,32 +127,32 @@
                     console.log("resposta: ", resposta);
 
                     if (resposta.ok) {
-                        
+
 
                         tudoE.classList.add('invisivel');
-                            setTimeout(()=>{
-                                                tudoE.style.display = 'none'
-                                                var novoelemento = document.createElement('div')
-                                                novoelemento.classList.add('painel_sucesso')
-                                                novoelemento.id = 'painel_sucesso'
-                                                novoelemento.innerHTML = `
+                        setTimeout(() => {
+                            tudoE.style.display = 'none';
+                            var novoelemento = document.createElement('div');
+                            novoelemento.classList.add('painel_sucesso');
+                            novoelemento.id = 'painel_sucesso';
+                            novoelemento.innerHTML = `
                                                 <h1>Cadastro realizado com sucesso!</h1> <br>
                                                 <br>
                                                 <h3>Redirecionando Para a página principal. </h3><br>
                                                 <br>
                                                 <div class="loader"></div>
-                                                `
-                                                document.body.appendChild(novoelemento)
-                                                setTimeout(()=>{
-                                                                painel_sucesso.classList.add('visivel')
-                                                            }
-                                                            ,100)
-                                                }
-                                                ,500)
-                        
-                    setTimeout(() => {
-                                         window.location = "principal-cadastrado.html";
-                                     }, 2500);
+                                                `;
+                            document.body.appendChild(novoelemento);
+                            setTimeout(() => {
+                                painel_sucesso.classList.add('visivel');
+                            }
+                                , 100);
+                        }
+                            , 500);
+
+                        setTimeout(() => {
+                            window.location = "principal-cadastrado.html";
+                        }, 2500);
 
 
                     } else {
@@ -166,8 +164,8 @@
 
                 });
 
-           
+
         }
     }
-    
+
 </script>

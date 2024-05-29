@@ -46,7 +46,7 @@
 function exibirRefrigeradores() {
     estabelecimento = sessionStorage.nomeEstabelecimento;
     div_titulo.innerHTML = `
-    <p class="refrigeradores">Refrigeradores do Estabelecimento ${estabelecimento}</p>
+    <p class="refrigeradores">Refrigeradores do Estabelecimento<span style= 'color: #00FFFF; margin-left: 7px'>${estabelecimento}</span> </p>
     `
         var refrigeradores = JSON.parse(sessionStorage.getItem('Refrigeradores'));
             // console.log(refrigeradores);
@@ -101,7 +101,7 @@ function exibirRefrigeradores() {
                         if (item.fkRefrigerador == idRefrigerador){
 
                             texto += `
-                            <div class="card-refrigerador">
+                            <div class="card-refrigerador1">
                                 <div class="title-refrigerador">
                                     <h1>Porta ${item.idPorta}</h1>
                                     <h2>Produto Armazenado: ${item.produtoArmazenado}</h2>
@@ -110,7 +110,7 @@ function exibirRefrigeradores() {
                                     </div>
                                     <div class="desc-portas">
                                         <div class="temperatura">
-                                            <p id="abertura_porta_${item.idPorta}_refrigerador_${item.fkRefrigerador}">Aberturas</p>
+                <p id="abertura_porta_${item.idPorta}_refrigerador_${item.fkRefrigerador}" style = 'color: #00FFFF; font-size: 30px'>Aberturas:</p>
                                             </div>
                                             <div class="cor-alerta" id="card_${item.idPorta}"></div>
                                             </div>
@@ -149,7 +149,6 @@ function exibirRefrigeradores() {
     function fecharPortas(id){
         const teste = document.getElementById(id)
         teste.remove();
-
     }
 
 
