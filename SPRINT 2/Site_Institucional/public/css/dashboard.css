@@ -100,7 +100,7 @@ h1 {
 }
 
 .kpi span {
-    font-size: 37px;
+    font-size: 25px;
 }
 
 .kpi p {
@@ -109,6 +109,17 @@ h1 {
     margin-top: 10px;
     text-align: center;
     font-weight: bolder
+}
+
+
+.dash{
+    display: flex;
+    align-items: center;
+    height: 40vh;
+    width: 100%;
+justify-content: center;
+margin-top : 7%;
+
 }
 
 .container-chart {
