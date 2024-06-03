@@ -102,10 +102,7 @@
         // } else 
         var emailVar = login_input.value;
         var senhaVar = senha_input.value;
-
         if (tentativas != 0) {
-
-
 
             fetch("/usuarios/autenticar", {
                 method: "POST",
@@ -169,8 +166,5 @@
     function possofazerlogin() {
         tentativas = 4;
     }
-
-
-
 
 </script>
