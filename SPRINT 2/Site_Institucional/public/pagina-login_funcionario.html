@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Página de Login</title>
+    <title>Página de Login de Funcionario</title>
     <link rel="stylesheet" href="css/pagina-login.css" />
+    <link rel="stylesheet" href="css/pagina-login2.css" />
     <link REL="SHORTCUT ICON" HREF="../assets/imagens/Logo_Quadrada-removebg.png">
 
 </head>
@@ -26,30 +27,9 @@
 
 
     <div class="container">
-        <div class="container_registro">
-
-            <div class="painel_cadastro">
-                <div class="div_img">
-                    <div class="img"></div>
-                </div>
-            </div>
-            <div class="div_texto_cadastro">
-                <h1><b>NÃO TEM CONTA?</b></h1>
-                <br>
-                <p>Realize o cadastro para ter o <br>
-                    acesso ao nosso painel de <br>
-                    monitoramento</p>
-            </div>
-            <div class="div_botao_cadastro">
-                <a href="pagina-cadastro.html">
-                    <button class="botao_cadastro">Cadastre-se</button>
-                </a>
-            </div>
-        </div>
-
-        <div class="container_login">
+        <div class="container_login2">
             <div class="painel_login">
-                <h1>LOGIN</h1>
+                <h1>LOGIN DE FUNCIONÁRIO</h1>
             </div>
             <div class="div_login_inputs">
 
@@ -64,7 +44,7 @@
                 </div>
             </div>
             <div class="div_botao_login">
-                <button onclick="entrar()" class="botao_login">Login</button>
+                <button onclick="entrar_funcionario()" class="botao_login">Login</button>
             </div>
             <div id="div_msg" class="msg"></div>
 
@@ -83,23 +63,30 @@
         var ultimaletra = email[tamanho_email - 1];
         var primeiraletra = email[0];
         if ((arroba == -1 || ponto == -1) || (ponto < arroba) || (ponto == arroba + 1) || (ultimaletra == '.') || (primeiraletra == '@')) {
-            alerta_email.innerHTML = `<p style='color:red; margin: 10px'>Insira um email válido!</p>`;
+            alerta_email.innerHTML = `<p style='color:red; margin: 10px' 
+>Insira um email válido!</p>`;
 
 
         } else {
             alerta_email.innerHTML = '';
         }
     }
-    function entrar() {
+    function entrar_funcionario() {
         var mensagem = '';
+        // if (login == 'cliente@gmail.com' && senha == '123456' && tentativas > 0) {
+        //     mensagem = '<span style =" color: green"> Login correto! </span> ';
+        //     setTimeout(function espera() {
+        //         window.location.href = 'principal-cadastrado.html';
+        //     }, 2300);
+        // } else 
         var emailVar = login_input.value;
         var senhaVar = senha_input.value;
-        if (tentativas != 0) {
-<<<<<<< HEAD
 
-=======
->>>>>>> 6d3e24e8fe5dd0260c87b8deca64c1d84cae51d9
-            fetch("/usuarios/autenticar", {
+        if (tentativas != 0) {
+
+
+
+            fetch("/usuarios/autenticar_funcionario", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -112,49 +99,34 @@
                 console.log("ESTOU NO THEN DO entrar()!");
 
                 if (resposta.ok) {
-                    // console.log('ENTREI AQUI');
                     // console.log(resposta);
-                        
+                    //     setTimeout(function espera() {
+                    //         window.location.href = 'principal-cadastrado.html';
+                    //     }, 2300);
                     resposta.json().then(json => {
-                        // console.log('ESTOU NO JSON');
                         console.log(json);
-                        // console.log(JSON.stringify(json));
-                        mensagem = `<div style="
-                        display: flex; 
-                        flex-direction: column;
-                        justify-content: center;
-                        align-items: center;
-                        gap: 10px;"
-                                    <span style =" color: green"> Login correto! </span> <br>
-                                    <div class="loader"></div> 
-                                    </div>
-                        `;
-                        div_msg.innerHTML = mensagem;
-                        sessionStorage.EMAIL_USUARIO = json.email;
-                        sessionStorage.NOME_USUARIO = json.nome;
-                        sessionStorage.ID_USUARIO = json.id;
+                        console.log(JSON.stringify(json));
 
-                        if(json.estabelecimentos == undefined){
+                        mensagem = '<span style =" color: green"> Login correto! </span> ';
+                        sessionStorage.EMAIL_USUARIO = json.emailFuncionario;
+                        sessionStorage.NOME_USUARIO = json.nomeFuncionario;
+                        sessionStorage.ID_USUARIO = json.idFuncionario;
+                        sessionStorage.FK_CLIENTE = json.fkCliente;
                         setTimeout(() => {
-                            window.location = "decisao.html";
-                        }, 1500);    
-                        }else{
-                            
-                        // sessionStorage.setItem('Refrigeradores',JSON.stringify(json.refrigeradores))
-                        // sessionStorage.setItem('Refrigeradores_Portas', JSON.stringify(json.portasrefrigeradores));
-                        setTimeout(() => {
-                            window.location = "principal-cadastrado.html";
-                        }, 1500);
-
-                        }
-
+                            window.location = "./decisao-dashbord_funcionario.html";
+                        }, "3000");
                     });
+
+                    finalizarAguardar();
+
+
+                    console.log('DEU CERTOOOOOOOOOOOOOOOOOOOOOO');
                 } else {
 
                     console.log("Houve um erro ao tentar realizar o login!");
                     mensagem = ' <span style =" color: lightcoral">Erro! Login ou senha inválidos.</span>';
                     tentativas--;
-                    div_msg.innerHTML = mensagem;
+
                     resposta.text().then(texto => {
                         console.error(texto);
                     });
@@ -164,19 +136,21 @@
                 console.log(erro);
             });
 
-            
             return false;
         } else if (tentativas == 0) {
             mensagem = 'Bloqueado! Recarregue a página.';
-            div_msg.innerHTML = mensagem;
 
         }
 
-       
+        div_msg.innerHTML = mensagem;
+        // console.log(tentativas);
     }
 
     function possofazerlogin() {
         tentativas = 4;
     }
+
+
+
 
 </script>

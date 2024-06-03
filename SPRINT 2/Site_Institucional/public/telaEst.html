@@ -17,26 +17,26 @@
         <div class="opcPrincipais">
             <a href="principal-cadastrado.html">Home</a>
             <a href="orcamento-cadastrado.html">Orçamentos</a>
-            <a href="dashboard-cadastrado.html">Painel</a>
+            <a href="decisao-dashbord.html">Painel</a>
         </div>
         <div class="cadastro2">
             <a href="decisao.html"> Voltar</a>
         </div>
     </div>
-    <div class="tudoE">
+    <div class="tudoE" id="tudoE">
         <div class="cardE">
 
             <div>
                 <p class="tituloEsta">Estabelecimento</p>
             </div>
             <div class="preguntasEsta">
-                <div class='card1'>
+                <div class='card1' style="margin-right: 90px; margin-bottom: 15px;">
                     <div>
                         <p class="perguntas">Nome do Estabelecimento</p>
                         <input type="text" id="input_nomeEsta" autocomplete="off">
                     </div>
                     <div>
-                        <p class="perguntas">Unidade Federativa do Estabelecimento</p>
+                        <p class="perguntas">Unidade Federativa do <br>Estabelecimento</p>
                         <input type="text" id="input_uf" autocomplete="off">
                     </div>
                     <div>
@@ -49,7 +49,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card2">
+            <div class="card2" style="margin-top: -300px; margin-bottom: 50px;">
                 <div>
                     <p class="perguntas">CEP do Estabelecimento</p>
                     <input type="number" id="input_cep" autocomplete="off">
@@ -61,10 +61,6 @@
                 <div>
                     <p class="perguntas">Telefone do Estabelecimento</p>
                     <input type="number" id="input_telefone" autocomplete="off">
-                </div>
-                <div>
-                    <p class="perguntas">Quantidade de Refrigeradores no Estabelecimento</p>
-                    <input type="number" id="input_qntRefrigeradores" autocomplete="off">
                 </div>
             </div>
 
@@ -85,7 +81,7 @@
 </html>
 <script src="./js/sessao.js"></script>
 <script>
-    window.load = Autenticar_Usuario(sessionStorage.NOME_USUARIO, sessionStorage.EMAIL_USUARIO, sessionStorage.ID_USUARIO);
+    // window.load = Autenticar_Usuario(sessionStorage.NOME_USUARIO, sessionStorage.EMAIL_USUARIO, sessionStorage.ID_USUARIO);
 
     function cadastrarEstabelecimento() {
         var verificacao = false;
@@ -96,66 +92,79 @@
         var telefone = input_telefone.value;
         var cep = input_cep.value;
         var numero = input_numero.value;
-        var qntRefrigeradores = input_qntRefrigeradores.value;
         var idCliente = sessionStorage.ID_USUARIO;
 
-        if (nomeE != '' && uf != '' && cidade != '' && bairro != '' && cep != '' && numero != '' && telefone != '' && qntRefrigeradores != '') {
+
+
+
+        if (nomeE != '' && uf != '' && cidade != '' && bairro != '' && cep != '' && numero != '' && telefone != '') {
             var mensagem = '';
 
-    fetch("/usuarios/cadastrar_estabelecimento", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            // crie um atributo que recebe o valor recuperado aqui
-            // Agora vá para o arquivo routes/usuario.js
-            nomeEServer: nomeE,
-            ufServer: uf,
-            cidadeServer: cidade,
-            bairroServer: bairro,
-            telefoneServer: telefone,
-            cepServer: cep,
-            numeroServer: numero,
-            qntRefrigeradoresServer: qntRefrigeradores,
-            IdClienteServer: idCliente
-        }),
-    })
-        .then(function (resposta) {
-            console.log("resposta: ", resposta);
+            fetch("/usuarios/cadastrar_estabelecimento", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    // crie um atributo que recebe o valor recuperado aqui
+                    // Agora vá para o arquivo routes/usuario.js
+                    nomeEServer: nomeE,
+                    ufServer: uf,
+                    cidadeServer: cidade,
+                    bairroServer: bairro,
+                    telefoneServer: telefone,
+                    cepServer: cep,
+                    numeroServer: numero,
+                    IdClienteServer: idCliente
+                }),
+            })
+                .then(function (resposta) {
+                    console.log("resposta: ", resposta);
 
-            if (resposta.ok) {
-                cardErro.style.display = "block";
-
-                mensagem_erro.innerHTML =
-                    "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
-                setTimeout(() => {
-                    window.location = "decisao.html";
-                }, "2000");
-
-                
-            } else {
-                throw "Houve um erro ao tentar realizar o cadastro!";
-            }
-        })
-        .catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-            
-        });
+                    if (resposta.ok) {
 
 
 
+                        tudoE.classList.add('invisivel');
+                        setTimeout(() => {
+                            tudoE.style.display = 'none';
+                            var novoelemento = document.createElement('div');
+                            novoelemento.classList.add('painel_sucesso');
+                            novoelemento.id = 'painel_sucesso';
+                            novoelemento.innerHTML = `
+                                            <h1>Cadastro realizado com sucesso!</h1> <br>
+                                            <br>
+                                            <h3>Redirecionando Para a página de Refrigeradores. </h3><br>
+                                            <br>
+                                            <div class="loader"></div>
+                                            `;
+                            document.body.appendChild(novoelemento);
+                            setTimeout(() => {
+                                painel_sucesso.classList.add('visivel');
+                            }
+                                , 100);
+                        }
+                            , 500);
 
-            alert('Estabelecimento cadastrado com sucesso!');
+                        setTimeout(() => {
+                            window.location = "telaRefrigerador.html";
+                        }, 2500);
+
+
+                    } else {
+                        throw "Houve um erro ao tentar realizar o cadastro!";
+                    }
+                })
+                .catch(function (resposta) {
+                    console.log(`#ERRO: ${resposta}`);
+
+                });
+
             verificacao = true;
         }
-        // if (verificacao) {
-        //     window.location.href = 'decisao.html';
-        // }
-        // else {
-        //     alert('Preencha todos os campos');
-        // }
+
+
+
     }
 
     function funcionario() {

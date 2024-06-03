@@ -24,7 +24,7 @@
                 <a href="decisao.html"> Cadastrar <br> Estabelecimento | Funcionários </a>
             </div>
             <div class="divLogout">
-                <a href="pagina-principal.html"><img src="../assets/imagens/logout.png" alt="" class="logout"></a>
+                <a onclick="logout()"><img src="../assets/imagens/logout.png" alt="" class="logout"></a>
             </div>
         </div>
 
@@ -98,8 +98,10 @@
 </html>
 <script src="js/sessao.js"></script>
 <script>
-
-    window.load = Autenticar_Usuario(sessionStorage.NOME_USUARIO, sessionStorage.EMAIL_USUARIO, sessionStorage.ID_USUARIO);
+    window.onload = () => {
+        Autenticar_Usuario(sessionStorage.NOME_USUARIO, sessionStorage.EMAIL_USUARIO, sessionStorage.ID_USUARIO);
+        // autenticarLogado();
+            }
 
     function teste() {
         document.documentElement.style.scrollBehavior = 'smooth';

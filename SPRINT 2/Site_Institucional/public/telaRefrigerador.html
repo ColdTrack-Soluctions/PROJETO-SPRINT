@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refrigerador</title>
+    <link REL="SHORTCUT ICON" HREF="../assets/imagens/Logo_Quadrada-removebg.png">
+    <link rel="stylesheet" href="css/decisao.css">
+</head>
+
+<body onload="buscar_estabelecimentos(1)">
+    <div class="header">
+        <div class="imagem1">
+            <img src="../assets/imagens/logo.svg" class="imagemfixa">
+        </div>
+        <div class="cadastro2">
+            <a href="telaEst.html"> Voltar</a>
+        </div> 
+    </div>
+    <div class="tudoE" id="tudoE">
+        <div class="cardE" style="display: flex; flex-direction: column; align-items: center;">
+            <div style="display: flex; justify-content: center; align-items: center;">
+                <p class="tituloR">Refrigerador</p>
+            </div>
+            <div class="preguntasEsta">
+                <div class='card1'>
+                    <div id="estabelecimento_escolha">
+                        
+                    </div>
+                    <div>
+                        <p class="perguntas">Local Fisico</p>
+                        <input type="text" id="input_local_fisico" autocomplete="off">
+                    </div>
+                    <div>
+                        <p class="perguntas">Marca</p>
+                        <input type="marca" id="input_marca" autocomplete="off">
+                    </div>
+                    <div>
+                        <p class="perguntas">Modelo</p>
+                        <input type="marca" id="input_modelo" autocomplete="off">
+                    </div>
+                    <div>
+                        <p class="perguntas">Quantidade de portas</p>
+                        <input type="number" id="input_qntportas" autocomplete="off">
+                    </div>
+                </div>
+            </div>
+            <button class="botaoR" onclick="cadastrarRefrigerador()">Cadastrar Estabelecimento</button>
+        </div>
+        <div class="imagemPerguntaR">
+            <img src="../assets/imagens/30576701_7718877-ai-brush-removebg-7g7bvysh.png" alt="" class="imagemPerguntaR">
+        </div>
+    </div>
+</body>
+
+</html>
+<script src="./js/sessao.js"></script>
+<script>
+    // window.load = Autenticar_Usuario(sessionStorage.NOME_USUARIO, sessionStorage.EMAIL_USUARIO, sessionStorage.ID_USUARIO);
+
+
+ 
+
+
+    function cadastrarRefrigerador() {
+
+        var estabelecimento = estabelecimento_slc.value;
+        var local_fisico = input_local_fisico.value;
+        var marca = input_marca.value;
+        var modelo = input_modelo.value;
+        var qntportas = input_qntportas.value;
+        var idCliente = sessionStorage.ID_USUARIO;
+
+       
+
+        if (local_fisico != '' && marca != '' && modelo != '' && qntportas != '' && idCliente != '') {
+            var mensagem = '';
+
+            fetch("/usuarios/cadastrar_refrigerador", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    // crie um atributo que recebe o valor recuperado aqui
+                    // Agora vá para o arquivo routes/usuario.js
+                    local_fisicoServer: local_fisico,
+                    marcaServer: marca,
+                    modeloServer: modelo,
+                    qntportasServer: qntportas,
+                    idClienteServer: idCliente,
+                    idEstabelecimento: estabelecimento
+                }),
+            })
+                .then(function (resposta) {
+                    console.log("resposta: ", resposta);
+
+                    if (resposta.ok) {
+                            tudoE.classList.add('invisivel');
+                                    setTimeout(()=>{
+                                                        tudoE.style.display = 'none'
+                                                        var novoelemento = document.createElement('div')
+                                                        novoelemento.classList.add('painel_sucesso')
+                                                        novoelemento.id = 'painel_sucesso'
+                                                        novoelemento.innerHTML = `
+                                                        <h1>Cadastro realizado com sucesso!</h1> <br>
+                                                        <br>
+                                                        <h3>Redirecionando Para a página principal. </h3><br>
+                                                        <br>
+                                                        <div class="loader"></div>
+                                                        `
+                                                        document.body.appendChild(novoelemento)
+                                                        setTimeout(()=>{
+                                                                        painel_sucesso.classList.add('visivel')
+                                                                    }
+                                                                    ,100)
+                                                        }
+                                                        ,500)
+                                
+                            setTimeout(() => {
+                                                 window.location = "principal-cadastrado.html";
+                                             }, 2500);
+
+
+
+                    } else {
+                        throw "Houve um erro ao tentar realizar o cadastro!";
+                    }
+                })
+                .catch(function (resposta) {
+                    console.log(`#ERRO: ${resposta}`);
+
+                });
+
+
+
+
+            
+           
+        }
+      
+    }
+</script>

@@ -16,6 +16,26 @@
     font-size: 20px;
 }
 
+#estabelecimento_slc{
+    margin-bottom: 30px;
+    margin-top: -10px;
+    height: 3rem;
+    width: 14rem;
+    text-align: center;
+    background-color: transparent;
+    border-radius: 30px;
+    border: 2px solid #00FFFF;
+    color: white;
+    outline: none;
+    font-size: 20px;
+}
+
+#estabelecimento_slc option{
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+}
+
 .imagem1 {
     display: flex;
     align-items: center;
@@ -56,6 +76,7 @@ body {
     background: rgb(51, 159, 217);
     background: linear-gradient(267deg, rgba(51, 159, 217, 1) 0%, rgba(4, 1, 137, 1) 50%, rgba(2, 1, 59, 1) 84%);
 }
+
 
 .opcoes {
     display: flex;
@@ -264,6 +285,15 @@ input:focus {
     flex-direction: column;
 }
 
+.tudoE .imagemPerguntaR{
+    margin-top: -2%;
+    /* margin-left: 10%; */
+    height: 550px;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+}
+
 .tudoE{
     display: flex;
     align-items: center;
@@ -307,9 +337,16 @@ input:focus {
 .tudoE .cardE .tituloEsta{
     font-size: 50px;
     font-weight: bolder;
-    margin-top: 20%;
+    margin-top: 13%;
     margin-bottom: 15%;
     margin-left: 60%;
+}
+
+.tudoE .cardE .tituloR{
+    font-size: 50px;
+    font-weight: bolder;
+    margin-top: 10%;
+    margin-bottom: 6%;
 }
 
 .cardE .cliqueAquiDiv{
@@ -340,6 +377,85 @@ input:focus {
     box-shadow: 4px 4px 8px rgb(40, 110, 133);
 }
 
+.tudoE .cardE .botaoR {
+    height: 50px;
+    width: 260px;
+    background-color: #5F9EA0;
+    color: white;
+    border: white 2px solid;
+    border-radius: 20px;
+    font-weight: bolder;
+    font-size: 20px;
+    cursor: pointer;
+    margin-top: 9%;
+    margin-bottom: 10%;
+    box-shadow: 4px 4px 8px rgb(40, 110, 133);
+}
+
 .tudoE .cardE .botaoEE:hover{
     background-color: rgb(40, 110, 133);
 }
+.tudoE .cardE .botaoR:hover{
+    background-color: rgb(40, 110, 133);
+}
+
+
+.invisivel{
+    transition: all 0.5s;
+    opacity: 0;
+}
+
+.painel_sucesso{
+    margin-top: 100px;
+    margin-left: 37%;
+    font-size: 15px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 500px;
+    min-height: 250px;
+    height: auto;
+    background-color: #364DAA;
+    border: 3px #040189 solid;
+    opacity: 0;
+    color: white;
+}
+.painel_sucesso h1{
+    color: greenyellow;
+}
+.visivel{
+    transition: all 0.3s;
+    opacity: 1;
+}
+.loader {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: inline-block;
+    border-top: 4px solid grey;
+    border-right: 4px solid transparent;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+  }
+  .loader::after {
+    content: '';  
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border-bottom: 4px solid #040189;
+    border-left: 4px solid transparent;
+  }
+  @keyframes rotation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  } 
