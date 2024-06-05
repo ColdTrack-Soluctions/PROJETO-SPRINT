@@ -1,17 +1,12 @@
 var database = require("../database/config");
 
-function buscarUltimasMedidas(idAquario, limite_linhas) {
+function buscarUltimasMedidas(idporta, idrefrigerador, idestabelecimento, idcliente, limite_linhas) {
 
-    var instrucaoSql = `SELECT 
-        dht11_temperatura as temperatura, 
-        dht11_umidade as umidade,
-                        momento,
-                        DATE_FORMAT(momento,'%H:%i:%s') as momento_grafico
-                    FROM medida
-                    WHERE fk_aquario = ${idAquario}
-                    ORDER BY id DESC LIMIT ${limite_linhas}`;
+    var instrucaoSql = `select sum(Aberturas) as Aberturas, DATE_FORMAT(HORARIO, '%W %d/%m/%Y') as Dia from DadosAbertura 
+    where fkporta = ${idporta} and fkrefrigerador = ${idrefrigerador} and fkestabelecimento = ${idestabelecimento} and fkcliente = ${idcliente}
+    group by Dia;`;
 
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    // console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
 

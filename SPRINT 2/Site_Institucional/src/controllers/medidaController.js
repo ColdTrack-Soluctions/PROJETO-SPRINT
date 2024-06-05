@@ -1,19 +1,25 @@
 var medidaModel = require("../models/medidaModel");
 const { param } = require("../routes");
 
-function buscarUltimasMedidas(req, res) {
-
+function buscarAberturaSemana(req, res) {
     const limite_linhas = 7;
-
-    var idAquario = req.params.idAquario;
+    const parametros = req.params.parametros;
+    const idporta = parametros[0]
+    const idrefrigerador = parametros[2]
+    const idestabelecimento = parametros[4]
+    const idcliente = parametros[6]
 
     console.log(`Recuperando as ultimas ${limite_linhas} medidas`);
 
-    medidaModel.buscarUltimasMedidas(idAquario, limite_linhas).then(function (resultado) {
+    medidaModel.buscarUltimasMedidas(idporta, idrefrigerador, idestabelecimento, idcliente, limite_linhas).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
-            res.status(204).send("Nenhum resultado encontrado!")
+            const vazio = [{
+                Aberturas: 0,
+                Dia: 0
+            }]
+            res.status(200).json(vazio)
         }
     }).catch(function (erro) {
         console.log(erro);
@@ -70,8 +76,8 @@ function buscarMedidasEmTempoRealPorta(req, res) {
 }
 
 module.exports = {
-    buscarUltimasMedidas,
     buscarMedidasEmTempoReal,
-    buscarMedidasEmTempoRealPorta
+    buscarMedidasEmTempoRealPorta,
+    buscarAberturaSemana
 
 }
