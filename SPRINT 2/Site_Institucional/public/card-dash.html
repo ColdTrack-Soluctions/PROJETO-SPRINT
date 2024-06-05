@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cards Dashboard</title>
+    <title>Cards Refrigeradores</title>
     <link REL="SHORTCUT ICON" HREF="../assets/imagens/Logo_Quadrada-removebg.png">
     <link rel="stylesheet" href="css/dashboard.css">
 </head>
@@ -22,8 +22,11 @@
             <a href="principal-cadastrado.html">Voltar</a>
         </div>
     </div>
-    <div style="width: 100vw; display: flex; justify-content: center; margin-top: 10px;" id="div_titulo">
-        
+    <div class="header_opcoes_dash">
+        <a href="./dash1.html"><div class="opcoes_dash">Dashboards</div></a>
+        <div class="opcoes_dash selecionado">Cards</div>
+    </div>
+    <div style="width: 100vw; height: 60px; display: flex; justify-content: center; margin-top: 10px;" id="div_titulo">
     </div>
     <div class="tudoCard" id="tudoCard">
 
@@ -72,7 +75,12 @@ function exibirRefrigeradores() {
     }
 
     function exibirPortas(idRefrigerador) {
+                    
 
+
+                    tudoCard.classList.toggle('invisivel')
+                    setTimeout(() => {
+                    tudoCard.style.display = 'none'
                     var tag = 'div'
                     var texto = `
 
@@ -110,7 +118,7 @@ function exibirRefrigeradores() {
                                     </div>
                                     <div class="desc-portas">
                                         <div class="temperatura">
-                <p id="abertura_porta_${item.idPorta}_refrigerador_${item.fkRefrigerador}" style = 'color: #00FFFF; font-size: 30px'>Aberturas:</p>
+                <p id="abertura_porta_${item.idPorta}_refrigerador_${item.fkRefrigerador}" class="aberturas">Aberturas:</p>
                                             </div>
                                             <div class="cor-alerta" id="card_${item.idPorta}"></div>
                                             </div>
@@ -122,197 +130,24 @@ function exibirRefrigeradores() {
                         });
 
                         
-                    // Define o conteúdo de texto do novo elemento
-                    if (texto) {
+          
                         novoElemento.innerHTML = texto;
-                    }
-
-                    // Define o ID do novo elemento (opcional)
-                    if (id) {
                         novoElemento.id = id;
-                    }
-
-                    // Adiciona uma classe ao novo elemento (opcional)
-                    if (classe) {
                         novoElemento.classList.add(classe);
-                    }
-
-                    // Adiciona o novo elemento ao body (ou nesse caso, tudoCard)
-                    document.getElementById('tudoCard').appendChild(novoElemento);
+                        document.body.appendChild(novoElemento);
                 
 
-
-
-    
+                },750)    
     }
 
     function fecharPortas(id){
-        const teste = document.getElementById(id)
-        teste.remove();
+        const painel_porta = document.getElementById(id)
+        painel_porta.remove();
+ setTimeout(() => {
+     tudoCard.style.display = 'flex'
+     tudoCard.classList.toggle('invisivel')
+
+ },250)
     }
 
-
-    // window.onload = () => {
-    // exibirRefrigeradoresDoUsuario();
-    // }
-    // function exibirRefrigeradoresDoUsuario() {
-    //         var refrigeradores = JSON.parse(sessionStorage.getItem('Refrigeradores'));
-    //         // console.log(refrigeradores);
-
-    //         refrigeradores.forEach(item => {
-    //           console.log(item);
-    //             document.getElementById("tudoCard").innerHTML += `
-    //                         <div class="cardRefri">
-    //                             <p>Refrigerador ${item.Refrigerador_id}</p> 
-    //                             <p id="temp_atual">SDLFJHSDKFJSDF</p>
-    //                         </div>
-    //             `
-    //             obterDadosRefrigerador(item.Refrigerador_id)
-    //         });
-    //         // if (refrigeradores.length > 0) {
-    //         //     // exibirAquario(aquarios[0].id)
-    //         // }
-    //     }
-    
-    
-    //     function obterDadosGrafico(idRefrigerador) {
-    
-    //     // alterarTitulo(idAquario)
-    
-    // // if (proximaAtualizacao != undefined) {
-    //     // clearTimeout(proximaAtualizacao);
-    // // }
-    
-    // fetch(`/medidas_card/ultimas/${idRefrigerador}`, { cache: 'no-store' }).then(function (response) {
-    //     if (response.ok) {
-    //         response.json().then(function (resposta) {
-    //             console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-    //             resposta.reverse();
-    //             plotarCard(resposta, idRefrigerador);
-    
-    //         });
-    //     } else {
-    //         console.error('Nenhum dado encontrado ou erro na API');
-    //     }
-    // })
-    //     .catch(function (error) {
-    //         console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-    //     });
-    // }
-    
-    //     function exibirRefrigerador(idRefrigerador) {
-    //         let todosOsGraficos = JSON.parse(sessionStorage.getItem('Refrigeradores'));
-    
-    //         for (i = 0; i < todosOsGraficos.length; i++) {
-    //             // exibindo - ou não - o gráfico
-    //             if (todosOsGraficos[i].Refrigerador_id != idRefrigerador) {
-    //                 let elementoAtual = document.getElementById(`grafico${todosOsGraficos[i].Refrigerador_id}`)
-    //                 if (elementoAtual.classList.contains("display-block")) {
-    //                     elementoAtual.classList.remove("display-block")
-                        
-    //                   }
-                  
-    
-    //                 elementoAtual.classList.add("display-none")
-    
-    //                 // alterando estilo do botão
-    //                 let btnAtual = document.getElementById(`btnRefrigerador${todosOsGraficos[i].Refrigerador_id}`)
-    //                 if (btnAtual.classList.contains("btn-pink")) {
-    //                     btnAtual.classList.remove("btn-pink")
-    //                 }
-    
-    //                 btnAtual.classList.add("btn-white")
-    //             }
-    //             if(todosOsGraficos[i].Refrigerador_id == idRefrigerador){
-    
-    //             titulo_refrigerador.innerHTML = `${todosOsGraficos[i].Local}`
-    //             console.log(todosOsGraficos.Local);
-    //             }  
-    //         }
-    
-    //         // exibindo - ou não - o gráfico
-    //         let graficoExibir = document.getElementById(`grafico${idRefrigerador}`)
-    //         graficoExibir.classList.remove("display-none")
-    //         graficoExibir.classList.add("display-block")
-    
-    //         let btnExibir = document.getElementById(`btnRefrigerador${idRefrigerador}`)
-    //         btnExibir.classList.remove("btn-white")
-    //         btnExibir.classList.add("btn-pink")
-    //     }
-    
-    // function plotarGrafico(resposta, idAquario) {
-    
-    // console.log('iniciando plotagem do gráfico...');
-    
-    // // Criando estrutura para plotar gráfico - labels
-    // let labels = [];
-    
-    // // Criando estrutura para plotar gráfico - dados
-    // let dados = {
-    //     labels: labels,
-    //     datasets: [{
-    //         label: 'Umidade',
-    //         data: [],
-    //         fill: false,
-    //         borderColor: 'rgb(75, 192, 192)',
-    //         tension: 0.1
-    //     },
-    //     {
-    //         label: 'Temperatura',
-    //         data: [],
-    //         fill: false,
-    //         borderColor: 'rgb(199, 52, 52)',
-    //         tension: 0.1
-    //     }]
-    // };
-    
-    // console.log('----------------------------------------------')
-    // console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
-    // console.log(resposta)
-    
-    // // Inserindo valores recebidos em estrutura para plotar o gráfico
-    // for (i = 0; i < resposta.length; i++) {
-    //     var registro = resposta[i];
-    //     labels.push(registro.momento_grafico);
-    //     dados.datasets[0].data.push(registro.umidade);
-    //     dados.datasets[1].data.push(registro.temperatura);
-    // }
-    
-    // console.log('----------------------------------------------')
-    // console.log('O gráfico será plotado com os respectivos valores:')
-    // console.log('Labels:')
-    // console.log(labels)
-    // console.log('Dados:')
-    // console.log(dados.datasets)
-    // console.log('----------------------------------------------')
-    
-    // // Criando estrutura para plotar gráfico - config
-    // const config = {
-    //     type: 'line',
-    //     data: dados,
-    // };
-    
-    // // Adicionando gráfico criado em div na tela
-    // let myChart = new Chart(
-    //     document.getElementById(`myChartCanvas${idAquario}`),
-    //     config
-    // );
-    
-    // setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
-    // }
-    
-    // // containerchat.innerHTML += `
-    // //                 <div id="grafico${item.id}" class="display-none">
-    // //                     <h3 class="tituloGraficos">
-    // //                         <span id="tituloAquario${item.id}">${item.descricao}</span>
-    // //                     </h3>
-    // //                     <div class="graph">
-    // //                         <canvas id="myChartCanvas${item.id}"></canvas>
-    // //                     </div>
-    // //                     <div class="label-captura">
-    // //                         <p id="avisoCaptura${item.id}" style="color: white"></p>
-    // //                     </div>
-    // //                 </div>
-    // //             `
-     
     </script>

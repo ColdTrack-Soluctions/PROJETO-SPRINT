@@ -18,7 +18,6 @@ body {
     height: 80px;
     display: flex;
     justify-content: center;
-    border-bottom: 3px solid #040189;
     font-size: 20px;
 }
 
@@ -202,7 +201,8 @@ margin-top : 7%;
 
 .tudoCard {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     height: 100%;
@@ -254,24 +254,26 @@ margin-top : 7%;
 }
 
 .card-refrigerador {
-    height: 300px;
-    width: 600px;
+    min-height: 100px;
+    height: auto;
+    width: 250px;
     border: white 3px solid;
     border-radius: 30px;
     display: flex;
     flex-direction: column;
     justify-content: start;
-    align-items: center;
+    align-items: start;
     text-align: center;
     padding-top: 10px;
     gap: 20px;
     background: linear-gradient(160deg, rgb(0, 82, 212), rgb(67, 100, 247), rgb(111, 177, 252));
-    font-size: 20px;
+    font-size: 10px;
 }
 
 .card-refrigerador1 {
-    height: 300px;
-    width: 600px;
+    min-height: 100px;
+    height: auto;
+    width: 350px;
     border: white 3px solid;
     border-radius: 30px;
     display: flex;
@@ -281,17 +283,12 @@ margin-top : 7%;
     text-align: center;
     padding-top: 10px;
     gap: 20px;
-    background: radial-gradient(circle at 85.4% 50.8%, rgb(14, 72, 222) 0%, rgb(3, 22, 65) 74.2%);
-    font-size: 20px;
-}
-
-
-.card-refrigerador1:hover {
-    margin-top: -10px;
+    background: blue;
+    font-size: 10px;
     margin-bottom: 10px;
-    transition: 0.5s;
-    background: radial-gradient(circle at 85.4% 50.8%, rgb(14, 72, 222) 0%, rgb(3, 22, 65) 74.2%);
+    padding-bottom: 10px;
 }
+
 
 .card-refrigerador:hover {
     margin-top: -10px;
@@ -301,9 +298,10 @@ margin-top : 7%;
 }
 
 .card-portas-refrigerador {
+    margin-left: 37%;
     height: auto;
     min-height: 350px;
-    width: 900px;
+    width: 400px;
     border: white 3px solid;
     border-radius: 30px;
     display: flex;
@@ -314,7 +312,7 @@ margin-top : 7%;
     padding-top: 10px;
     gap: 20px;
     background: linear-gradient(160deg, rgb(0, 82, 212), rgb(67, 100, 247), rgb(111, 177, 252));
-    font-size: 20px;
+    font-size: 10px;
 }
 
 /* .card-portas-refrigerador:hover {
@@ -330,7 +328,7 @@ margin-top : 7%;
 
 .card-refrigerador p {
     margin: 0;
-    font-size: 50px;
+    font-size: 20px;
     font-weight: lighter;
     text-align: left;
 }
@@ -350,11 +348,13 @@ margin-top : 7%;
 
 .desc-refrigerador {
     display: flex;
-    flex-direction: row;
     align-items: center;
     justify-content: center;
     width: 100%;
+    color: white;
     font-weight: bold;
+    margin-bottom: 10px;
+    margin-left: 10px;
 }
 
 .desc-refrigerador .cor-alerta {
@@ -365,7 +365,7 @@ margin-top : 7%;
     display: flex;
     align-items: center;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     width: 100%;
     color: white;
 }
@@ -398,4 +398,45 @@ margin-top : 7%;
     margin-top: 15px;
     cursor: pointer;
     transition: 0.8s;
+}
+.invisivel {
+    opacity: 0;
+    transition: all 1s;
+}
+.aberturas {
+    color: lightblue;
+    font-size: 20px;
+}
+
+.header_opcoes_dash{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    min-height: 70px;
+    height: auto;
+    border-bottom: 3px solid #040189;
+    background-color: #364DAA;
+}
+
+.opcoes_dash{
+    background-color: #4865d5;
+    text-align: center;
+    color: white;
+    width: 100px;
+    height: 20px;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    border: #040189 solid 3px;
+}
+
+.opcoes_dash:hover{
+    margin-top: -1px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.selecionado{
+    border: white solid 3px;
 }
