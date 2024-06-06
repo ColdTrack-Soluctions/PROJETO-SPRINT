@@ -41,6 +41,9 @@
 
             <p class="paragrafos">Senha:</p>
             <input type="password" id="senha_input" onkeyup="valida_senha(), valida_senha2()">
+            <div class="olho_revelar" id="olho_revelar" onclick="revelarSenha()">
+                <img id="olho_imagem" src="./assets/olho_esconder.png">
+            </div>
             <div class="informacao" id="alerta_senha"></div>
 
             <p class="paragrafos">Confirme a Senha:</p>
@@ -242,5 +245,17 @@
             } 
         
         
+    }
+
+    function revelarSenha() {
+        if(senha_input.type == 'password') {
+            senha_input.type = 'text';
+
+            olho_revelar.innerHTML = `<img id="olho_imagem" src="./assets/olho_revelar.png"> `
+        } else if(senha_input.type == 'text') {
+            senha_input.type = 'password';
+
+            olho_revelar.innerHTML = `<img id="olho_imagem" src="./assets/olho_esconder.png"> `
+        }
     }
 </script>
