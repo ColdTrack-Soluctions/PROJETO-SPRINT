@@ -428,6 +428,7 @@ input:focus {
 .visivel{
     transition: all 0.3s;
     opacity: 1;
+        
 }
 .loader {
     width: 48px;
