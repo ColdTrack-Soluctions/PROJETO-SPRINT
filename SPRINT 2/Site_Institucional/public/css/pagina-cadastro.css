@@ -100,7 +100,6 @@ a {
 }
 
 .painel1 {
-    position: relative;
     width: 30%;
     display: flex;
     flex-direction: column;
@@ -156,22 +155,6 @@ input:focus {
     padding: 5px;
     background-color: white;
     border-radius: 10px;
-}
-
-.olho_revelar {
-    position:relative;
-    left: 120px;
-    bottom: 42px;
-}
-
-.olho_revelar img {
-    position: absolute;
-    height: 24px;
-}
-    
-.olho_revelar img:hover {
-    cursor: pointer;
-    
 }
 
 #alerta_email,

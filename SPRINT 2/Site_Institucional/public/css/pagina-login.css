@@ -137,7 +137,6 @@ a {
 }
 
 .div_loginsenha {
-    position: relative;
     display: flex;
     flex-direction: row;
     font-size: 22px;
@@ -145,22 +144,6 @@ a {
     justify-content: center;
     align-items: center;
     width: 100%;
-}
-
-.olho_revelar {
-    position:relative;
-    right: 55px;
-    bottom: 12px;
-}
-
-.olho_revelar img {
-    position: absolute;
-    height: 24px;
-}
-    
-.olho_revelar img:hover {
-    cursor: pointer;
-    
 }
 
 .input_senha {
