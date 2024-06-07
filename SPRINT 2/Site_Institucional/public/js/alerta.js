@@ -1,7 +1,6 @@
 var alertas = [];
 var mensagem = document.querySelectorAll('.msgDash')
 
-
 function obterdados(a, b, c) {
 
     const parametros = [a, b, c];
@@ -14,15 +13,15 @@ function obterdados(a, b, c) {
 
                     // console.log(`Dados recebiodos: ${JSON.stringify(resposta)}`);
                     if (resposta[0].Temperatura >= 1 && resposta[0].Temperatura <=2 ) {
-                        mensagem.style.display = 'block'
-                        mensagem = `<b style="border: 2px solid red; background-color: rgba(0,0,0, 0.9); color: red; padding: 5%;position: absolute;">Alerta Seu refrigerador está quase passando da temperatura maxima! :${resposta[0].Temperatura}, ${resposta[0].idRefrigerador}, ${resposta[0].Horario}</b>`
+                        mensagem[0].style.display = 'flex'
+                        mensagem[0].innerHTML = ` <b>Alerta! Seu refrigerador está quase passando da temperatura maxima! :${resposta[0].Temperatura}, ${resposta[0].idRefrigerador}, ${resposta[0].Horario}</b>`
 
                     } else if (resposta[0].Temperatura > 2) {
-                        mensagem.style.display = 'block'
-                        mensagem = `<b style="border: 2px solid red; background-color: rgba(0,0,0, 0.9); color: red; padding: 5%;position: absolute;">Alerta Seu refrigerador está em estado critico! Temperatura está acima da media :${resposta[0].Temperatura}, ${resposta[0].idRefrigerador}, ${resposta[0].Horario}</b>`
+                        mensagem[0].style.display = 'flex'
+                        mensagem[0].innerHTML = `<img src="../assets/alertas/alerta_termometro_quente.png" alt=""><b> <span>Alerta!</span> Seu refrigerador está em <span>estado critico!</span> Temperatura está acima da media: <br>Temperatura: <span>${resposta[0].Temperatura}°C</span>, Refrigerador: ${resposta[0].idRefrigerador}, Horário: <span>${resposta[0].Horario}</span></b>`
                     } else if (resposta[0].Temperatura < -2.2) {
-                        mensagem.style.display = 'block'
-                        mensagem = `<b style="border: 2px solid red; background-color: rgba(0,0,0, 0.9); color: red; padding: 5%;position: absolute;">Alerta Seu refrigerador está em estado critico ! Temperatura está abaixo da media  :${resposta[0].Temperatura}, ${resposta[0].idRefrigerador}, ${resposta[0].Horario}</b>`
+                        mensagem[0].style.display = 'flex'
+                        mensagem[0].innerHTML = `<b>Alerta Seu refrigerador está em estado critico ! Temperatura está abaixo da media:${resposta[0].Temperatura}, ${resposta[0].idRefrigerador}, ${resposta[0].Horario}</b>`
                     }
 
                     const element = document.getElementById(`temp_refrigerador_${parametros[0]}`);
