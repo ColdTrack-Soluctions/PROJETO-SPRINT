@@ -107,14 +107,24 @@
                         console.log(json);
                         console.log(JSON.stringify(json));
 
-                        mensagem = '<span style =" color: green"> Login correto! </span> ';
+                        mensagem = `<div style="
+                        display: flex; 
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        gap: 10px;"
+                                    <span style =" color: green"> Login correto! </span> <br>
+                                    <div class="loader"></div> 
+                                    </div>
+                        `;
+                        div_msg.innerHTML = mensagem;
                         sessionStorage.EMAIL_USUARIO = json.emailFuncionario;
                         sessionStorage.NOME_USUARIO = json.nomeFuncionario;
                         sessionStorage.ID_USUARIO = json.idFuncionario;
                         sessionStorage.FK_CLIENTE = json.fkCliente;
                         setTimeout(() => {
-                            window.location = "./decisao-dashbord_funcionario.html";
-                        }, "3000");
+                            window.location = "./decisaoFunc.html";
+                        }, "2000");
                     });
 
                     finalizarAguardar();
