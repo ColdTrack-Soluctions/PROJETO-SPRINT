@@ -468,19 +468,41 @@ h1 {
 
 .msgDash{
     display: none;
-    border: 2px solid red; 
     background-color: rgba(0,0,0, 0.9); 
     color: #ffffff; 
     padding: 10px;
     position: fixed;
-    border-radius: 30px;
+    border-radius: 10px;
     bottom: 30px;
     right: 30px;
-    height: 100px;
-    width: 400px;
+    height: 125px;
+    width: 455px;
     align-items: center;
+    animation: animacao_mensagens 0.3s linear infinite alternate;
+}
+
+.msgDash b {
+    font-size: 20px;
+    text-align: center;
+}
+
+.msgDash img {
+    width:70px;
+    height: 70px;
+    margin-right: 10px;
 }
 
 .msgDash span {
-    color: red;
+    color: #ffffff;
+}
+
+@keyframes animacao_mensagens {
+    0% {
+        scale: 1.0
+    }
+
+    100% {
+        scale: 0.98
+    }
+    
 }

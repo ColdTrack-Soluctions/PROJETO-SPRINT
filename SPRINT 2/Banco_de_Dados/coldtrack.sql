@@ -1,5 +1,4 @@
--- CRIANDO A NOSSA BASE DE DADOS
-create database bd_coldtrack;
+-- CRIANDO A NOSSA BASE DE DADOScreate database bd_coldtrack;
 -- ULTILIZANDO A BASE DE DADOS
 use bd_coldtrack;
 
@@ -138,6 +137,9 @@ Temperatura decimal(6,2),
 Horario DATETIME
 );
 
+select * from dadosTemperatura;
+
+
 -- TABELA QUE INFORMA A TEMPERATURA IDEAL
 create table temperaturaIdeal (
 idTemperatura int,
@@ -174,10 +176,12 @@ tipoAbertura varchar(45),
 constraint chkAbertura check (tipoAbertura in ('Puxar', 'Arrastar'))
 );
 
+select * from refrigerador;
+
 -- INSERINDO DADOS DE PORTAS
 insert into portaRefrigerador values
-(1, 1, 2, 3,'Alcatra', 'Puxar'),
-(2, 1, 2, 3, 'Picanha', 'Puxar');
+(1, 1, 1, 1,'Alcatra', 'Puxar'),
+(2, 1, 1, 1, 'Picanha', 'Puxar');
 
 
 select * from portaRefrigerador;
