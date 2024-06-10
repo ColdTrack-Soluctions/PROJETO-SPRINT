@@ -465,3 +465,22 @@ h1 {
 
     
 }
+
+.msgDash{
+    display: none;
+    border: 2px solid red; 
+    background-color: rgba(0,0,0, 0.9); 
+    color: #ffffff; 
+    padding: 10px;
+    position: fixed;
+    border-radius: 30px;
+    bottom: 30px;
+    right: 30px;
+    height: 100px;
+    width: 400px;
+    align-items: center;
+}
+
+.msgDash span {
+    color: red;
+}

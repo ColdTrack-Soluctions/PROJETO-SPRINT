@@ -41,9 +41,6 @@
 
                 <div class="div_loginsenha">
                     Senha: <input type="password" id="senha_input" class="input_senha" />
-                    <div class="olho_revelar" id="olho_revelar" onclick="revelarSenha()">
-                        <img id="olho_imagem" src="./assets/olho_esconder.png">
-                    </div>
                 </div>
             </div>
             <div class="div_botao_login">
@@ -153,15 +150,7 @@
         tentativas = 4;
     }
 
-    function revelarSenha() {
-        if(senha_input.type == 'password') {
-            senha_input.type = 'text';
 
-            olho_revelar.innerHTML = `<img id="olho_imagem" src="./assets/olho_revelar.png"> `
-        } else if(senha_input.type == 'text') {
-            senha_input.type = 'password';
 
-            olho_revelar.innerHTML = `<img id="olho_imagem" src="./assets/olho_esconder.png"> `
-        }
-    }
+
 </script>

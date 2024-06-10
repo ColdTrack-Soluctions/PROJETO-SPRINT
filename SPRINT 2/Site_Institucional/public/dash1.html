@@ -2,40 +2,45 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Refrigeradores</title>
-    <link REL="SHORTCUT ICON" HREF="../assets/imagens/Logo_Quadrada-removebg.png">
-    <link rel="stylesheet" href="css/dashboard.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Refrigeradores</title>
+  <link REL="SHORTCUT ICON" HREF="../assets/imagens/Logo_Quadrada-removebg.png">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-  </head>
+</head>
 
 <body>
-    <div class="header">
-        <div class="container_header">
-            <div class="imagem1">
-                <img src="../assets/imagens/logo.svg" alt="" class="imagemfixa">
-            </div> 
-            <div class="opcPrincipais">
-                <a href="orcamento-cadastrado.html">Orçamentos</a>
-                <a href="calculadora-cadastrado.html">Calculadora</a>
-            </div>
-            <a href="principal-cadastrado.html">Voltar</a>
-        </div>
+  <div class="header">
+    <div class="container_header">
+      <div class="imagem1">
+        <img src="../assets/imagens/logo.svg" alt="" class="imagemfixa">
+      </div>
+      <div class="opcPrincipais">
+        <a href="orcamento-cadastrado.html">Orçamentos</a>
+        <a href="calculadora-cadastrado.html">Calculadora</a>
+      </div>
+      <a href="principal-cadastrado.html">Voltar</a>
     </div>
-    <div class="header_opcoes_dash"> 
-        <div class="opcoes_dash selecionado">Dashboards</div>
-        <a href="./card-dash.html"><div class="opcoes_dash">Cards</div></a>
-    </div>
-    <div style="width: 100vw; height: 60px; display: flex; justify-content: center; margin-top: 10px;" id="div_titulo">
-    </div>
-    <div class="tudoCard" id="tudoCard">
+  </div>
+  <div class="header_opcoes_dash">
+    <div class="opcoes_dash selecionado">Dashboards</div>
+    <a href="./card-dash.html">
+      <div class="opcoes_dash">Cards</div>
+    </a>
+  </div>
+  <div style="width: 100vw; height: 60px; display: flex; justify-content: center; margin-top: 10px;" id="div_titulo">
+  </div>
+  <div class="tudoCard" id="tudoCard">
 
-    
-      
-    </div>
-    <body onload="
+
+
+  </div>
+
+  <div class="msgDash"></div>
+
+  <body onload="
     
     // validarSessao(), 
     exibirRefrigeradores(), 
@@ -50,16 +55,16 @@
 
 <script>
 
-function exibirRefrigeradores() {
+  function exibirRefrigeradores() {
     estabelecimento = sessionStorage.nomeEstabelecimento;
     div_titulo.innerHTML = `
     <p class="refrigeradores">Refrigeradores do Estabelecimento<span style= 'color: #00FFFF; margin-left: 7px'>${estabelecimento}</span> </p>
     `
-        var refrigeradores = JSON.parse(sessionStorage.getItem('Refrigeradores'));
-            console.log(refrigeradores);
-            refrigeradores.forEach(item => {
-            //   console.log(item);
-                document.getElementById("tudoCard").innerHTML += `
+    var refrigeradores = JSON.parse(sessionStorage.getItem('Refrigeradores'));
+    console.log(refrigeradores);
+    refrigeradores.forEach(item => {
+      //   console.log(item);
+      document.getElementById("tudoCard").innerHTML += `
                        <div class="card-refrigerador"  onclick="exibirDash(${item.idRefrigerador},${item.fkEstabelecimento}, ${item.fkCliente})">
                         <div class="title-refrigerador">
                             <h1>Refrigerador ${item.idRefrigerador}</h1>
@@ -74,26 +79,26 @@ function exibirRefrigeradores() {
                     </div>
                         
                 `
-            });
-    }
+    });
+  }
 
-     function exibirDash(idRefrigerador, idEstabelecimento, idCliente) {
+  function exibirDash(idRefrigerador, idEstabelecimento, idCliente) {
 
-                    tudoCard.classList.toggle('invisivel')
-                    setTimeout(() => {
-                    tudoCard.style.display = 'none'
-                    var tag = 'div'
-                    var texto2 = ''
-                    var porta_refrigeradores = JSON.parse(sessionStorage.getItem('PortasRefrigeradores'));
-                    porta_refrigeradores.forEach(porta => {
-                      if (porta.fkRefrigerador == idRefrigerador){
+    tudoCard.classList.toggle('invisivel')
+    setTimeout(() => {
+      tudoCard.style.display = 'none'
+      var tag = 'div'
+      var texto2 = ''
+      var porta_refrigeradores = JSON.parse(sessionStorage.getItem('PortasRefrigeradores'));
+      porta_refrigeradores.forEach(porta => {
+        if (porta.fkRefrigerador == idRefrigerador) {
 
-                      texto2 += `
+          texto2 += `
                       <div class="opcoes_dash" onclick="Criar_dash(${porta.fkRefrigerador}, ${porta.fkEstabelecimento}, ${porta.fkCliente}, ${porta.idPorta})">${porta.idPorta} - ${porta.produtoArmazenado}</div>
                       `
-                      }
-                    });
-                    var texto = `
+        }
+      });
+      var texto = `
                     <div class="dash_painel">
                         <h1 id="titulo_dash">Dashboard do Refrigerador ${idRefrigerador}
                             </h1>
@@ -114,125 +119,125 @@ function exibirRefrigeradores() {
                         
 
                     `
-                    var id =  `cardportarefrigerador`
-                    var classe = 'card-portas-refrigerador'
-                    const card = document.getElementById('cardportarefrigerador');
-                    if (card){
-                        card.remove();
-                    }
-                    // Cria um novo elemento
-                    var novoElemento = document.createElement(tag);
-                        
-                        novoElemento.innerHTML = texto;
-                        novoElemento.id = id;
-                        novoElemento.classList.add(classe);
-                        document.body.appendChild(novoElemento);
+      var id = `cardportarefrigerador`
+      var classe = 'card-portas-refrigerador'
+      const card = document.getElementById('cardportarefrigerador');
+      if (card) {
+        card.remove();
+      }
+      // Cria um novo elemento
+      var novoElemento = document.createElement(tag);
+
+      novoElemento.innerHTML = texto;
+      novoElemento.id = id;
+      novoElemento.classList.add(classe);
+      document.body.appendChild(novoElemento);
 
 
 
-                },750)    
-    }
+    }, 750)
+  }
 
-    function fecharPortas(id){
-        const painel_porta = document.getElementById(id)
-        painel_porta.remove();
- setTimeout(() => {
-     tudoCard.style.display = 'flex'
-     tudoCard.classList.toggle('invisivel')
+  function fecharPortas(id) {
+    const painel_porta = document.getElementById(id)
+    painel_porta.remove();
+    setTimeout(() => {
+      tudoCard.style.display = 'flex'
+      tudoCard.classList.toggle('invisivel')
 
- },250)
-    }
-
-
-    async function Criar_dash(idRefrigerador, idEstabelecimento, idCliente, idPorta){
-
-      grafico.innerHTML = '<canvas id="myChart"></canvas>';
-
-      titulo_dash.innerHTML = `Dashboard do Refrigerador ${idRefrigerador}<br><br> Porta - ${idPorta}`
-const parametros = [idPorta, idRefrigerador, idEstabelecimento, idCliente]
-
-console.log(parametros)
-  
-  const dados = await obterdadosdashboard(parametros);
-  const label_dash = []
-  const data_dash = []
-      dados.forEach(dado => {
-        label_dash.push(dado.Dia)
-        data_dash.push(dado.Aberturas)
-      });
-
-      // console.log(label_dash)
-      // console.log(data_dash)
+    }, 250)
+  }
 
 
+  async function Criar_dash(idRefrigerador, idEstabelecimento, idCliente, idPorta) {
 
-  const ctx = document.getElementById('myChart');
+    grafico.innerHTML = '<canvas id="myChart"></canvas>';
 
-  const dash = new Chart(ctx, {
-  type: 'line',
-  data: {
-    labels: label_dash,
-    datasets: [{
-      label: 'Número de Aberturas durante a semana.',
-      data: data_dash,
-      borderWidth: 2,
-      borderColor: 'rgba(255, 255, 255)', 
-      backgroundColor: 'rgba(255, 0, 0)',
-      pointStyle: 'circle',
-      pointRadius: 5,
-      pointHoverRadius: 10,
-      tension: 0.1
-    }]
-  },
-  options: {
-    plugins: {
-      title:{
-        display: true,
-        font: {
-          size:20
-        },
+    titulo_dash.innerHTML = `Dashboard do Refrigerador ${idRefrigerador}<br><br> Porta - ${idPorta}`
+    const parametros = [idPorta, idRefrigerador, idEstabelecimento, idCliente]
+
+    console.log(parametros)
+
+    const dados = await obterdadosdashboard(parametros);
+    const label_dash = []
+    const data_dash = []
+    dados.forEach(dado => {
+      label_dash.push(dado.Dia)
+      data_dash.push(dado.Aberturas)
+    });
+
+    // console.log(label_dash)
+    // console.log(data_dash)
+
+
+
+    const ctx = document.getElementById('myChart');
+
+    const dash = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: label_dash,
+        datasets: [{
+          label: 'Número de Aberturas durante a semana.',
+          data: data_dash,
+          borderWidth: 2,
+          borderColor: 'rgba(255, 255, 255)',
+          backgroundColor: 'rgba(255, 0, 0)',
+          pointStyle: 'circle',
+          pointRadius: 5,
+          pointHoverRadius: 10,
+          tension: 0.1
+        }]
       },
-      legend: {
-        labels:{
-          color: 'white', 
-          font: {
-            size: 20
+      options: {
+        plugins: {
+          title: {
+            display: true,
+            font: {
+              size: 20
+            },
+          },
+          legend: {
+            labels: {
+              color: 'white',
+              font: {
+                size: 20
+              }
+            }
+          },
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            grid: {
+              color: 'white'
+            },
+            ticks: {
+              color: 'white',
+              font: {
+                size: 20
+              }
+            }
+          },
+          x: {
+            ticks: {
+              color: 'white',
+              font: {
+                size: 20
+              }
+            },
+            grid: {
+              color: 'white'
+            }
           }
-        }
-      },
-    },
-    scales: {
-      y: {
-        beginAtZero: true,
-        grid: {
-          color: 'white'
-        },
-        ticks: {
-          color: 'white',
-          font:{
-            size: 20
-          } 
-        }
-      },
-      x: {
-        ticks: {
-          color: 'white',
-          font:{
-            size: 20
-          }
-        },
-        grid: {
-          color: 'white'
         }
       }
-    }
+    });
+
+
+
   }
-});
 
 
 
-}
-
-
-
-    </script>
+</script>
