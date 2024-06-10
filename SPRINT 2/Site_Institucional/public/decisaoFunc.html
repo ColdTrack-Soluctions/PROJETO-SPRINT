@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refrigeradores</title>
+    <link REL="SHORTCUT ICON" HREF="../assets/imagens/Logo_Quadrada-removebg.png">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+
+<body onload="carregar_estabelecimentos()">
+    <!-- <div class="header">
+        <div class="container_header">
+            <div class="imagem1">
+                <img src="../assets/imagens/logo.svg" alt="" class="imagemfixa">
+            </div>
+            <div class="opcPrincipais">
+                <a href="orcamento-cadastrado.html">Orçamentos</a>
+                <a href="calculadora-cadastrado.html">Calculadora</a>
+            </div>
+            <a href="principal-cadastrado.html">Voltar</a>
+        </div>
+    </div> -->
+    <div id="div_titulo"></div>
+    <div class="meio" id="meio">
+
+    </div>
+</body>
+
+</html>
+<script src="./js/sessao.js"></script>
+<script>
+    async function carregar_estabelecimentos() {
+        div_titulo.innerHTML = `
+        <h1>Olá <b style="color: #00bfff;">${sessionStorage.NOME_USUARIO}</b>. Escolha um de seus estabelecimentos</h1>
+        `;
+
+        var cnt = 0;
+        const estabelecimentos = await buscar_estabelecimentos();
+        console.log(JSON.parse(estabelecimentos));
+        JSON.parse(estabelecimentos).forEach(item => {
+            cnt++;
+            const novoelemento = document.createElement('div');
+            novoelemento.classList.add('opcao');
+            novoelemento.style.display = 'flex';
+            novoelemento.style.textAlign = 'center';
+
+            novoelemento.innerHTML = `
+        <p style="font-size: 35px; margin-top: -50px; margin-bottom: 20px">
+            Estabelecimento ${cnt}    
+        </p>
+
+        <p>
+            <span style="color: #00FFFF; font-size: 27px; text-align: center; font-weight: bolder;">Nome do Estabelecimento:</span> <span style="font-size: 25px;"><br><b>${item.nomeEstabelecimento}</b> </span>
+        </p>
+        <p style= "font-size: 23px; font-weight: bold; margin-bottom: -40px">
+            Refrigeradores: ${item.qtdRefrigeradores} 
+        </p>
+
+        `;
+            novoelemento.id = [item.idEstabelecimento, item.fkCliente];
+            novoelemento.onclick = () => {
+                sessionStorage.idEstabelecimento = novoelemento.id[0];
+                sessionStorage.nomeEstabelecimento = item.nomeEstabelecimento;
+                autenticarLogado();
+                setTimeout(() => {
+                    document.location.href = 'card-dashFunc.html';
+
+                }, 1000);
+            };
+            meio.appendChild(novoelemento);
+        });
+
+
+
+    }
+
+    function dashboard(id) {
+
+
+    }
+
+
+</script>
