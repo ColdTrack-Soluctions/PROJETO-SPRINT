@@ -23,11 +23,10 @@
             <div style="display: flex; justify-content: center; align-items: center;">
                 <p class="tituloR">Refrigerador</p>
             </div>
-            <div class="preguntasEsta">
-                <div class='card1'>
-                    <div id="estabelecimento_escolha">
-
-                    </div>
+            <div id="estabelecimento_escolha"></div>
+            <div class="preguntasEsta" style="display: flex; justify-content: center; align-items: center; gap: 50px;">
+                <!-- <div class='card1'> -->
+                <div>
                     <div>
                         <p class="perguntas">Local Fisico</p>
                         <input type="text" id="input_local_fisico" autocomplete="off">
@@ -45,8 +44,23 @@
                         <input type="number" id="input_qntportas" autocomplete="off">
                     </div>
                 </div>
+                <div style="margin-top: -48px;">
+
+                    <div>
+                        <p class="perguntas">Tipo da Porta</p>
+                        <select type="marca" id="select_tipo" autocomplete="off">
+                            <option value="1">Arrastar</option>
+                            <option value="2">Puxar</option>
+                        </select>
+                    </div>
+                    <div>
+                        <p class="perguntas">Produto Armazenado</p>
+                        <input type="number" id="input_produto" autocomplete="off">
+                    </div>
+                </div>
+                <!-- </div> -->
             </div>
-            <button class="botaoR" onclick="cadastrarRefrigerador()">Cadastrar Refrigerador</button>
+            <button class="botaoNovo" onclick="cadastrarRefrigerador()">Cadastrar Refrigerador</button>
         </div>
         <div class="imagemPerguntaR">
             <img src="../assets/imagens/30576701_7718877-ai-brush-removebg-7g7bvysh.png" alt="" class="imagemPerguntaR">
@@ -65,9 +79,11 @@
         var marca = input_marca.value;
         var modelo = input_modelo.value;
         var qntportas = input_qntportas.value;
+        var produtoArmazenado = input_produto.value;
+        var tipoPorta = select_tipo.value;
         var idCliente = sessionStorage.ID_USUARIO;
 
-        if (local_fisico != '' && marca != '' && modelo != '' && qntportas != '' && idCliente != '') {
+        if (local_fisico != '' && marca != '' && modelo != '' && qntportas != '' && idCliente != '' && produtoArmazenado != '') {
             var mensagem = '';
 
             fetch("/usuarios/cadastrar_refrigerador", {
@@ -76,8 +92,6 @@
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                    // crie um atributo que recebe o valor recuperado aqui
-                    // Agora vá para o arquivo routes/usuario.js
                     local_fisicoServer: local_fisico,
                     marcaServer: marca,
                     modeloServer: modelo,

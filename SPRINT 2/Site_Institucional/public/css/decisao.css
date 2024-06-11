@@ -14,10 +14,26 @@
     justify-content: space-around;
     border-bottom: 3px solid #040189;
     font-size: 20px;
-    
+
 }
 
-#estabelecimento_slc{
+#estabelecimento_slc {
+    margin-bottom: 30px;
+    margin-top: -10px;
+    height: 3rem;
+    width: 14rem;
+    text-align: center;
+    background-color: transparent;
+    border-radius: 30px;
+    border: 2px solid #00FFFF;
+    color: white;
+    outline: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#select_tipo {
+    cursor: pointer;
     margin-bottom: 30px;
     margin-top: -10px;
     height: 3rem;
@@ -31,7 +47,15 @@
     font-size: 20px;
 }
 
-#estabelecimento_slc option{
+#estabelecimento_slc option {
+    cursor: pointer;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+}
+
+#select_tipo option {
+    cursor: pointer;
     background-color: #ffffff;
     color: rgb(0, 0, 0);
     font-weight: bold;
@@ -166,11 +190,11 @@ body {
     box-shadow: 4px 4px 8px rgb(40, 110, 133);
 }
 
-.opcoes .textoBotao .botao .botaoE:hover{
+.opcoes .textoBotao .botao .botaoE:hover {
     background-color: rgb(40, 110, 133)
 }
 
-.opcoes .textoBotao .botao .botaoF:hover{
+.opcoes .textoBotao .botao .botaoF:hover {
     background-color: rgb(40, 110, 133)
 }
 
@@ -181,7 +205,7 @@ body {
     /* flex-direction: column; */
 }
 
-.tudoF{
+.tudoF {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -189,7 +213,7 @@ body {
     /* padding-left: 10rem; */
 }
 
-.tudoF .cardF{
+.tudoF .cardF {
     width: auto;
     height: 700px;
     display: flex;
@@ -202,15 +226,15 @@ body {
     margin-left: 8%;
 }
 
-.teste{
+.teste {
     display: flex;
-gap: 10px;
+    gap: 10px;
 }
 
 
 
 
-.tudoF .cardF input{
+.tudoF .cardF input {
     background-color: transparent;
     border: none;
     width: 300px;
@@ -226,18 +250,18 @@ input:focus {
     outline: none;
 }
 
-.tudoF .cardF .tituloFunc{
+.tudoF .cardF .tituloFunc {
     font-size: 50px;
     font-weight: bolder;
     margin-top: 20%;
     margin-bottom: 15%;
 }
 
-.tudoF .cardF .perguntas{
+.tudoF .cardF .perguntas {
     font-size: 25px;
     margin-top: 4%;
     margin-bottom: 4%;
-}   
+}
 
 .tudoF .cardF .botaoFF {
     height: 50px;
@@ -254,21 +278,21 @@ input:focus {
     box-shadow: 4px 4px 8px rgb(40, 110, 133);
 }
 
-.tudoF .cardF .botaoFF:hover{
+.tudoF .cardF .botaoFF:hover {
     background-color: rgb(40, 110, 133);
 }
 
-::-webkit-scrollbar{
+::-webkit-scrollbar {
     display: none;
 }
 
-.cliqueAqui{
+.cliqueAqui {
     color: #5F9EA0;
     text-decoration: underline;
     cursor: pointer;
 }
 
-.tudoF .imagemPergunta{
+.tudoF .imagemPergunta {
     margin-top: -2%;
     margin-left: 6%;
     height: 600px;
@@ -277,7 +301,7 @@ input:focus {
     flex-direction: column;
 }
 
-.tudoE .imagemPergunta{
+.tudoE .imagemPergunta {
     margin-top: -2%;
     margin-left: 10%;
     height: 600px;
@@ -286,7 +310,7 @@ input:focus {
     flex-direction: column;
 }
 
-.tudoE .imagemPerguntaR{
+.tudoE .imagemPerguntaR {
     margin-top: -2%;
     /* margin-left: 10%; */
     height: 550px;
@@ -295,14 +319,14 @@ input:focus {
     flex-direction: column;
 }
 
-.tudoE{
+.tudoE {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 200px;
 }
 
-.tudoE .cardE{
+.tudoE .cardE {
     width: auto;
     height: 700px;
     display: flex;
@@ -314,12 +338,12 @@ input:focus {
     color: white;
 }
 
-.tudoE .cardE .card2{
+.tudoE .cardE .card2 {
     margin-left: 160%;
     margin-top: -59%;
 }
 
-.tudoE .cardE input{
+.tudoE .cardE input {
     background-color: transparent;
     border: none;
     width: 300px;
@@ -335,7 +359,7 @@ input:focus {
     outline: none;
 }
 
-.tudoE .cardE .tituloEsta{
+.tudoE .cardE .tituloEsta {
     font-size: 50px;
     font-weight: bolder;
     margin-top: 13%;
@@ -343,24 +367,24 @@ input:focus {
     margin-left: 60%;
 }
 
-.tudoE .cardE .tituloR{
+.tudoE .cardE .tituloR {
     font-size: 50px;
     font-weight: bolder;
     margin-top: 10%;
     margin-bottom: 6%;
 }
 
-.cardE .cliqueAquiDiv{
+.cardE .cliqueAquiDiv {
     margin-left: 120%;
     display: flex;
     width: 100%;
 }
 
-.tudoE .cardE .perguntas{
+.tudoE .cardE .perguntas {
     font-size: 25px;
     margin-top: 4%;
     margin-bottom: 4%;
-}   
+}
 
 .tudoE .cardE .botaoEE {
     height: 50px;
@@ -375,6 +399,21 @@ input:focus {
     margin-top: 9%;
     margin-bottom: 10%;
     margin-left: 90%;
+    box-shadow: 4px 4px 8px rgb(40, 110, 133);
+}
+
+.botaoNovo {
+    height: 50px;
+    width: 260px;
+    background-color: #5F9EA0;
+    color: white;
+    border: white 2px solid;
+    border-radius: 20px;
+    font-weight: bolder;
+    font-size: 20px;
+    cursor: pointer;
+    margin-top: 5%;
+    margin-bottom: 7%;
     box-shadow: 4px 4px 8px rgb(40, 110, 133);
 }
 
@@ -393,20 +432,25 @@ input:focus {
     box-shadow: 4px 4px 8px rgb(40, 110, 133);
 }
 
-.tudoE .cardE .botaoEE:hover{
+.botaoNovo:hover {
     background-color: rgb(40, 110, 133);
 }
-.tudoE .cardE .botaoR:hover{
+
+.tudoE .cardE .botaoEE:hover {
+    background-color: rgb(40, 110, 133);
+}
+
+.tudoE .cardE .botaoR:hover {
     background-color: rgb(40, 110, 133);
 }
 
 
-.invisivel{
+.invisivel {
     transition: all 0.5s;
     opacity: 0;
 }
 
-.painel_sucesso{
+.painel_sucesso {
     margin-top: 100px;
     margin-left: 37%;
     font-size: 15px;
@@ -423,14 +467,17 @@ input:focus {
     opacity: 0;
     color: white;
 }
-.painel_sucesso h1{
+
+.painel_sucesso h1 {
     color: greenyellow;
 }
-.visivel{
+
+.visivel {
     transition: all 0.3s;
     opacity: 1;
-        
+
 }
+
 .loader {
     width: 48px;
     height: 48px;
@@ -440,9 +487,10 @@ input:focus {
     border-right: 4px solid transparent;
     box-sizing: border-box;
     animation: rotation 1s linear infinite;
-  }
-  .loader::after {
-    content: '';  
+}
+
+.loader::after {
+    content: '';
     box-sizing: border-box;
     position: absolute;
     left: 0;
@@ -452,12 +500,14 @@ input:focus {
     border-radius: 50%;
     border-bottom: 4px solid #040189;
     border-left: 4px solid transparent;
-  }
-  @keyframes rotation {
+}
+
+@keyframes rotation {
     0% {
-      transform: rotate(0deg);
+        transform: rotate(0deg);
     }
+
     100% {
-      transform: rotate(360deg);
+        transform: rotate(360deg);
     }
-  } 
+}
