@@ -119,6 +119,41 @@ function consulta_refrigerador(fkCliente, fkEstabelecimento) {
     return database.executar(instrucaoSql);
 }
 
+function cadastrar_sensorTemperatura(idcliente, idrefrigerador, idestabelecimento, idsensor, modelo){
+    var cmd = `
+    insert into sensortemperatura values (
+    ${idsensor}, ${idrefrigerador}, ${idestabelecimento}, ${idcliente}, '${modelo}'
+    );
+    `
+    return database.executar(cmd)
+}
+
+function cadastrar_portaRefrigerador(idporta, idcliente,idrefrigerador, idestabelecimento, produto, tipoporta){
+    var cmd = `
+    insert into portarefrigerador values (
+    ${idporta}, ${idrefrigerador}, ${idestabelecimento}, ${idcliente}, '${produto}', '${tipoporta}'
+    )
+
+    `
+    return database.executar(cmd)
+}
+
+function cadastrar_sensorBloqueio(idporta, idcliente, idrefrigerador, idestabelecimento, idsensor, modelo){
+    var cmd = `
+    insert into sensorbloqueio values (
+    ${idsensor}, ${idporta}, ${idrefrigerador}, ${idestabelecimento}, ${idcliente}, '${modelo}'
+    )
+
+    `
+    return database.executar(cmd)
+}
+
+
+
+
+
+
+
 module.exports = {
     autenticar,
     autenticardash,
@@ -129,6 +164,9 @@ module.exports = {
     cadastrar_funcionario,
     consulta_funcionario,
     consulta_refrigerador,
-    atualiza_refrigerador_estabelecimento
+    atualiza_refrigerador_estabelecimento,
+    cadastrar_sensorTemperatura,
+    cadastrar_portaRefrigerador,
+    cadastrar_sensorBloqueio
 
 };
