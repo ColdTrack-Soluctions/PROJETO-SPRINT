@@ -77,9 +77,6 @@
         var senhaVar = senha_input.value;
 
         if (tentativas != 0) {
-
-
-
             fetch("/usuarios/autenticar_funcionario", {
                 method: "POST",
                 headers: {
@@ -114,8 +111,9 @@
                         div_msg.innerHTML = mensagem;
                         sessionStorage.EMAIL_USUARIO = json.emailFuncionario;
                         sessionStorage.NOME_USUARIO = json.nomeFuncionario;
-                        sessionStorage.ID_USUARIO = json.idFuncionario;
-                        sessionStorage.FK_CLIENTE = json.fkCliente;
+                        sessionStorage.ID_USUARIO = json.fkCliente;
+                        sessionStorage.FK_CLIENTE = json.idFuncionario;
+                        sessionStorage.FK_ESTABELECIMENTO = json.fkEstabelecimento;
                         setTimeout(() => {
                             window.location = "./decisaoFunc.html";
                         }, "2000");
@@ -128,7 +126,7 @@
                 } else {
 
                     console.log("Houve um erro ao tentar realizar o login!");
-                    mensagem = ' <span style =" color: lightcoral">Erro! Login ou senha inválidos.</span>';
+                    mensagem = '<span style =" color: lightcoral">Erro! Login ou senha inválidos.</span>';
                     tentativas--;
 
                     resposta.text().then(texto => {

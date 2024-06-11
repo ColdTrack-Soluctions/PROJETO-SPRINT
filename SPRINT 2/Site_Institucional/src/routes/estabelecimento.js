@@ -7,4 +7,8 @@ var estabelecimentoController = require("../controllers/estabelecimentoControlle
 router.get("/pesquisar/:fkcliente", function (req, res) {
     estabelecimentoController.pesquisarporfk(req, res);
 });
+
+router.get("/pesquisarFuncionario/:parametros", function (req, res) {
+    estabelecimentoController.pesquisarporfkestabelecimento(req, res);
+});
 module.exports = router;
