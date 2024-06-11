@@ -347,6 +347,12 @@ async function cadastrar_refrigerador(req, res) {
     var qntportas = req.body.qntportasServer; 
     var idCliente = req.body.idClienteServer; 
     var idEstabelecimento = req.body.idEstabelecimento; 
+    var tipoporta = req.body.tipoportaServer;
+    var produto = req.body.produtoarmazenadoServer;
+    const idsensor = 1;
+    var qtd_portas = req.body.qntportasServer;
+    const modelotemperatura = 'LM35'
+    const modelobloqueio = 'TCRT5000';
     
 
     // Faça as validações dos valores
@@ -393,13 +399,39 @@ async function cadastrar_refrigerador(req, res) {
                 }
             );
 
-
             usuarioModel.atualiza_refrigerador_estabelecimento(idrefrigerador, idCliente, idEstabelecimento).then((resultado) => {
-                res.json([resultado, data]);
+                
+                
+                usuarioModel.cadastrar_sensorTemperatura(idCliente, idrefrigerador, idEstabelecimento, idsensor, modelotemperatura).then(async ()=>{
+
+                    
+                    for(var cnt = 1; cnt <= qtd_portas; cnt++){
+                        await usuarioModel.cadastrar_portaRefrigerador(cnt, idCliente, idrefrigerador, idEstabelecimento, produto, tipoporta).then(
+                        
+                            await usuarioModel.cadastrar_sensorBloqueio(cnt, idCliente, idrefrigerador, idEstabelecimento, idsensor, modelobloqueio).then(
+                                // usuarioModel.mockarAberturas('aberturas da semana') //mockar a dashboard com as aberturas da semana, colocando os 6 dias
+                                //antes da data de criação com 0 aberturas
+                                
+                                ))   
+                                }
+                            res.json([resultado, data])
+                });
+
+
+
+
+
             }).catch((erro) => {
                 console.log(erro);
                 res.status(500).json(erro.sqlMessage);
             });
+
+
+
+
+
+
+
     }
 }
 

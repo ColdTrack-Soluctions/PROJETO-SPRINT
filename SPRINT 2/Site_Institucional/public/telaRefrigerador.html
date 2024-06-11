@@ -49,13 +49,13 @@
                     <div>
                         <p class="perguntas">Tipo da Porta</p>
                         <select type="marca" id="select_tipo" autocomplete="off">
-                            <option value="1">Arrastar</option>
-                            <option value="2">Puxar</option>
+                            <option>Arrastar</option>
+                            <option>Puxar</option>
                         </select>
                     </div>
                     <div>
                         <p class="perguntas">Produto Armazenado</p>
-                        <input type="number" id="input_produto" autocomplete="off">
+                        <input type="text" id="input_produto" autocomplete="off">
                     </div>
                 </div>
                 <!-- </div> -->
@@ -97,7 +97,9 @@
                     modeloServer: modelo,
                     qntportasServer: qntportas,
                     idClienteServer: idCliente,
-                    idEstabelecimento: estabelecimento
+                    idEstabelecimento: estabelecimento,
+                    tipoportaServer: tipoPorta,
+                    produtoarmazenadoServer: produtoArmazenado
                 }),
             })
                 .then(function (resposta) {
