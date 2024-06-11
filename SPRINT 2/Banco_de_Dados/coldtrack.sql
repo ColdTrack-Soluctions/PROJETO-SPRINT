@@ -1,5 +1,6 @@
 -- CRIANDO A NOSSA BASE DE DADOScreate database bd_coldtrack;
 -- ULTILIZANDO A BASE DE DADOS
+create database bd_coldtrack;
 use bd_coldtrack;
 
 -- CRIANDO UMA TABELA PARA O NOSSO CLIENTE
@@ -109,9 +110,9 @@ fkRefrigerador int,
 fkEstabelecimento int,
 fkCliente int,
 constraint pkcompostasensortemperatura primary key (idSensorTemperatura, fkRefrigerador, fkEstabelecimento, fkCliente),
-constraint fkrefrigeradorsensortemperatura foreign key (fkRefrigerador) references Refrigerador(idRefrigerador),
-constraint fkestabelecimentosensortemperatura foreign key (fkEstabelecimento) references Refrigerador(fkEstabelecimento),
-constraint fkclientesensortemperatura foreign key (fkCliente) references Refrigerador(fkCliente),
+constraint fkrefrigeradorsensortemperatura foreign key (fkRefrigerador) references refrigerador(idRefrigerador),
+constraint fkestabelecimentosensortemperatura foreign key (fkEstabelecimento) references refrigerador(fkEstabelecimento),
+constraint fkclientesensortemperatura foreign key (fkCliente) references refrigerador(fkCliente),
 Modelo varchar(45)
 );
 
@@ -168,9 +169,9 @@ fkRefrigerador int,
 fkEstabelecimento int,
 fkCliente int,
 constraint pkCompPorta primary key (idPorta, fkRefrigerador, fkEstabelecimento, fkCliente),
-constraint fkportaRefrigerador foreign key (fkRefrigerador) references Refrigerador(idRefrigerador),
-constraint fkportaEstabelecimento foreign key (fkEstabelecimento) references Refrigerador(fkEstabelecimento),
-constraint fkportaCliente foreign key (fkCliente) references Refrigerador(fkCliente),
+constraint fkportaRefrigerador foreign key (fkRefrigerador) references refrigerador(idRefrigerador),
+constraint fkportaEstabelecimento foreign key (fkEstabelecimento) references refrigerador(fkEstabelecimento),
+constraint fkportaCliente foreign key (fkCliente) references refrigerador(fkCliente),
 produtoArmazenado varchar(45),
 tipoAbertura varchar(45),
 constraint chkAbertura check (tipoAbertura in ('Puxar', 'Arrastar'))
@@ -195,10 +196,10 @@ fkRefrigerador int,
 fkEstabelecimento int,
 fkCliente int,
 constraint pkCompBloqueio primary key (idSensorBloqueio, fkPorta, fkRefrigerador, fkEstabelecimento, fkCliente),
-constraint fkbloqueioPorta foreign key (fkPorta) references PortaRefrigerador(idPorta),
-constraint fkbloqueioRefrigerador foreign key (fkRefrigerador) references PortaRefrigerador(fkRefrigerador),
-constraint fkbloqueioEstabelecimento foreign key (fkEstabelecimento) references PortaRefrigerador(fkEstabelecimento),
-constraint fkbloqueioCliente foreign key (fkCliente) references PortaRefrigerador(fkCliente),
+constraint fkbloqueioPorta foreign key (fkPorta) references portaRefrigerador(idPorta),
+constraint fkbloqueioRefrigerador foreign key (fkRefrigerador) references portaRefrigerador(fkRefrigerador),
+constraint fkbloqueioEstabelecimento foreign key (fkEstabelecimento) references portaRefrigerador(fkEstabelecimento),
+constraint fkbloqueioCliente foreign key (fkCliente) references portaRefrigerador(fkCliente),
 Modelo varchar(45)
 );
 
