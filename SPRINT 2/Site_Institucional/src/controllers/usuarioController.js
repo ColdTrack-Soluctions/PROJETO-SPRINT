@@ -409,12 +409,37 @@ async function cadastrar_refrigerador(req, res) {
                         await usuarioModel.cadastrar_portaRefrigerador(cnt, idCliente, idrefrigerador, idEstabelecimento, produto, tipoporta).then(
                         
                             await usuarioModel.cadastrar_sensorBloqueio(cnt, idCliente, idrefrigerador, idEstabelecimento, idsensor, modelobloqueio).then(
-                                // usuarioModel.mockarAberturas('aberturas da semana') //mockar a dashboard com as aberturas da semana, colocando os 6 dias
-                                //antes da data de criação com 0 aberturas
                                 
-                                ))   
-                                }
-                            res.json([resultado, data])
+                                async () => {
+
+                                    const aberturas = [
+                                        200,
+                                        150,
+                                        100,
+                                        250,
+                                        0
+                                    ]
+
+                                    var horario = [
+                                        '2024-06-9 12:11:10',
+                                        '2024-06-10 12:11:11',
+                                        '2024-06-11 12:11:12',
+                                        '2024-06-12 12:11:13',
+                                        '2024-06-13 12:11:14'
+
+                                    ]
+                                    for(let i = 1; i <= 5; i++){
+
+                                        usuarioModel.mockarAberturas(i, idsensor, cnt, idrefrigerador, idEstabelecimento, idCliente, aberturas[i - 1], horario[i - 1]) //mockar a dashboard com as aberturas da semana, colocando os 6 dias
+                                                                    //antes da data de criação com 0 aberturas
+
+                                             }
+
+
+                                }))}
+                                res.json([resultado, data])
+                                   
+
                 });
 
 
