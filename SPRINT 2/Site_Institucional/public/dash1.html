@@ -30,6 +30,29 @@
       <div class="opcoes_dash">Cards</div>
     </a>
   </div>
+  <div style="display: flex; justify-content: center;">
+    <div
+      style="background-color: blue; height: 80px; width: 150px; border: 2px white solid; border-top-left-radius: 30px; border-bottom-left-radius: 30px; display: flex; justify-content: center; align-items: center; flex-direction: column; color: white; font-weight: bold; font-size: 18px;">
+      <p>FRIO</p>
+      <p>
+        < - 2°C</p>
+    </div>
+    <div
+      style="background-color: #0f0; height: 80px; width: 150px; border: 2px white solid; display: flex; justify-content: center; align-items: center; flex-direction: column; color: white; font-weight: bold; font-size: 18px;">
+      <p>IDEAL</p>
+      <p>0°C</p>
+    </div>
+    <div
+      style="background-color: #ffa500; height: 80px; width: 150px; border: 2px white solid; display: flex; justify-content: center; align-items: center; flex-direction: column; color: white; font-weight: bold; font-size: 18px;">
+      <p>QUENTE</p>
+      <p>>= 1°C</p>
+    </div>
+    <div
+      style="background-color: rgb(255, 0, 0); height: 80px; width: 150px; border: 2px white solid; border-top-right-radius: 30px; border-bottom-right-radius: 30px; display: flex; justify-content: center; align-items: center; flex-direction: column; color: white; font-weight: bold; font-size: 18px; text-align: center;">
+      <p>MUITO <br> QUENTE</p>
+      <p>> 2°C</p>
+    </div>
+  </div>
   <div style="width: 100vw; height: 60px; display: flex; justify-content: center; margin-top: 10px;" id="div_titulo">
   </div>
   <div class="tudoCard" id="tudoCard">
@@ -59,7 +82,7 @@
     estabelecimento = sessionStorage.nomeEstabelecimento;
     div_titulo.innerHTML = `
     <p class="refrigeradores">Refrigeradores do Estabelecimento<span style= 'color: #00FFFF; margin-left: 7px'>${estabelecimento}</span> </p>
-    `
+    `;
     var refrigeradores = JSON.parse(sessionStorage.getItem('Refrigeradores'));
     console.log(refrigeradores);
     refrigeradores.forEach(item => {
@@ -78,24 +101,24 @@
                     </div>
                     </div>
                         
-                `
+                `;
     });
   }
 
   function exibirDash(idRefrigerador, idEstabelecimento, idCliente) {
 
-    tudoCard.classList.toggle('invisivel')
+    tudoCard.classList.toggle('invisivel');
     setTimeout(() => {
-      tudoCard.style.display = 'none'
-      var tag = 'div'
-      var texto2 = ''
+      tudoCard.style.display = 'none';
+      var tag = 'div';
+      var texto2 = '';
       var porta_refrigeradores = JSON.parse(sessionStorage.getItem('PortasRefrigeradores'));
       porta_refrigeradores.forEach(porta => {
         if (porta.fkRefrigerador == idRefrigerador) {
 
           texto2 += `
                       <div class="opcoes_dash" onclick="Criar_dash(${porta.fkRefrigerador}, ${porta.fkEstabelecimento}, ${porta.fkCliente}, ${porta.idPorta})">${porta.idPorta} - ${porta.produtoArmazenado}</div>
-                      `
+                      `;
         }
       });
       var texto = `
@@ -118,9 +141,9 @@
                             
                         
 
-                    `
-      var id = `cardportarefrigerador`
-      var classe = 'card-portas-refrigerador'
+                    `;
+      var id = `cardportarefrigerador`;
+      var classe = 'card-portas-refrigerador';
       const card = document.getElementById('cardportarefrigerador');
       if (card) {
         card.remove();
@@ -135,17 +158,17 @@
 
 
 
-    }, 750)
+    }, 750);
   }
 
   function fecharPortas(id) {
-    const painel_porta = document.getElementById(id)
+    const painel_porta = document.getElementById(id);
     painel_porta.remove();
     setTimeout(() => {
-      tudoCard.style.display = 'flex'
-      tudoCard.classList.toggle('invisivel')
+      tudoCard.style.display = 'flex';
+      tudoCard.classList.toggle('invisivel');
 
-    }, 250)
+    }, 250);
   }
 
 
@@ -153,17 +176,17 @@
 
     grafico.innerHTML = '<canvas id="myChart"></canvas>';
 
-    titulo_dash.innerHTML = `Dashboard do Refrigerador ${idRefrigerador}<br><br> Porta - ${idPorta}`
-    const parametros = [idPorta, idRefrigerador, idEstabelecimento, idCliente]
+    titulo_dash.innerHTML = `Dashboard do Refrigerador ${idRefrigerador}<br><br> Porta - ${idPorta}`;
+    const parametros = [idPorta, idRefrigerador, idEstabelecimento, idCliente];
 
-    console.log(parametros)
+    console.log(parametros);
 
     const dados = await obterdadosdashboard(parametros);
-    const label_dash = []
-    const data_dash = []
+    const label_dash = [];
+    const data_dash = [];
     dados.forEach(dado => {
-      label_dash.push(dado.Dia)
-      data_dash.push(dado.Aberturas)
+      label_dash.push(dado.Dia);
+      data_dash.push(dado.Aberturas);
     });
 
     // console.log(label_dash)
@@ -235,6 +258,9 @@
     });
 
 
+setInterval(()=>{
+ atualizar_dash(dash, parametros)
+}, 1000)
 
   }
 
