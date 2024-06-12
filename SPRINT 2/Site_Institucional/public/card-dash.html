@@ -24,15 +24,40 @@
         </div>
     </div>
     <div class="header_opcoes_dash">
-        <a href="./dash1.html"><div class="opcoes_dash">Dashboards</div></a>
+        <a href="./dash1.html">
+            <div class="opcoes_dash">Dashboards</div>
+        </a>
         <div class="opcoes_dash selecionado">Cards</div>
+    </div>
+    <div style="display: flex; justify-content: center;">
+        <div
+            style="background-color: blue; height: 80px; width: 150px; border: 2px white solid; border-top-left-radius: 30px; border-bottom-left-radius: 30px; display: flex; justify-content: center; align-items: center; flex-direction: column; color: white; font-weight: bold; font-size: 18px;">
+            <p>FRIO</p>
+            <p>
+                < - 2°C</p>
+        </div>
+        <div
+            style="background-color: #0f0; height: 80px; width: 150px; border: 2px white solid; display: flex; justify-content: center; align-items: center; flex-direction: column; color: white; font-weight: bold; font-size: 18px;">
+            <p>IDEAL</p>
+            <p>0°C</p>
+        </div>
+        <div
+            style="background-color: #ffa500; height: 80px; width: 150px; border: 2px white solid; display: flex; justify-content: center; align-items: center; flex-direction: column; color: white; font-weight: bold; font-size: 18px;">
+            <p>QUENTE</p>
+            <p>>= 1°C</p>
+        </div>
+        <div
+            style="background-color: rgb(255, 0, 0); height: 80px; width: 150px; border: 2px white solid; border-top-right-radius: 30px; border-bottom-right-radius: 30px; display: flex; justify-content: center; align-items: center; flex-direction: column; color: white; font-weight: bold; font-size: 18px; text-align: center;">
+            <p>MUITO <br> QUENTE</p>
+            <p>> 2°C</p>
+        </div>
     </div>
     <div style="width: 100vw; height: 60px; display: flex; justify-content: center; margin-top: 10px;" id="div_titulo">
     </div>
     <div class="tudoCard" id="tudoCard">
 
-    
-      
+
+
     </div>
 
     <div class="msgDash"></div>
@@ -50,16 +75,16 @@
 <script src="./js/sessao.js"></script>
 <script>
 
-function exibirRefrigeradores() {
-    estabelecimento = sessionStorage.nomeEstabelecimento;
-    div_titulo.innerHTML = `
+    function exibirRefrigeradores() {
+        estabelecimento = sessionStorage.nomeEstabelecimento;
+        div_titulo.innerHTML = `
     <p class="refrigeradores">Refrigeradores do Estabelecimento<span style= 'color: #00FFFF; margin-left: 7px'>${estabelecimento}</span> </p>
-    `
+    `;
         var refrigeradores = JSON.parse(sessionStorage.getItem('Refrigeradores'));
-            // console.log(refrigeradores);
-            refrigeradores.forEach(item => {
+        // console.log(refrigeradores);
+        refrigeradores.forEach(item => {
             //   console.log(item);
-                document.getElementById("tudoCard").innerHTML += `
+            document.getElementById("tudoCard").innerHTML += `
                        <div class="card-refrigerador"  onclick="exibirPortas(${item.idRefrigerador})">
                         <div class="title-refrigerador">
                             <h1>Refrigerador ${item.idRefrigerador}</h1>
@@ -73,17 +98,17 @@ function exibirRefrigeradores() {
                     </div>
                     </div>
                         
-                `
-                // obterDadosRefrigerador(item.Refrigerador_id)
-            });
+                `;
+            // obterDadosRefrigerador(item.Refrigerador_id)
+        });
     }
 
     function exibirPortas(idRefrigerador) {
-                    tudoCard.classList.toggle('invisivel')
-                    setTimeout(() => {
-                    tudoCard.style.display = 'none'
-                    var tag = 'div'
-                    var texto = `
+        tudoCard.classList.toggle('invisivel');
+        setTimeout(() => {
+            tudoCard.style.display = 'none';
+            var tag = 'div';
+            var texto = `
 
                     <div style="display: flex; justify-content: center; align-items: center;">
                         <h1 class='teste'>Portas do Refrigerador ${idRefrigerador}</h1>
@@ -93,22 +118,22 @@ function exibirRefrigeradores() {
                             
                         
 
-                    `
-                    var id =  `cardportarefrigerador`
-                    var classe = 'card-portas-refrigerador'
-                    const card = document.getElementById('cardportarefrigerador');
-                    if (card){
-                        card.remove();
-                    }
-                    // Cria um novo elemento
-                    var novoElemento = document.createElement(tag);
-                        var porta_refrigeradores = JSON.parse(sessionStorage.getItem('PortasRefrigeradores'));
-                        porta_refrigeradores.forEach(item => {
-                        //   console.log(item);
+                    `;
+            var id = `cardportarefrigerador`;
+            var classe = 'card-portas-refrigerador';
+            const card = document.getElementById('cardportarefrigerador');
+            if (card) {
+                card.remove();
+            }
+            // Cria um novo elemento
+            var novoElemento = document.createElement(tag);
+            var porta_refrigeradores = JSON.parse(sessionStorage.getItem('PortasRefrigeradores'));
+            porta_refrigeradores.forEach(item => {
+                //   console.log(item);
 
-                        if (item.fkRefrigerador == idRefrigerador){
+                if (item.fkRefrigerador == idRefrigerador) {
 
-                            texto += `
+                    texto += `
                             <div class="card-refrigerador1">
                                 <div class="title-refrigerador">
                                     <h1>Porta ${item.idPorta}</h1>
@@ -124,30 +149,30 @@ function exibirRefrigeradores() {
                                             </div>
                                             </div>
                                             
-                                            `
-                                        }
-                            // obterDadosRefrigerador(item.Refrigerador_id)
-                        });
+                                            `;
+                }
+                // obterDadosRefrigerador(item.Refrigerador_id)
+            });
 
-                        
-          
-                        novoElemento.innerHTML = texto;
-                        novoElemento.id = id;
-                        novoElemento.classList.add(classe);
-                        document.body.appendChild(novoElemento);
-                
 
-                },750)    
+
+            novoElemento.innerHTML = texto;
+            novoElemento.id = id;
+            novoElemento.classList.add(classe);
+            document.body.appendChild(novoElemento);
+
+
+        }, 750);
     }
 
-    function fecharPortas(id){
-        const painel_porta = document.getElementById(id)
+    function fecharPortas(id) {
+        const painel_porta = document.getElementById(id);
         painel_porta.remove();
- setTimeout(() => {
-     tudoCard.style.display = 'flex'
-     tudoCard.classList.toggle('invisivel')
+        setTimeout(() => {
+            tudoCard.style.display = 'flex';
+            tudoCard.classList.toggle('invisivel');
 
- },250)
+        }, 250);
     }
 
-    </script>
+</script>
