@@ -153,7 +153,7 @@ function cadastrar_sensorBloqueio(idporta, idcliente, idrefrigerador, idestabele
 function mockarAberturas(iddado, idsensor, idporta, idrefrigerador, idestabelecimento, idcliente, aberturas, horario){
 
 var cmd = `
-insert into dadosabertura values (${iddado}, ${idsensor},${idporta}, ${idrefrigerador}, ${idestabelecimento}, ${idcliente}, ${aberturas}, '${horario}')
+insert into dadosAbertura values (${iddado}, ${idsensor},${idporta}, ${idrefrigerador}, ${idestabelecimento}, ${idcliente}, ${aberturas}, '${horario}')
 `
 return database.executar(cmd)
 }
