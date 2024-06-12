@@ -121,7 +121,7 @@ function consulta_refrigerador(fkCliente, fkEstabelecimento) {
 
 function cadastrar_sensorTemperatura(idcliente, idrefrigerador, idestabelecimento, idsensor, modelo){
     var cmd = `
-    insert into sensortemperatura values (
+    insert into SensorTemperatura values (
     ${idsensor}, ${idrefrigerador}, ${idestabelecimento}, ${idcliente}, '${modelo}'
     );
     `
@@ -130,7 +130,7 @@ function cadastrar_sensorTemperatura(idcliente, idrefrigerador, idestabeleciment
 
 function cadastrar_portaRefrigerador(idporta, idcliente,idrefrigerador, idestabelecimento, produto, tipoporta){
     var cmd = `
-    insert into portarefrigerador values (
+    insert into portaRefrigerador values (
     ${idporta}, ${idrefrigerador}, ${idestabelecimento}, ${idcliente}, '${produto}', '${tipoporta}'
     )
 
@@ -140,7 +140,7 @@ function cadastrar_portaRefrigerador(idporta, idcliente,idrefrigerador, idestabe
 
 function cadastrar_sensorBloqueio(idporta, idcliente, idrefrigerador, idestabelecimento, idsensor, modelo){
     var cmd = `
-    insert into sensorbloqueio values (
+    insert into SensorBloqueio values (
     ${idsensor}, ${idporta}, ${idrefrigerador}, ${idestabelecimento}, ${idcliente}, '${modelo}'
     )
 
@@ -150,7 +150,13 @@ function cadastrar_sensorBloqueio(idporta, idcliente, idrefrigerador, idestabele
 
 
 
+function mockarAberturas(iddado, idsensor, idporta, idrefrigerador, idestabelecimento, idcliente, aberturas, horario){
 
+var cmd = `
+insert into dadosabertura values (${iddado}, ${idsensor},${idporta}, ${idrefrigerador}, ${idestabelecimento}, ${idcliente}, ${aberturas}, '${horario}')
+`
+return database.executar(cmd)
+}
 
 
 
@@ -167,6 +173,7 @@ module.exports = {
     atualiza_refrigerador_estabelecimento,
     cadastrar_sensorTemperatura,
     cadastrar_portaRefrigerador,
-    cadastrar_sensorBloqueio
+    cadastrar_sensorBloqueio,
+    mockarAberturas
 
 };
