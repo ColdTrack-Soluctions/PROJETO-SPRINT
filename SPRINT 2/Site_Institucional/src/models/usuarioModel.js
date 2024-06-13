@@ -21,7 +21,7 @@ function autenticardash(idUsuario) {
 function autenticar_funcionario(email, senha) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", email, senha);
     var instrucaoSql = `
-    SELECT idFuncionario, fkCliente , nomeFuncionario, emailFuncionario FROM funcionario WHERE emailfuncionario = '${email}' AND senhafuncionario = '${senha}';
+    SELECT idFuncionario, fkCliente , nomeFuncionario, emailFuncionario, fkEstabelecimento FROM funcionario WHERE emailfuncionario = '${email}' AND senhafuncionario = '${senha}';
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -119,6 +119,47 @@ function consulta_refrigerador(fkCliente, fkEstabelecimento) {
     return database.executar(instrucaoSql);
 }
 
+function cadastrar_sensorTemperatura(idcliente, idrefrigerador, idestabelecimento, idsensor, modelo){
+    var cmd = `
+    insert into SensorTemperatura values (
+    ${idsensor}, ${idrefrigerador}, ${idestabelecimento}, ${idcliente}, '${modelo}'
+    );
+    `
+    return database.executar(cmd)
+}
+
+function cadastrar_portaRefrigerador(idporta, idcliente,idrefrigerador, idestabelecimento, produto, tipoporta){
+    var cmd = `
+    insert into portaRefrigerador values (
+    ${idporta}, ${idrefrigerador}, ${idestabelecimento}, ${idcliente}, '${produto}', '${tipoporta}'
+    )
+
+    `
+    return database.executar(cmd)
+}
+
+function cadastrar_sensorBloqueio(idporta, idcliente, idrefrigerador, idestabelecimento, idsensor, modelo){
+    var cmd = `
+    insert into SensorBloqueio values (
+    ${idsensor}, ${idporta}, ${idrefrigerador}, ${idestabelecimento}, ${idcliente}, '${modelo}'
+    )
+
+    `
+    return database.executar(cmd)
+}
+
+
+
+function mockarAberturas(iddado, idsensor, idporta, idrefrigerador, idestabelecimento, idcliente, aberturas, horario){
+
+var cmd = `
+insert into dadosAbertura values (${iddado}, ${idsensor},${idporta}, ${idrefrigerador}, ${idestabelecimento}, ${idcliente}, ${aberturas}, '${horario}')
+`
+return database.executar(cmd)
+}
+
+
+
 module.exports = {
     autenticar,
     autenticardash,
@@ -129,6 +170,10 @@ module.exports = {
     cadastrar_funcionario,
     consulta_funcionario,
     consulta_refrigerador,
-    atualiza_refrigerador_estabelecimento
+    atualiza_refrigerador_estabelecimento,
+    cadastrar_sensorTemperatura,
+    cadastrar_portaRefrigerador,
+    cadastrar_sensorBloqueio,
+    mockarAberturas
 
 };

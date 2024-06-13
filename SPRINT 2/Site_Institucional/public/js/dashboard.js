@@ -24,6 +24,22 @@ async function obterdadosdashboard(parametros){
     }catch(erro){
         throw new Error(erro)
     }
+}
+
+
+async function atualizar_dash(dash, parametros){
+
+    const dados = await obterdadosdashboard(parametros);
+    const label_dash = []
+    const data_dash = []
+    dados.forEach(dado => {
+        label_dash.push(dado.Dia)
+        data_dash.push(dado.Aberturas)
+      });
+
+      dash.config.data.datasets[0].data = data_dash;
+      dash.update();
+
 
 }
 

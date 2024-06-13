@@ -10,7 +10,7 @@ function buscarRefrigeradorPorCliente(idcliente, idestabelecimento) {
 }
 function buscarPortasPorRefrigerador(idestabelecimento, idcliente) {
 
-  var instrucaoSql = ` select * from portarefrigerador where fkestabelecimento = ${idestabelecimento} and fkcliente = ${idcliente};
+  var instrucaoSql = ` select * from portaRefrigerador where fkestabelecimento = ${idestabelecimento} and fkcliente = ${idcliente};
   `;
   
 

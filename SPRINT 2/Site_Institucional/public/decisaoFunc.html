@@ -10,18 +10,6 @@
 </head>
 
 <body onload="carregar_estabelecimentos()">
-    <!-- <div class="header">
-        <div class="container_header">
-            <div class="imagem1">
-                <img src="../assets/imagens/logo.svg" alt="" class="imagemfixa">
-            </div>
-            <div class="opcPrincipais">
-                <a href="orcamento-cadastrado.html">Orçamentos</a>
-                <a href="calculadora-cadastrado.html">Calculadora</a>
-            </div>
-            <a href="principal-cadastrado.html">Voltar</a>
-        </div>
-    </div> -->
     <div id="div_titulo"></div>
     <div class="meio" id="meio">
 
@@ -37,7 +25,7 @@
         `;
 
         var cnt = 0;
-        const estabelecimentos = await buscar_estabelecimentos();
+        const estabelecimentos = await buscar_estabelecimentos2();
         console.log(JSON.parse(estabelecimentos));
         JSON.parse(estabelecimentos).forEach(item => {
             cnt++;
